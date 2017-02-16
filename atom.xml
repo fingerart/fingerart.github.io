@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>指尖上的艺术</title>
+  <subtitle>学习的热情，不应为季节的变化而改变</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://fingerart.me/"/>
+  <updated>2017-02-16T04:07:15.000Z</updated>
+  <id>http://fingerart.me/</id>
+  
+  <author>
+    <name>George</name>
+    <email>george@chengguo.io</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IntelliJ-插件开发指南</title>
+    <link href="http://fingerart.me/2017/02/16/IntelliJ-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
+    <id>http://fingerart.me/2017/02/16/IntelliJ-插件开发指南/</id>
+    <published>2017-02-16T04:05:40.000Z</published>
+    <updated>2017-02-16T04:07:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>待续……</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;待续……&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="IntelliJ IDEA" scheme="http://fingerart.me/tags/IntelliJ-IDEA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于ThinkPHP5 子域名路由问题</title>
+    <link href="http://fingerart.me/2016/12/01/%E5%85%B3%E4%BA%8EThinkPHP5-%E5%AD%90%E5%9F%9F%E5%90%8D%E8%B7%AF%E7%94%B1%E9%97%AE%E9%A2%98/"/>
+    <id>http://fingerart.me/2016/12/01/关于ThinkPHP5-子域名路由问题/</id>
+    <published>2016-11-30T18:18:43.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。</p>
+<p>因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果：</p>
+<p>定义某个api路由规则时，可以根据 <code>api.domain.com</code> 子域名来检测；非 <code>api.domain.com</code> 子域名访问其他模块。但是根据文档配置后却会报 <strong>模块不存在</strong> </p>
+<p>再三查看文档后决定没错，后来跟进源码查看关键位置</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//thinkphp/library/think/Route.php</span></div><div class="line"></div><div class="line"><span class="number">182</span> <span class="keyword">if</span> (<span class="keyword">isset</span>($rule[<span class="string">'__domain__'</span>])) &#123;</div><div class="line"><span class="number">183</span>     <span class="keyword">self</span>::domain($rule[<span class="string">'__domain__'</span>]);</div><div class="line"><span class="number">184</span>     <span class="keyword">unset</span>($rule[<span class="string">'__domain__'</span>]);</div><div class="line"><span class="number">185</span> &#125;</div><div class="line"></div><div class="line"><span class="number">119</span> <span class="keyword">self</span>::$rules[<span class="string">'domain'</span>][$domain][<span class="string">'[bind]'</span>] = [$rule, $option, $pattern];</div><div class="line"></div><div class="line"><span class="number">1132</span> <span class="keyword">if</span>(<span class="keyword">isset</span>($option[<span class="string">'domain'</span>]) &amp;&amp; !in_array($option[<span class="string">'domain'</span>], [$_SERVER[<span class="string">'HTTP_HOST'</span>], <span class="keyword">self</span>::$subDomain])) <span class="comment">// 域名检测</span></div></pre></td></tr></table></figure>
+<p>会发现通过如下设置即可完成：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//route.php</span></div><div class="line"></div><div class="line"><span class="string">'__domain__'</span>=&gt;[</div><div class="line">   <span class="string">'api'</span> =&gt; <span class="string">'api/User/index'</span>,</div><div class="line">],</div><div class="line"></div><div class="line"><span class="string">'user'</span> =&gt; [<span class="string">'api/User/create'</span>, [<span class="string">'method'</span> =&gt; <span class="string">'get'</span>, <span class="string">'domain'</span>=&gt;<span class="string">'api'</span>]],</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。&lt;/p&gt;
+&lt;p&gt;因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果：&lt;/p&gt;
+&lt;p&gt;定义某个api路由规则时
+    
+    </summary>
+    
+    
+      <category term="ThinkPHP" scheme="http://fingerart.me/tags/ThinkPHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IntelliJ IDEA 插件ApiDebugger v1.0.0</title>
+    <link href="http://fingerart.me/2016/10/24/IntelliJ-IDEA-%E6%8F%92%E4%BB%B6ApiDebugger-v1-0-0/"/>
+    <id>http://fingerart.me/2016/10/24/IntelliJ-IDEA-插件ApiDebugger-v1-0-0/</id>
+    <published>2016-10-24T02:15:17.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一直想做一个在IDEA上面直接进行api接口调试的插件，直到上周五才完成第一个版本，这个版本只有一个很简单的api调试功能，支持GET/POST，添加参数、Header、Cookie、File。<br>当然目前该插件还有很多不足的地方，不能支持参数信息的加密等，因此不能支持复杂的加密接口。后面我会弥补这一缺陷。</p>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p><code>Settings</code> -&gt; <code>Plugins</code> -&gt; search: <code>Api Debugger</code> -&gt; <code>Install</code> -&gt; restart IDEA</p>
+<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><img src="http://fingerart.qiniudn.com/2016-10-24-2016-10-24_10-38-17.gif" alt="2016-10-24_10-38-17"></p>
+<a id="more"></a>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p><a href="https://github.com/fingerart/ApiDebugger" target="_blank" rel="external">https://github.com/fingerart/ApiDebugger</a></p>
+<blockquote>
+<p>你的支持是我最大的动力，欢迎star、issue……</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一直想做一个在IDEA上面直接进行api接口调试的插件，直到上周五才完成第一个版本，这个版本只有一个很简单的api调试功能，支持GET/POST，添加参数、Header、Cookie、File。&lt;br&gt;当然目前该插件还有很多不足的地方，不能支持参数信息的加密等，因此不能支持复杂的加密接口。后面我会弥补这一缺陷。&lt;/p&gt;
+&lt;h3 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Settings&lt;/code&gt; -&amp;gt; &lt;code&gt;Plugins&lt;/code&gt; -&amp;gt; search: &lt;code&gt;Api Debugger&lt;/code&gt; -&amp;gt; &lt;code&gt;Install&lt;/code&gt; -&amp;gt; restart IDEA&lt;/p&gt;
+&lt;h3 id=&quot;Preview&quot;&gt;&lt;a href=&quot;#Preview&quot; class=&quot;headerlink&quot; title=&quot;Preview&quot;&gt;&lt;/a&gt;Preview&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://fingerart.qiniudn.com/2016-10-24-2016-10-24_10-38-17.gif&quot; alt=&quot;2016-10-24_10-38-17&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="IntelliJ IDEA" scheme="http://fingerart.me/tags/IntelliJ-IDEA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IntelliJ IDEA 插件 Open Uploader 正式发布</title>
+    <link href="http://fingerart.me/2016/10/12/IntelliJ-IDEA-%E6%8F%92%E4%BB%B6-Open-Uploader-%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83/"/>
+    <id>http://fingerart.me/2016/10/12/IntelliJ-IDEA-插件-Open-Uploader-正式发布/</id>
+    <published>2016-10-11T17:17:12.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>IntelliJ IDEA 文件上传插件，不限制任何站点，支持自定义参数</p>
+</blockquote>
+<p>可能你会遇到经常性的发布测试包给测试，也许你的选择是通过聊天工具发送、上传到一些测试的分发平台，之前我们公司使用的方式正是通过测试分发平台，但是在使用某个平台后，竟然开始收费了，😡，于是就打算做个IntelliJ IDEA插件，快速上传文件到自己公司的服务器或者其他地方。</p>
+<p><img src="http://fingerart.qiniudn.com/2016-10-12-open_uploader_preview.gif" alt="open_uploader_previe"></p>
+<a id="more"></a>
+<p>源码：<a href="https://github.com/fingerart/Open-Uploader" target="_blank" rel="external">https://github.com/fingerart/Open-Uploader</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;IntelliJ IDEA 文件上传插件，不限制任何站点，支持自定义参数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可能你会遇到经常性的发布测试包给测试，也许你的选择是通过聊天工具发送、上传到一些测试的分发平台，之前我们公司使用的方式正是通过测试分发平台，但是在使用某个平台后，竟然开始收费了，😡，于是就打算做个IntelliJ IDEA插件，快速上传文件到自己公司的服务器或者其他地方。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://fingerart.qiniudn.com/2016-10-12-open_uploader_preview.gif&quot; alt=&quot;open_uploader_previe&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="IntelliJ IDEA" scheme="http://fingerart.me/tags/IntelliJ-IDEA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Api文档自动生成之apiDoc简介</title>
+    <link href="http://fingerart.me/2016/09/16/Api%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%B9%8Bapidoc%E7%AE%80%E4%BB%8B/"/>
+    <id>http://fingerart.me/2016/09/16/Api文档自动生成之apidoc简介/</id>
+    <published>2016-09-16T04:25:26.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a href="https://github.com/apidoc/apidoc" target="_blank" rel="external">apiDoc</a> 是一个基于nodejs自动生成RESTful Api文档的工具，提供了api版本差异比较、自定义末班等功能。</p>
+<p>去年和朋友开发一个app，我包下了Android和后端，当时为了让他更好的看懂api和便于后期的维护，专门写了一个api的PHP程序，发现这个api程序还欠缺很多东西加上没有太多时间就不再维护了。后来发现了apiDoc这个库，一直放着没有时间来仔细看，刚好这两天有时间，把这个库学习完了。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装 <a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">npm</a> 的前提下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install apidoc -g</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">## 目录结构</div><div class="line"></div><div class="line">|- apidoc/</div><div class="line">  |- apidoc.json</div><div class="line">  |- header.md</div><div class="line">  |- footer.md</div><div class="line">  |- src/</div><div class="line">    |- _apidoc.java</div><div class="line">    |- User.java</div><div class="line">  |- doc/</div><div class="line">  |- template/</div></pre></td></tr></table></figure>
+<h4 id="生成api文档"><a href="#生成api文档" class="headerlink" title="生成api文档"></a>生成api文档</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ apidoc -i src/ -o doc/</div></pre></td></tr></table></figure>
+<h4 id="apidoc-参数"><a href="#apidoc-参数" class="headerlink" title="apidoc 参数"></a>apidoc 参数</h4><ul>
+<li>-i<br>读取用于生成文档的目录，比如src目录</li>
+<li>-o<br>生成api文档静态页面的目录</li>
+<li>-t<br>自定义的模板目录，默认使用apiDoc的模板</li>
+<li>-f “.*\.java$”<br>解析符合正则表达式的文件</li>
+<li>-h<br>显示帮助信息</li>
+</ul>
+<h4 id="配置-apidoc-json"><a href="#配置-apidoc-json" class="headerlink" title="配置 apidoc.json"></a>配置 apidoc.json</h4><p>在执行 <code>apidoc</code> 命令的目录(apidoc/)创建apidoc.json文件，并加入以下内容：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"FingerArt API Document"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"A sample of User API document generated from apiDoc"</span>,</div><div class="line">  <span class="attr">"title"</span>: <span class="string">"FingerArt API"</span>,</div><div class="line">  <span class="attr">"url"</span> : <span class="string">""</span>,</div><div class="line">  <span class="attr">"sampleUrl"</span>: <span class="string">"http://fingerart.me:44"</span>,</div><div class="line">  <span class="attr">"header"</span>: &#123;</div><div class="line">    <span class="attr">"title"</span>: <span class="string">"Overview"</span>,</div><div class="line">    <span class="attr">"filename"</span>: <span class="string">"header.md"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"footer"</span>: &#123;</div><div class="line">    <span class="attr">"title"</span>: <span class="string">"Copyright"</span>,</div><div class="line">    <span class="attr">"filename"</span>: <span class="string">"footer.md"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"template"</span>: &#123;</div><div class="line">    <span class="attr">"withGenerator"</span>: <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>name<br>文档内容的最大标题</li>
+<li>version<br>文档的版本号，一般保持在最新</li>
+<li>description<br>文档的描述</li>
+<li>title<br>显示网页的title</li>
+<li>url<br>每个api地址前缀</li>
+<li>sampleUrl<br>请求示例工具的地址前缀，当有此项时，会出现该工具</li>
+<li>header/footer<br>文档的头部和尾部<ul>
+<li>title<br>头/尾部标题</li>
+<li>filename<br>头部markdown文件</li>
+</ul>
+</li>
+<li>template<ul>
+<li>withCompare<br>自动生成版本比较功能的文件，默认 <code>true</code></li>
+<li>withGenerator<br>生成默认的apidoc版权，默认 <code>true</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="apiDoc-注解"><a href="#apiDoc-注解" class="headerlink" title="apiDoc 注解"></a>apiDoc 注解</h4><ul>
+<li>@api {method} path [title]<br><code>method</code> 请求方式: get/post/put…<br><code>path</code> User/register<br><code>title</code> 标题</li>
+<li>@apiDescription text<br>api描述</li>
+<li>@apiError [(group)] [{type}] field [description]</li>
+<li>@apiErrorExample [{type}] [title]<br>example</li>
+<li>@apiExample [{type}] title<br>example</li>
+<li>@apiGroup name</li>
+<li>@apiHeader [(group)] [{type}] [field=defaultValue] [description]</li>
+<li>@apiHeaderExample [{type}] [title]<br>example</li>
+<li>@apiIgnore [hint]</li>
+<li>@apiName name</li>
+<li>@apiParam [(group)] [{type}] [field=defaultValue] [description]</li>
+<li>@apiParamExample [{type}] [title]<br>example</li>
+<li>@apiPermission name</li>
+<li>@apiSampleRequest url</li>
+<li>@apiSuccess [(group)] [{type}] field [description]</li>
+<li>@apiSuccessExample [{type}] [title]<br>example</li>
+<li>@apiUse name</li>
+<li>@apiVersion version</li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>无法生成带有历史版本比较功能<br>必须同时加上 <code>@apiVersion</code> <code>@apiName</code> <code>@apiGroup</code> 这个三个注解</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>官方文档: <a href="http://apidocjs.com/" target="_blank" rel="external">http://apidocjs.com</a><br>官方示例: <a href="https://github.com/apidoc/apidoc/tree/master/example" target="_blank" rel="external">https://github.com/apidoc/apidoc/tree/master/example</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/apidoc/apidoc&quot;&gt;apiDoc&lt;/a&gt; 是一个基于nodejs自动生成RESTful Api文档的工具，提供了api版本差异比较、自定义末班等功能。&lt;/p&gt;
+&lt;p&gt;去年和朋友开发一个app，我包下了Android和后端，当时为了让他更好的看懂api和便于后期的维护，专门写了一个api的PHP程序，发现这个api程序还欠缺很多东西加上没有太多时间就不再维护了。后来发现了apiDoc这个库，一直放着没有时间来仔细看，刚好这两天有时间，把这个库学习完了。&lt;/p&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;安装 &lt;a href=&quot;https://nodejs.org/zh-cn/&quot;&gt;npm&lt;/a&gt; 的前提下&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ npm install apidoc -g&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="apiDoc" scheme="http://fingerart.me/tags/apiDoc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Picasso源码解析 一</title>
+    <link href="http://fingerart.me/2016/09/13/Picasso%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90-%E4%B8%80/"/>
+    <id>http://fingerart.me/2016/09/13/Picasso源码解析-一/</id>
+    <published>2016-09-13T15:54:05.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>待续</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;待续&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
+    
+      <category term="Picasso" scheme="http://fingerart.me/tags/Picasso/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>了解 Android HandlerThread</title>
+    <link href="http://fingerart.me/2016/09/13/%E4%BA%86%E8%A7%A3-Android-HandlerThread/"/>
+    <id>http://fingerart.me/2016/09/13/了解-Android-HandlerThread/</id>
+    <published>2016-09-13T14:47:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天在分析 <a href="http://github.com/square/picasso" target="_blank" rel="external">Picasso</a> 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。</p>
+<ul>
+<li><a href="/2015/08/08/Handler和Message-异步消息机制-1/" title="了解Handler消息机制1">了解Handler消息机制1</a></li>
+<li><a href="/2015/08/10/Handler和Message-异步消息机制-2/" title="了解Handler消息机制2">了解Handler消息机制2</a>
+</li>
+</ul>
+<h3 id="HandlerThread-源码"><a href="#HandlerThread-源码" class="headerlink" title="HandlerThread 源码"></a>HandlerThread 源码</h3><blockquote>
+<p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p>
+<p>HandlerThread是一个线程，该线程会创建一个Looper，Looper可用于创建Handler，必需要调用 <code>start()</code></p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">   mTid = Process.myTid();</div><div class="line">   Looper.prepare();</div><div class="line">   <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">       mLooper = Looper.myLooper();</div><div class="line">       notifyAll();</div><div class="line">   &#125;</div><div class="line">   Process.setThreadPriority(mPriority);</div><div class="line">   onLooperPrepared();</div><div class="line">   Looper.loop();</div><div class="line">   mTid = -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法在 <code>start()</code> 之后执行，创建Looper、MessageQueen，然后 <code>loop()</code> 让这个Looper工作。</p>
+<h3 id="Picasso源码中的使用示例"><a href="#Picasso源码中的使用示例" class="headerlink" title="Picasso源码中的使用示例"></a>Picasso源码中的使用示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//package com.squareup.picasso.Dispatcher</span></div><div class="line"></div><div class="line">Dispatcher(Context context, ExecutorService service</div><div class="line">, Handler mainThreadHandler,</div><div class="line">      Downloader downloader, Cache cache, Stats stats) &#123;</div><div class="line">    <span class="keyword">this</span>.dispatcherThread = <span class="keyword">new</span> DispatcherThread();</div><div class="line">    <span class="keyword">this</span>.dispatcherThread.start();</div><div class="line">    <span class="keyword">this</span>.handler = <span class="keyword">new</span> DispatcherHandler(dispatcherThread.getLooper(), <span class="keyword">this</span>);</div><div class="line">    <span class="comment">//some code ...</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">dispatchSubmit</span><span class="params">(Action action)</span> </span>&#123;</div><div class="line">    handler.sendMessage(handler.obtainMessage(REQUEST_SUBMIT, action));</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//package com.squareup.picasso.Dispatcher.DispatcherHandler</span></div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DispatcherHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Dispatcher dispatcher;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DispatcherHandler</span><span class="params">(Looper looper, Dispatcher dispatcher)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(looper);</div><div class="line">        <span class="keyword">this</span>.dispatcher = dispatcher;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(<span class="keyword">final</span> Message msg)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (msg.what) &#123;</div><div class="line">          <span class="keyword">case</span> REQUEST_SUBMIT:</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">          <span class="comment">//some case ...</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用，你的一个回复即是对我的最大支持，如有任何疑问请留言。谢谢~~</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天在分析 &lt;a href=&quot;http://github.com/square/picasso&quot;&gt;Picasso&lt;/a&gt; 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/2015/08/08/Handler和Message-异步消息机制-1/&quot; title=&quot;了解Handler消息机制1&quot;&gt;了解Handler消息机制1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/2015/08/10/Handler和Message-异步消息机制-2/&quot; title=&quot;了解Handler消息机制2&quot;&gt;了解Handler消息机制2&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;HandlerThread-源码&quot;&gt;&lt;a href=&quot;#HandlerThread-源码&quot; class=&quot;headerlink&quot; title=&quot;HandlerThread 源码&quot;&gt;&lt;/a&gt;HandlerThread 源码&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.&lt;/p&gt;
+&lt;p&gt;HandlerThread是一个线程，该线程会创建一个Looper，Looper可用于创建Handler，必需要调用 &lt;code&gt;start()&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无线连接-宿主机与VirtualBox中的Linux互相通信</title>
+    <link href="http://fingerart.me/2016/09/04/%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5-%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%B8%8EVirtualBox%E4%B8%AD%E7%9A%84Linux%E4%BA%92%E7%9B%B8%E9%80%9A%E4%BF%A1/"/>
+    <id>http://fingerart.me/2016/09/04/无线连接-宿主机与VirtualBox中的Linux互相通信/</id>
+    <published>2016-09-04T11:47:37.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>有线连接中的配置方式在上篇博文已经讲过了。</p>
+<h4 id="设置连接方式"><a href="#设置连接方式" class="headerlink" title="设置连接方式"></a>设置连接方式</h4><p>将网卡1设置为桥接网卡方式如图<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/image/BritualBox_Bird.png" alt=""></p>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">DEVICE=eth0</div><div class="line">HWADDR=08:00:27:12:41:D3</div><div class="line">NETMASK=255.255.255.0</div><div class="line">IPADDR=192.168.0.99</div><div class="line">GATEWAY=192.168.0.1</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=cd17d691-d2be-54d0-8c7a-c1612cfbf631</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=no</div><div class="line">BOOTPROTO=static</div></pre></td></tr></table></figure>
+<p>填写完成后重启网络服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service network restart</div></pre></td></tr></table></figure>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>宿主机：<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wireless_connection_test.gif" alt=""></p>
+<p>Linux：<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wireless_connection_linux_test.gif" alt=""></p>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有线连接中的配置方式在上篇博文已经讲过了。&lt;/p&gt;
+&lt;h4 id=&quot;设置连接方式&quot;&gt;&lt;a href=&quot;#设置连接方式&quot; class=&quot;headerlink&quot; title=&quot;设置连接方式&quot;&gt;&lt;/a&gt;设置连接方式&lt;/h4&gt;&lt;p&gt;将网卡1设置为桥接网卡方式如图&lt;br&gt;&lt;img src=&quot;http://77fzuw.com1.z0.glb.clouddn.com/image/BritualBox_Bird.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;网络配置&quot;&gt;&lt;a href=&quot;#网络配置&quot; class=&quot;headerlink&quot; title=&quot;网络配置&quot;&gt;&lt;/a&gt;网络配置&lt;/h4&gt;&lt;p&gt;请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Linux" scheme="http://fingerart.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有线连接-宿主机跟VirtualBox中的Linux互相通信</title>
+    <link href="http://fingerart.me/2016/09/04/%E6%9C%89%E7%BA%BF%E8%BF%9E%E6%8E%A5-%E5%AE%BF%E4%B8%BB%E6%9C%BA%E8%B7%9FVirtualBox%E4%B8%AD%E7%9A%84Linux%E4%BA%92%E7%9B%B8%E9%80%9A%E4%BF%A1/"/>
+    <id>http://fingerart.me/2016/09/04/有线连接-宿主机跟VirtualBox中的Linux互相通信/</id>
+    <published>2016-09-04T10:53:44.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>文中介绍了我在<strong>有线连接</strong>下，使用VirtualBox创建CentOS时遇到Linux访问外网和宿主机访问Linux的问题后的解决办法，文中宿主机是指实体到笔记本或者台式电脑。</p>
+<h3 id="连接方式"><a href="#连接方式" class="headerlink" title="连接方式"></a>连接方式</h3><p>Virtual中有6种连接方式，分别为：网络地址转换（NAT）、NAT网络、桥接网卡、内部网络、仅主机（Host-Only）网络、通用驱动。<br>这里只讲后面会用到的2种方式的作用。</p>
+<a id="more"></a>
+<h4 id="网络地址转换（NAT）"><a href="#网络地址转换（NAT）" class="headerlink" title="网络地址转换（NAT）"></a>网络地址转换（NAT）</h4><p><strong>Linux可以访问宿主机</strong>，反向的无法访问。</p>
+<h4 id="桥接网卡"><a href="#桥接网卡" class="headerlink" title="桥接网卡"></a>桥接网卡</h4><p><strong>宿主机可以访问Linux</strong>，反向无法访问。</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><h4 id="配置网卡"><a href="#配置网卡" class="headerlink" title="配置网卡"></a>配置网卡</h4><p>网卡1连接方式设置为<strong>网络地址转换（NAT）</strong><br><img src="http://77fzuw.com1.z0.glb.clouddn.com/image/virtualbox_wired_connection_net1.png" alt=""><br>启用网卡2，连接方式设置为<strong>桥接网卡</strong><br><img src="http://77fzuw.com1.z0.glb.clouddn.com/image/virtualbox_wired_connection_net2.png" alt=""></p>
+<h4 id="Linux配置"><a href="#Linux配置" class="headerlink" title="Linux配置"></a>Linux配置</h4><h4 id="配置eth0"><a href="#配置eth0" class="headerlink" title="配置eth0"></a>配置eth0</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth0</div></pre></td></tr></table></figure>
+<p>配置如下(千万不要配GATEWAY)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HWADDR=08:00:27:12:41:D3</div><div class="line">NETMASK=255.255.255.0</div><div class="line">IPADDR=192.168.0.99</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=cd17d591-d5be-44d0-8c7a-c1682cfbf631</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=no</div><div class="line">BOOTPROTO=dhcp</div></pre></td></tr></table></figure></p>
+<h4 id="配置eth1"><a href="#配置eth1" class="headerlink" title="配置eth1"></a>配置eth1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth1</div></pre></td></tr></table></figure>
+<p>配置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">DEVICE=eth1</div><div class="line">HWADDR=08:00:27:EB:B7:9A</div><div class="line">NETMASK=255.255.255.0</div><div class="line">IPADDR=192.168.0.99</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=cd17d591-d5be-44d0-8c7a-c1682cfbf631</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=no</div><div class="line">BOOTPROTO=static</div></pre></td></tr></table></figure></p>
+<h3 id="重启network"><a href="#重启network" class="headerlink" title="重启network"></a>重启network</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service network restart</div></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>宿主机：<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wired_connection_test.gif" alt=""></p>
+<p>Linux：<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wired_connection_linux_test.gif" alt=""></p>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文中介绍了我在&lt;strong&gt;有线连接&lt;/strong&gt;下，使用VirtualBox创建CentOS时遇到Linux访问外网和宿主机访问Linux的问题后的解决办法，文中宿主机是指实体到笔记本或者台式电脑。&lt;/p&gt;
+&lt;h3 id=&quot;连接方式&quot;&gt;&lt;a href=&quot;#连接方式&quot; class=&quot;headerlink&quot; title=&quot;连接方式&quot;&gt;&lt;/a&gt;连接方式&lt;/h3&gt;&lt;p&gt;Virtual中有6种连接方式，分别为：网络地址转换（NAT）、NAT网络、桥接网卡、内部网络、仅主机（Host-Only）网络、通用驱动。&lt;br&gt;这里只讲后面会用到的2种方式的作用。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Linux" scheme="http://fingerart.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>认识与学习BASH</title>
+    <link href="http://fingerart.me/2016/09/03/%E8%AE%A4%E8%AF%86%E4%B8%8E%E5%AD%A6%E4%B9%A0BASH/"/>
+    <id>http://fingerart.me/2016/09/03/认识与学习BASH/</id>
+    <published>2016-09-03T12:41:58.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="认识shell"><a href="#认识shell" class="headerlink" title="认识shell"></a>认识shell</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>shell是使用者与内核沟通以达到理想工作的方式，Linux发展中出现多种shell，Bourne Again SHell是Linux使用的一个shell版本简称bash。</p>
+<h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><p><code>~/.bash_history</code> 记录了前一次登录是说运行的命令，当前登录说运行的命令记录在内存中，成功注销后悔记录到 <code>~/.bash_history</code> 中。</p>
+<h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><p>命令的别名</p>
+<h3 id="内建命令type"><a href="#内建命令type" class="headerlink" title="内建命令type"></a>内建命令type</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@www ~]<span class="comment"># type [-tpa] name</span></div><div class="line">选项与参数：</div><div class="line">    ：不加任何选项与参数时，<span class="built_in">type</span> 会显示出 name 是外部命令还是 bash 内建命令</div><div class="line">-t  ：当加入 -t 参数时，<span class="built_in">type</span> 会将 name 以底下这些字眼显示出他的意义：</div><div class="line">      file    ：表示为外部命令；</div><div class="line">      <span class="built_in">alias</span>   ：表示该命令为命令别名所配置的名称；</div><div class="line">      <span class="built_in">builtin</span> ：表示该命令为 bash 内建的命令功能；</div><div class="line">-p  ：如果后面接的 name 为外部命令时，才会显示完整文件名；</div><div class="line"><span class="_">-a</span>  ：会由 PATH 变量定义的路径中，将所有含 name 的命令都列出来，包含 <span class="built_in">alias</span></div></pre></td></tr></table></figure>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;认识shell&quot;&gt;&lt;a href=&quot;#认识shell&quot; class=&quot;headerlink&quot; title=&quot;认识shell&quot;&gt;&lt;/a&gt;认识shell&lt;/h3&gt;&lt;h4 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Linux" scheme="http://fingerart.me/tags/Linux/"/>
+    
+      <category term="Shell" scheme="http://fingerart.me/tags/Shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式之状态模式</title>
+    <link href="http://fingerart.me/2016/08/31/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://fingerart.me/2016/08/31/设计模式之状态模式/</id>
+    <published>2016-08-31T11:09:02.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>此篇博文是我阅读《设计模式》中状态模式一章后的总结</p>
+</blockquote>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类。</p>
+<h3 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h3><p>考虑一个表示网络连接的类TCPConnection。一个TCPConnection对象的状态处于若干不同状态之一：建立连接（Established）、正在监听（Listening）、连接已关闭（Closed）。当一个TCPConnection对象收到其它对象的请求时，它根据自身的当前状态作出不同的反应。</p>
+<a id="more"></a>
+<h3 id="适用性"><a href="#适用性" class="headerlink" title="适用性"></a>适用性</h3><ul>
+<li>一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为。</li>
+<li>一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态。</li>
+</ul>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><img src="http://www.plantuml.com/plantuml/svg/ZOz13e8m44NNpYach3IcahXaGO8cNi0Jb390az9YEneJmjs58iObcrczzoOVb94XuDLPfZVZ03k1TvPC6EOBkoE-dAxGq-D9WVS7645FhA-beYyvpDGWoy1UAXuNePMsCXJvtmlbYKDq2jHTRwWZo-6_ia6zR5HXtUI4rqtB8bzei6vIIiViEdJrEZt392uM-Tf808AIXl0CCO2rcqoFBNEVfUbDsuPyuVdK4Nm0">
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;此篇博文是我阅读《设计模式》中状态模式一章后的总结&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类。&lt;/p&gt;
+&lt;h3 id=&quot;动机&quot;&gt;&lt;a href=&quot;#动机&quot; class=&quot;headerlink&quot; title=&quot;动机&quot;&gt;&lt;/a&gt;动机&lt;/h3&gt;&lt;p&gt;考虑一个表示网络连接的类TCPConnection。一个TCPConnection对象的状态处于若干不同状态之一：建立连接（Established）、正在监听（Listening）、连接已关闭（Closed）。当一个TCPConnection对象收到其它对象的请求时，它根据自身的当前状态作出不同的反应。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="设计模式" scheme="http://fingerart.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Studio 多版本构建指南</title>
+    <link href="http://fingerart.me/2016/06/15/Android-Studio-%E5%A4%9A%E7%89%88%E6%9C%AC%E6%9E%84%E5%BB%BA%E6%8C%87%E5%8D%97/"/>
+    <id>http://fingerart.me/2016/06/15/Android-Studio-多版本构建指南/</id>
+    <published>2016-06-14T16:00:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>在一个APP的基础上，构建另外一个APP，与之不同的是部分代码和资源改变<br>为了节约工作量和更好的后期维护，我们决定共用同一套代码。</p>
+<p>像这种需求我已经遇到好几次了，这里只讲在Android Studio上进行多版本构建的步骤和一些配置</p>
+<h3 id="多版本构建"><a href="#多版本构建" class="headerlink" title="多版本构建"></a>多版本构建</h3><h4 id="Gradle简介"><a href="#Gradle简介" class="headerlink" title="Gradle简介"></a>Gradle简介</h4><p>Gradle 是一个基于Ant和Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，这比我们的ANT使用XML构建配置要灵活的多。在编写配置时，你可以像编程一样灵活，Gradle是基于Groovy的DSL语言，完全兼容JAVA。</p>
+<a id="more"></a>
+<h4 id="了解-build-gradle"><a href="#了解-build-gradle" class="headerlink" title="了解 build.gradle"></a>了解 build.gradle</h4><p>现在我们需要如下表格的apk:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>release</th>
+<th>debug</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>productA</td>
+<td>productA(release版)</td>
+<td>productA(debug版)</td>
+</tr>
+<tr>
+<td>productB</td>
+<td>productB(release版)</td>
+<td>productB(debug版)</td>
+</tr>
+</tbody>
+</table>
+<p>通过这个表格可以看出，两个产品（共用同一套代码）可以生成4种类型的apk</p>
+<p>build.gradle在每一个module都存在，它是用来构建我们的APP的。</p>
+<ul>
+<li>defaultConfig</li>
+</ul>
+<p>这个模块一些默认配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">defaultConfig &#123;</div><div class="line">	applicationId &quot;me.fingerart.android&quot;</div><div class="line">	minSdkVersion 13</div><div class="line">	targetSdkVersion 23</div><div class="line">	versionCode 1</div><div class="line">	versionName &quot;1.0&quot;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>buildTypes</li>
+</ul>
+<p>构建的类型，一般是发行和debug两种</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">buildTypes &#123;</div><div class="line">    release &#123;</div><div class="line">        minifyEnabled true</div><div class="line">        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.txt&apos;</div><div class="line">        //signingConfig signingConfigs.release</div><div class="line">    &#125;</div><div class="line">    debug &#123;</div><div class="line">        minifyEnabled false</div><div class="line">        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.txt&apos;</div><div class="line">        //signingConfig signingConfigs.debug</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>productFlavors</li>
+</ul>
+<p>产品的变种，体现不同版本之前配置的差异，这也就是我们构建多个版本的主要配置了<br>productFlavors的配置会覆盖与defaultConfig中的相同配置，也就是说productFlavors+defaultConfig组成最终的配置<br>比如，productB的applicationId会覆盖defaultConfig，最后打出apk的applicationId是productB中的；而productA因为没有配置applicationId所以会使用defaultConfig中的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">productFlavors &#123;</div><div class="line">        productA &#123;</div><div class="line">            resValue &apos;string&apos;, &apos;app_name&apos;, &apos;APP_A&apos;</div><div class="line">            buildConfigField &apos;String&apos;, &apos;URL_PATH&apos;, &apos;&quot;http://fingerart.me/APP_A&quot;&apos;</div><div class="line">            manifestPlaceholders = [</div><div class="line">                    appkey_easeMob  : &apos;a&apos;,</div><div class="line">					appkey_baidu : &apos;a&apos;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        productB &#123;</div><div class="line">            applicationId &apos;com.hysd.skyworth.productb&apos;</div><div class="line">            resValue &apos;string&apos;, &apos;app_name&apos;, &apos;APP_B&apos;</div><div class="line">            buildConfigField &apos;String&apos;, &apos;URL_PATH&apos;, &apos;&quot;http://fingerart.me/APP_B&quot;&apos;</div><div class="line">            manifestPlaceholders = [</div><div class="line">                    appkey_easeMob : &apos;b&apos;,</div><div class="line">					appkey_baidu   : &apos;b&apos;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h4><p>你可以手动的添加上面我们介绍过的这些配置，你需要sync project才会生效。<br>你还可以<code>Project Structure(Ctrl+Shift+Alt+S) -&gt; 选中Module -&gt; flavors</code>进行配置</p>
+<p>当你配置完成之后</p>
+<h3 id="示例参考"><a href="#示例参考" class="headerlink" title="示例参考"></a>示例参考</h3><p><a href="https://github.com/fingerart" target="_blank" rel="external">https://github.com/fingerart</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h3&gt;&lt;p&gt;在一个APP的基础上，构建另外一个APP，与之不同的是部分代码和资源改变&lt;br&gt;为了节约工作量和更好的后期维护，我们决定共用同一套代码。&lt;/p&gt;
+&lt;p&gt;像这种需求我已经遇到好几次了，这里只讲在Android Studio上进行多版本构建的步骤和一些配置&lt;/p&gt;
+&lt;h3 id=&quot;多版本构建&quot;&gt;&lt;a href=&quot;#多版本构建&quot; class=&quot;headerlink&quot; title=&quot;多版本构建&quot;&gt;&lt;/a&gt;多版本构建&lt;/h3&gt;&lt;h4 id=&quot;Gradle简介&quot;&gt;&lt;a href=&quot;#Gradle简介&quot; class=&quot;headerlink&quot; title=&quot;Gradle简介&quot;&gt;&lt;/a&gt;Gradle简介&lt;/h4&gt;&lt;p&gt;Gradle 是一个基于Ant和Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，这比我们的ANT使用XML构建配置要灵活的多。在编写配置时，你可以像编程一样灵活，Gradle是基于Groovy的DSL语言，完全兼容JAVA。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
+    
+      <category term="Gradle" scheme="http://fingerart.me/tags/Gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客的搭建记录</title>
+    <link href="http://fingerart.me/2016/04/18/Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/"/>
+    <id>http://fingerart.me/2016/04/18/Hexo博客的搭建记录/</id>
+    <published>2016-04-18T06:33:26.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="hexo快速安装指南"><a href="#hexo快速安装指南" class="headerlink" title="hexo快速安装指南"></a>hexo快速安装指南</h3><p>使用npm工具安装hexo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo</div></pre></td></tr></table></figure>
+<p>初始化hexo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init &lt;folder&gt;</div></pre></td></tr></table></figure>
+<p>安装Hexo依赖包，根据blog文件夹中的package.json配置下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>生成静态页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g #generate</div></pre></td></tr></table></figure>
+<p>预览</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s #server</div></pre></td></tr></table></figure>
+<p>访问localhost：4000，预览本地的hexo站点</p>
+<a id="more"></a>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">├── _config.yml    全局配置</div><div class="line">├── package.json</div><div class="line">├── scaffolds      模版目录</div><div class="line">├── public         草稿目录</div><div class="line">├── source</div><div class="line">|   └── _posts     发表博文目录</div><div class="line">└── themes</div></pre></td></tr></table></figure>
+<h3 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre></td><td class="code"><pre><div class="line"># Hexo Configuration</div><div class="line">## Docs: https://hexo.io/docs/configuration.html</div><div class="line">## Source: https://github.com/hexojs/hexo/</div><div class="line"></div><div class="line"># Site #整站的基本信息</div><div class="line">title: 指尖上的艺术 #网站标题</div><div class="line">subtitle: 学习的热情，不应为季节的变化而改变 #网站副标题</div><div class="line">description: 学习 思考 感悟 分享 #网站描述</div><div class="line">author:  George #网站作者，在下方显示</div><div class="line">email: FingerArt@sina.com #联系邮箱</div><div class="line">language: zh-CN</div><div class="line"></div><div class="line"># URL</div><div class="line">## If your site is put in a subdirectory</div><div class="line">url: http://fingerart.me #你的域名</div><div class="line">root: /</div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">tag_dir: tags</div><div class="line">archive_dir: archives</div><div class="line">category_dir: categories</div><div class="line">code_dir: downloads/code</div><div class="line"></div><div class="line"># Directory</div><div class="line">source_dir: source</div><div class="line">public_dir: public</div><div class="line"></div><div class="line"># Writing</div><div class="line">new_post_name: :title.md # File name of new posts</div><div class="line">default_layout: post</div><div class="line">auto_spacing: false # Add spaces between asian characters and western characters</div><div class="line">titlecase: false # Transform title into titlecase</div><div class="line">external_link: true # Open external links in new tab</div><div class="line">max_open_file: 100</div><div class="line">multi_thread: true</div><div class="line">filename_case: 0</div><div class="line">render_drafts: false</div><div class="line">post_asset_folder: false</div><div class="line">highlight:</div><div class="line">  enable: true</div><div class="line">  line_number: true</div><div class="line">  tab_replace:</div><div class="line"></div><div class="line"># Category &amp; Tag</div><div class="line">default_category: uncategorized</div><div class="line">category_map:</div><div class="line">tag_map:</div><div class="line"></div><div class="line"># Archives</div><div class="line">## 2: Enable pagination</div><div class="line">## 1: Disable pagination</div><div class="line">## 0: Fully Disable</div><div class="line">archive: 2</div><div class="line">category: 2</div><div class="line">tag: 2</div><div class="line"></div><div class="line"># Date / Time format</div><div class="line">## Hexo uses Moment.js to parse and display date</div><div class="line">## You can customize the date format as defined in</div><div class="line">## http://momentjs.com/docs/#/displaying/format/</div><div class="line">date_format: YYYY-MM-DD</div><div class="line">time_format: H:mm:ss</div><div class="line"></div><div class="line"># Pagination</div><div class="line">## Set per_page to 0 to disable pagination</div><div class="line">per_page: 15 #每页15篇文章</div><div class="line">pagination_dir: page</div><div class="line"></div><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: landscape</div><div class="line">exclude_generator:</div><div class="line">Plugins:</div><div class="line">- hexo-generator-feed</div><div class="line">- hexo-generator-sitemap</div><div class="line"></div><div class="line">#sitemap</div><div class="line">sitemap:</div><div class="line">  path: sitemap.xml</div><div class="line"></div><div class="line">#Feed Atom</div><div class="line">feed:</div><div class="line">  type: atom</div><div class="line">  path: atom.xml</div><div class="line">  limit: 20</div><div class="line"></div><div class="line"># Markdown</div><div class="line">## https://github.com/chjj/marked</div><div class="line">markdown:</div><div class="line">  gfm: true</div><div class="line">  pedantic: false</div><div class="line">  sanitize: false</div><div class="line">  tables: true</div><div class="line">  breaks: true</div><div class="line">  smartLists: true</div><div class="line">  smartypants: true</div><div class="line"></div><div class="line"># Stylus</div><div class="line">stylus:</div><div class="line">  compress: false</div><div class="line"></div><div class="line"># Deployment</div><div class="line">## Docs: http://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: github</div><div class="line">  repository: git@github.com:fingerart/FingerArt.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Deployer not found: github</p>
+<blockquote>
+<p>npm install hexo-deployer-git –save</p>
+</blockquote>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ hexo n #new [layout]	&lt;title&gt;	建立新文章，默认在_posts下，layout=&quot;draft&quot;时发布的是草稿</div><div class="line">$ hexo p #publish &lt;filename&gt;	将_drafts下的文件放到_posts下，也就是发布草稿</div><div class="line">$ hexo g #generate		生成静态网页</div><div class="line">$ hexo s #server		启动预览服务器，开启-d选项时可以预览草稿</div><div class="line">$ hexo d #deploy		发布到远程服务器，开启--generate选项可以在deploy前自动generate</div></pre></td></tr></table></figure>
+<h3 id="导入参考"><a href="#导入参考" class="headerlink" title="导入参考"></a>导入参考</h3><p><a href="https://hexo.io/docs/migration.html" target="_blank" rel="external">https://hexo.io/docs/migration.html</a></p>
+<h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><p>定义自己的域名，访问我们的博客内容，添加CNAME文件（前提是在域名服务商解析到github指定的ip下）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ echo FingerArt.me &gt; source/CNAME</div><div class="line">$ hexo d -g   #生成博文并部署到gighub上</div></pre></td></tr></table></figure>
+<p>这样，通过域名就可以访问到我们的博客啦！</p>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;hexo快速安装指南&quot;&gt;&lt;a href=&quot;#hexo快速安装指南&quot; class=&quot;headerlink&quot; title=&quot;hexo快速安装指南&quot;&gt;&lt;/a&gt;hexo快速安装指南&lt;/h3&gt;&lt;p&gt;使用npm工具安装hexo&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ sudo npm install -g hexo&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;初始化hexo&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo init &amp;lt;folder&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;安装Hexo依赖包，根据blog文件夹中的package.json配置下载&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ npm install&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;生成静态页面&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo g #generate&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;预览&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo s #server&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;访问localhost：4000，预览本地的hexo站点&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="hexo" scheme="http://fingerart.me/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客迁移</title>
+    <link href="http://fingerart.me/2016/03/18/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/"/>
+    <id>http://fingerart.me/2016/03/18/博客迁移/</id>
+    <published>2016-03-17T16:00:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为近段时间工作繁忙的原因, 很久没有更新博客了.<br>博客是自己学习的见证, 进步的阶石, 所以一直以来没有放弃它, 有时因为时间很紧就没有进行更新, 而是将要说的内容短暂性的写到了印象里面去了.<br>之前的博客是搭建在SAE上面, 使用wordpress, 使用这种方式的缺点就是迁移比较麻烦, 需要去配置数据库, 已经一些环境, 弄的不好很容易丢失数据.<br>记得有一台使用了很长时间的主机, 到期后, 准备迁移到SAE上面去, 当时是一位老师告诉我可以在SAE上面免费搭建PHP程序. 迁移的过程相对有些麻烦, 后来因为我的不小心, 配置上去后, wordpress的路由和其中的一个插件冲突了, 又很难把插件删除了, 无奈, 只得重新建一个新的wordpress, 然后将数据库中的数据导入进去.<br>去年就向使用Hexo在Github上面搭建这样的一个博客了, 这两天终于完成了!<br>欢迎访问我的新博客: <a href="http://FingerArt.me">http://FingerArt.me</a><br>久博客入口: <a href="http://FingerArt.sinaapp.com" target="_blank" rel="external">http://FingerArt.sinaapp.com</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;因为近段时间工作繁忙的原因, 很久没有更新博客了.&lt;br&gt;博客是自己学习的见证, 进步的阶石, 所以一直以来没有放弃它, 有时因为时间很紧就没有进行更新, 而是将要说的内容短暂性的写到了印象里面去了.&lt;br&gt;之前的博客是搭建在SAE上面, 使用wordpress, 使用这种
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="hexo" scheme="http://fingerart.me/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Studio 实用插件集</title>
+    <link href="http://fingerart.me/2016/02/29/Android-Studio-%E5%AE%9E%E7%94%A8%E6%8F%92%E4%BB%B6%E9%9B%86/"/>
+    <id>http://fingerart.me/2016/02/29/Android-Studio-实用插件集/</id>
+    <published>2016-02-28T16:00:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="android-butterknife-zelezny"><a href="#android-butterknife-zelezny" class="headerlink" title="android-butterknife-zelezny"></a>android-butterknife-zelezny</h3><p>ButterKnife是一个专注于Android系统的View注入框架，让你从此从这些烦人臃肿的代码中解脱出来。</p>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/322-android-butterknife-zelezny.gif" alt="android-butterknife-zelezny"></p>
+<a id="more"></a>
+<h3 id="Gsonformat"><a href="#Gsonformat" class="headerlink" title="Gsonformat"></a>Gsonformat</h3><p>通过json数据快速生成java实体类</p>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/322-Gsonformat.gif" alt="322-Gsonformat"></p>
+<h3 id="Genymotion"><a href="#Genymotion" class="headerlink" title="Genymotion"></a>Genymotion</h3><p>直接在AS中打开Genymotion, 无需到桌面去打开</p>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/322-Genymotion.png" alt="322-Genymotion"></p>
+<h3 id="Lifecycle-Sorter"><a href="#Lifecycle-Sorter" class="headerlink" title="Lifecycle Sorter"></a>Lifecycle Sorter</h3><p>可以根据Activity或者fragment的生命周期对其生命周期方法位置进行先后排序，快捷键 <code>Ctrl + alt + K</code> </p>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/322_Lifecycle_Sorter.gif" alt="322_Lifecycle_Sorter"></p>
+<h3 id="CodeGlance"><a href="#CodeGlance" class="headerlink" title="CodeGlance"></a>CodeGlance</h3><p>可用于快速定位代码，类似于Sublime编辑器右侧定位视图</p>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/332_CodeGlance.gif" alt="332_CodeGlance"></p>
+<h3 id="ADB-WIFI"><a href="#ADB-WIFI" class="headerlink" title="ADB WIFI"></a>ADB WIFI</h3><p>使用wifi无线调试你的app，无需root权限</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;android-butterknife-zelezny&quot;&gt;&lt;a href=&quot;#android-butterknife-zelezny&quot; class=&quot;headerlink&quot; title=&quot;android-butterknife-zelezny&quot;&gt;&lt;/a&gt;android-butterknife-zelezny&lt;/h3&gt;&lt;p&gt;ButterKnife是一个专注于Android系统的View注入框架，让你从此从这些烦人臃肿的代码中解脱出来。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://77fzuw.com1.z0.glb.clouddn.com/322-android-butterknife-zelezny.gif&quot; alt=&quot;android-butterknife-zelezny&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://fingerart.me/tags/Android-Studio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android studio快速修改包名</title>
+    <link href="http://fingerart.me/2016/02/27/android-studio%E5%BF%AB%E9%80%9F%E4%BF%AE%E6%94%B9%E5%8C%85%E5%90%8D/"/>
+    <id>http://fingerart.me/2016/02/27/android-studio快速修改包名/</id>
+    <published>2016-02-26T16:00:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>开始转向Android Studio了, 记得去年就已经学习AS了, 可是公司的项目是在eclipse上面构建的, 加上外包那边也是eclipse开发, 所以也不敢将它轻易的转过去.<br>一直在技术总监耳边说AS如何如何的好, 终于, 他要求我将这个项目转到AS上面去了.万分欣喜, 终于要告别eclipse了.<br>在eclipse上面修改包名是我遇到非常懊恼的一件事, 公司的APP需要给别的公司定制, 但是包名不能和我们的相同, 所以就得修改包名了. 选中包名然后rename-&gt;enter. 确实是被修改了, 可是eclipse在替换XML文件中自定义的View时, 却出现乱掉, 错位的情况.<br>编译成apk时却没有错误, 运行时就Crash, 最后只得去XML中去搜索, 然后手动改掉!<br>因为最初构建这个项目的人, 不知道怎么想的, 将子包名作为主包名来命名, 让我包名改的非常dt.</p>
+<p>现在用上AS了, 用它修改包名方便多了</p>
+<a id="more"></a>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/320-1.png" alt=""></p>
+<p>去掉第二步的勾, 然后选择你要修改的包名, Shift + F6 rename!</p>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/320-2.png" alt=""></p>
+<p>最后修改build.gradle文件中的applicationId<br>这样就完成了!</p>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你完全按照该博文的内容进行直接使用，你的一个回复即是对我的最大支持，如有任何疑问请留言。谢谢~~</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开始转向Android Studio了, 记得去年就已经学习AS了, 可是公司的项目是在eclipse上面构建的, 加上外包那边也是eclipse开发, 所以也不敢将它轻易的转过去.&lt;br&gt;一直在技术总监耳边说AS如何如何的好, 终于, 他要求我将这个项目转到AS上面去了.万分欣喜, 终于要告别eclipse了.&lt;br&gt;在eclipse上面修改包名是我遇到非常懊恼的一件事, 公司的APP需要给别的公司定制, 但是包名不能和我们的相同, 所以就得修改包名了. 选中包名然后rename-&amp;gt;enter. 确实是被修改了, 可是eclipse在替换XML文件中自定义的View时, 却出现乱掉, 错位的情况.&lt;br&gt;编译成apk时却没有错误, 运行时就Crash, 最后只得去XML中去搜索, 然后手动改掉!&lt;br&gt;因为最初构建这个项目的人, 不知道怎么想的, 将子包名作为主包名来命名, 让我包名改的非常dt.&lt;/p&gt;
+&lt;p&gt;现在用上AS了, 用它修改包名方便多了&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Android的adb命令录制视频</title>
+    <link href="http://fingerart.me/2015/11/07/%E4%BD%BF%E7%94%A8Android%E7%9A%84adb%E5%91%BD%E4%BB%A4%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91/"/>
+    <id>http://fingerart.me/2015/11/07/使用Android的adb命令录制视频/</id>
+    <published>2015-11-06T16:00:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">shell@sltechn:/ $ screenrecord --help</div><div class="line"></div><div class="line">Usage: screenrecord [options] &lt;filename&gt;</div><div class="line"></div><div class="line">Records the device&apos;s display to a .mp4 file.</div><div class="line"></div><div class="line">Options:</div><div class="line">--size WIDTHxHEIGHT</div><div class="line">    Set the video size, e.g. &quot;1280x720&quot;.  Default is the device&apos;s main</div><div class="line">    display resolution (if supported), 1280x720 if not.  For best results,</div><div class="line">    use a size supported by the AVC encoder.</div><div class="line">--bit-rate RATE</div><div class="line">    Set the video bit rate, in megabits per second.  Default 4Mbps.</div><div class="line">--time-limit TIME</div><div class="line">    Set the maximum recording time, in seconds.  Default / maximum is 180.</div><div class="line">--rotate</div><div class="line">    Rotate the output 90 degrees.</div><div class="line">--verbose</div><div class="line">    Display interesting information on stdout.</div><div class="line">--help</div><div class="line">    Show this message.</div><div class="line"></div><div class="line">Recording continues until Ctrl-C is hit or the time limit is reached.</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/* </div><div class="line"> * 录制</div><div class="line"> * 录制的格式是 .mp4</div><div class="line"> * Ctrl+C 提前结束视频录制</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 分辨率设置</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --size 1280*720 /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 比特率设置</div><div class="line"> * 默认是4Mbps, 比特率越大越清晰, 文件也会越大</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --bit-rate 2000000 /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 录制时间设置</div><div class="line"> * 默认是180s, Ctrl+C提前停止录制</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --time-limit 300 /sdcard/FingerArt.mp4</div></pre></td></tr></table></figure>
+<p>该方式不能录制音频.</p>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你完全按照该博文的内容进行直接使用，你的一个回复即是对我的最大支持，如有任何疑问请留言。谢谢~~</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;shell@sltechn:/ $ screenrecord --help&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Usage: screenrecord [options] &amp;lt;filename&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Records the device&amp;apos;s display to a .mp4 file.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Options:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--size WIDTHxHEIGHT&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Set the video size, e.g. &amp;quot;1280x720&amp;quot;.  Default is the device&amp;apos;s main&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    display resolution (if supported), 1280x720 if not.  For best results,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    use a size supported by the AVC encoder.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--bit-rate RATE&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Set the video bit rate, in megabits per second.  Default 4Mbps.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--time-limit TIME&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Set the maximum recording time, in seconds.  Default / maximum is 180.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--rotate&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Rotate the output 90 degrees.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--verbose&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Display interesting information on stdout.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--help&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Show this message.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Recording continues until Ctrl-C is hit or the time limit is reached.&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
+    
+      <category term="ADB" scheme="http://fingerart.me/tags/ADB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AsyncTask原理</title>
+    <link href="http://fingerart.me/2015/09/19/AsyncTask%E5%8E%9F%E7%90%86/"/>
+    <id>http://fingerart.me/2015/09/19/AsyncTask原理/</id>
+    <published>2015-09-18T16:00:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="AsyncTask的来源"><a href="#AsyncTask的来源" class="headerlink" title="AsyncTask的来源"></a>AsyncTask的来源</h3><p>我们知道执行耗时任务需要在子线程中去操作, 完成后通过MessageQueue让主线程去更新UI, 不能在子线程操作UI, 原因在Handler的消息机制中已经讲过了; 而每一个子线程的开启和执行都是很消耗资源的, 线程是非常宝贵的资源, 可以进行复用, 避免重复创建和销毁, 于是Google的工程师就开发了一个ThreadPollExecutor(线程池的执行器), AsyncTask的底层使用的就是ThreadPollExecutor, 这样我们只需要使用AsyncTask就不需要再去手动的创建线程了.</p>
+<a id="more"></a>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/292-1.png" alt="AsyncTask"></p>
+<h3 id="AsyncTask底层原理"><a href="#AsyncTask底层原理" class="headerlink" title="AsyncTask底层原理"></a>AsyncTask底层原理</h3><p>首先从ThreadPollExecutor(线程池的执行器)讲起, 线程池的执行器用于维护开启线程的最大数量(包括核心数量, 线程的空闲时间)和线程队列的最大数量, 当最大数量的线程达到之后, 会将之后的添加到线程的任务队列中去, 如果线程的任务队列的最大值超过后, 程序会抛出运行时异常.</p>
+<p>ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<runnable> workQueue)<br>corePoolSize: 核心的线程数量<br>maximumPoolSize: 最大的线程数量<br>keepAliveTime: 空闲线程(最大线程数量-核心线程数量)的空闲时间, 如果空闲线程的空闲时间超过了就会被线程池中销毁, 核心数量会一直存在, 等待下次复用<br>unit: 空闲时间的单位<br>workQueue: 线程队列, 如果所有的线程都在执行任务, 那么这个任务就会被添加到这个任务队列中, 等待空闲的线程到这个任务队列中来取当需要执行线程数量超过(线程队列的数量+最大的线程数量)时, 程序就会抛出运行时异常<br>ThreadPoolExecutor的继承关系<br>ThreadPoolExecutor-&gt;AbstractExecutorService-&gt;ExecutorService-&gt;Executors(想到Collections,集合工具类)<br>Executors有很多的静态方法, 是Google工程师方便我们快速的获取ThreadPoolExecutor的对象</runnable></p>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/292-2.png" alt="ThreadPoolExecutor"></p>
+<h3 id="AsyncTask异步任务框架"><a href="#AsyncTask异步任务框架" class="headerlink" title="AsyncTask异步任务框架"></a>AsyncTask异步任务框架</h3><p>AsyncTask的底层是基于ThreadPollExecutor</p>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/292-3.png" alt="ThreadPollExecutor"></p>
+<p>查阅AsyncTask源码(4.1.2), 有一个默认的TheadPollExecutor:<br>核心线程数: 5<br>最大线程数: 128<br>空闲线程的保持时间:1 s<br>线程任务队列的最大数:10<br>Google的工程师方便我们定义自己的ThreadPollExecutor, 添加了一个方法:<br>executeOnExecutor(Executor exec, Params… params)</p>
+<h4 id="AsyncTask的优点"><a href="#AsyncTask的优点" class="headerlink" title="AsyncTask的优点"></a>AsyncTask的优点</h4><p>简单, 方便, 灵活, 线程复用, 防止重复创建</p>
+<h4 id="AsyncTask的缺点"><a href="#AsyncTask的缺点" class="headerlink" title="AsyncTask的缺点"></a>AsyncTask的缺点</h4><ul>
+<li>旧版(以2.3.1源码为例), 线程的核心数量:5, 最大数量:128, 队列的数量:10<br>当执行的任务多了, 开的线程就变多了, 相应的, CPU在各个线程之间切换次数增加了, 占用的资源也就变多了.<br>新版(以4.4.3源码为例), 线程的核心数量:CPU数量+1, 最大数量:CPU数量的2倍+1, 队列的数量:128, 如图(核心数)<br>相比之前明显的这个版本默认的线程池执行器效率提升了.</li>
+<li>当线程的数量超过线程最大数+线程任务队列数时, 就会发生异常.</li>
+</ul>
+<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/292-4.png" alt="核心数"></p>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;AsyncTask的来源&quot;&gt;&lt;a href=&quot;#AsyncTask的来源&quot; class=&quot;headerlink&quot; title=&quot;AsyncTask的来源&quot;&gt;&lt;/a&gt;AsyncTask的来源&lt;/h3&gt;&lt;p&gt;我们知道执行耗时任务需要在子线程中去操作, 完成后通过MessageQueue让主线程去更新UI, 不能在子线程操作UI, 原因在Handler的消息机制中已经讲过了; 而每一个子线程的开启和执行都是很消耗资源的, 线程是非常宝贵的资源, 可以进行复用, 避免重复创建和销毁, 于是Google的工程师就开发了一个ThreadPollExecutor(线程池的执行器), AsyncTask的底层使用的就是ThreadPollExecutor, 这样我们只需要使用AsyncTask就不需要再去手动的创建线程了.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
+    
+      <category term="AsyncTask" scheme="http://fingerart.me/tags/AsyncTask/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开发代码规范</title>
+    <link href="http://fingerart.me/2015/09/03/%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
+    <id>http://fingerart.me/2015/09/03/开发代码规范/</id>
+    <published>2015-09-02T16:00:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="命名规范-Naming-Conventions"><a href="#命名规范-Naming-Conventions" class="headerlink" title="命名规范(Naming Conventions)"></a>命名规范(Naming Conventions)</h3><p>命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>识符类型</th>
+<th>命名规则</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>包(Packages)</td>
+<td>一个唯一包名的前缀总是全部小写的ASCII字母并且是一个顶级域名，通常是com，edu，gov，mil，net，org，或1981年ISO 3166标准所指定的标识国家的英文双字符代码。包名的后续部分根据不同机构各自内部的命名规范而不尽相同。这类命名规范可能以特定目录名的组成来区分部门(department)，项目(project)，机器(machine)，或注册名(login names)。</td>
+<td>com.mobogenie.view<br>com.mobogenie.quicktime.v2</td>
+</tr>
+<tr>
+<td>类(Classes)</td>
+<td>命名规则：类名是个一名词，采用大小写混合的方式，每个单词的首字母大写。尽量使你的类名简洁而富于描述。使用完整单词，避免缩写词(除非该缩写词被更广泛使用，像URL，HTML)</td>
+<td>class Raster;<br>class ImageSprite;</td>
+</tr>
+<tr>
+<td>接口(Interfaces)</td>
+<td>命名规则：大小写规则与类名相似</td>
+<td>interface RasterDelegate;<br>interface Storing;</td>
+</tr>
+<tr>
+<td>方法(Methods)</td>
+<td>方法名是一个动词，采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。</td>
+<td>run();<br>runFast();<br>getBackground();</td>
+</tr>
+<tr>
+<td>变量(Variables)</td>
+<td>除了变量名外，所有实例，包括类，类常量，均采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。变量名不应以下划线或美元符号开头，尽管这在语法上是允许的。变量名应简短且富于描述。变量名的选用应该易于记忆，即，能够指出其用途。尽量避免单个字符的变量名，除非是一次性的临时变量。临时变量通常被取名为i，j，k，m和n，它们一般用于整型；c，d，e，它们一般用于字符型。</td>
+<td>成员变量 String mName;<br>局部变量 String name;<br>静态变量 static String sName;</td>
+</tr>
+<tr>
+<td>实例变量(InstanceVariables)</td>
+<td>大小写规则和变量名相似,按驼峰命名法，成员变量以m开头，局部变量按普通方式生成</td>
+<td>类的实例变量遵循以上规则(按照变量命名规则)</td>
+</tr>
+<tr>
+<td>常量(Constants)</td>
+<td>类常量和ANSI常量的声明，应该全部大写，单词间用下划线隔开。(尽量避免ANSI常量，容易引起错误)</td>
+<td>static final int MIN_WIDTH = 4;<br>static final int MAX_WIDTH = 999;<br>static final int GET_THE_CPU;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件组织-File-Organization"><a href="#文件组织-File-Organization" class="headerlink" title="文件组织(File Organization)"></a>文件组织(File Organization)</h3><h4 id="Java源文件-Java-Source-Files"><a href="#Java源文件-Java-Source-Files" class="headerlink" title="Java源文件(Java Source Files)"></a>Java源文件(Java Source Files)</h4><p>每个Java源文件都包含一个单一的公共类或接口。若私有类和接口与一个公共类相关联，可以将它们和公共类放入同一个源文件。公共类必须是这个文件中的第一个类或接口。</p>
+<p>Java源文件还遵循以下规则：</p>
+<ul>
+<li>开头注释（参见”开头注释”）</li>
+<li>包和引入语句（参见”包和引入语句”）</li>
+<li>类和接口声明（参见”类和接口声明”）</li>
+</ul>
+<h4 id="开头注释-Beginning-Comments"><a href="#开头注释-Beginning-Comments" class="headerlink" title="开头注释(Beginning Comments)"></a>开头注释(Beginning Comments)</h4><p>所有的源文件都应该在开头有一个注释，其中列出类名、版本信息、日期和版权声明.</p>
+<h4 id="包和引入语句-Package-and-Import-Statements"><a href="#包和引入语句-Package-and-Import-Statements" class="headerlink" title="包和引入语句(Package and Import Statements)"></a>包和引入语句(Package and Import Statements)</h4><p>在多数Java源文件中，第一个非注释行是包语句。在它之后可以跟引入语句。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> java.awt;</div><div class="line"><span class="keyword">import</span> java.awt.peer.CanvasPeer;</div></pre></td></tr></table></figure>
+<h4 id="类和接口声明-Class-and-Interface-Declarations"><a href="#类和接口声明-Class-and-Interface-Declarations" class="headerlink" title="类和接口声明(Class and Interface Declarations)"></a>类和接口声明(Class and Interface Declarations)</h4><p>下表描述了类和接口声明的各个部分以及它们出现的先后次序。参见“Java源文件范例”中一个包含注释的例子。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>类/接口声明的各部分</th>
+<th>注解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>类/接口文档注释(/*……/)</td>
+<td>该注释中所需包含的信息，参见”文档注释”</td>
+</tr>
+<tr>
+<td></td>
+<td>类或接口的声明</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>类/接口实现的注释(/……/)如果有必要的话</td>
+<td>该注释应包含任何有关整个类或接口的信息，而这些信息又不适合作为类/接口文档注释。</td>
+</tr>
+<tr>
+<td></td>
+<td>类的(静态)变量</td>
+<td>首先是类的公共变量，随后是保护变量，再后是包一级别的变量(没有访问修饰符，access modifier)，最后是私有变量。</td>
+</tr>
+<tr>
+<td></td>
+<td>实例变量</td>
+<td>首先是公共级别的，随后是保护级别的，再后是包一级别的(没有访问修饰符)，最后是私有级别的。</td>
+</tr>
+<tr>
+<td></td>
+<td>构造器</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>方法</td>
+<td>这些方法应该按功能，而非作用域或访问权限，分组。例如，一个私有的类方法可以置于两个公有的实例方法之间。其目的是为了更便于阅读和理解代码。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="编程惯例-Programming-Practices"><a href="#编程惯例-Programming-Practices" class="headerlink" title="编程惯例(Programming Practices)"></a>编程惯例(Programming Practices)</h3><h4 id="提供对实例以及类变量的访问控制-Providing-Access-to-Instance-and-Class-Variables"><a href="#提供对实例以及类变量的访问控制-Providing-Access-to-Instance-and-Class-Variables" class="headerlink" title="提供对实例以及类变量的访问控制(Providing Access to Instance and Class Variables)"></a>提供对实例以及类变量的访问控制(Providing Access to Instance and Class Variables)</h4><p>若没有足够理由，不要把实例或类变量声明为公有。通常，实例变量无需显式的设置(set)和获取(gotten)，通常这作为方法调用的边缘效应 (side effect)而产生。</p>
+<p>一个具有公有实例变量的恰当例子，是类仅作为数据结构，没有行为。亦即，若你要使用一个结构(struct)而非一个类(如果java支持结构的话)，那么把类的实例变量声明为公有是合适的。</p>
+<h4 id="引用类变量和类方法-Referring-to-Class-Variables-and-Methods"><a href="#引用类变量和类方法-Referring-to-Class-Variables-and-Methods" class="headerlink" title="引用类变量和类方法(Referring to Class Variables and Methods)"></a>引用类变量和类方法(Referring to Class Variables and Methods)</h4><p>避免用一个对象访问一个类的静态变量和方法。应该用类名替代。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">classMethod();             <span class="comment">//OK</span></div><div class="line">AClass.classMethod();      <span class="comment">//OK</span></div><div class="line">anObject.classMethod();    <span class="comment">//AVOID!</span></div></pre></td></tr></table></figure>
+<h4 id="常量-Constants"><a href="#常量-Constants" class="headerlink" title="常量(Constants)"></a>常量(Constants)</h4><p>位于for循环中作为计数器值的数字常量，除了-1,0和1之外，不应被直接写入代码。</p>
+<h4 id="变量赋值-Variable-Assignments"><a href="#变量赋值-Variable-Assignments" class="headerlink" title="变量赋值(Variable Assignments)"></a>变量赋值(Variable Assignments)</h4><p>避免在一个语句中给多个变量赋相同的值。它很难读懂。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fooBar.fChar = barFoo.lchar = &apos;c&apos;; // AVOID!</div></pre></td></tr></table></figure></p>
+<p>不要将赋值运算符用在容易与相等关系运算符混淆的地方。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (c++ = d++) &#123; <span class="comment">// AVOID! (Java disallows)</span></div><div class="line">    <span class="comment">//some code...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//应该写成</span></div><div class="line"><span class="keyword">if</span> ((c++ = d++) != <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">//some code...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//不要使用内嵌(embedded)赋值运算符试图提高运行时的效率，这是编译器的工作。例如：</span></div><div class="line"></div><div class="line">d = (a = b + c) + r;<span class="comment">// AVOID!</span></div><div class="line"></div><div class="line"><span class="comment">//应该写成</span></div><div class="line">a = b + c;</div><div class="line">d = a + r;</div></pre></td></tr></table></figure>
+<h4 id="其它惯例-Miscellaneous-Practices"><a href="#其它惯例-Miscellaneous-Practices" class="headerlink" title="其它惯例(Miscellaneous Practices)"></a>其它惯例(Miscellaneous Practices)</h4><ul>
+<li>圆括号(Parentheses)</li>
+</ul>
+<p>一般而言，在含有多种运算符的表达式中使用圆括号来避免运算符优先级问题，是个好方法。即使运算符的优先级对你而言可能很清楚，但对其他人未必如此。你不能假设别的程序员和你一样清楚运算符的优先级。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (a == b &amp;&amp; c == d) // AVOID!</div><div class="line"></div><div class="line">if ((a == b) &amp;&amp; (c == d)) // RIGHT</div></pre></td></tr></table></figure>
+<ul>
+<li>返回值(Returning Values)</li>
+</ul>
+<p>设法让你的程序结构符合目的。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if (booleanExpression) &#123;</div><div class="line">    return true;</div><div class="line">&#125; else &#123;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//应该代之以如下方法：</div><div class="line">return booleanExpression;</div><div class="line"></div><div class="line">//类似地：</div><div class="line">if (condition) &#123;</div><div class="line">    return x;</div><div class="line">&#125;</div><div class="line">return y;</div><div class="line"></div><div class="line">//应该写做：</div><div class="line">return (condition ? x : y);</div></pre></td></tr></table></figure>
+<ul>
+<li>条件运算符”?”前的表达式(Expressions before ‘?’ in the Conditional Operator)</li>
+</ul>
+<p>如果一个包含二元运算符的表达式出现在三元运算符” ? : “的”?”之前，那么应该给表达式添上一对圆括号。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(x &gt;= 0) ? x : -x;</div></pre></td></tr></table></figure>
+<h3 id="语句-Statements"><a href="#语句-Statements" class="headerlink" title="语句(Statements)"></a>语句(Statements)</h3><h4 id="简单语句-Simple-Statements"><a href="#简单语句-Simple-Statements" class="headerlink" title="简单语句(Simple Statements)"></a>简单语句(Simple Statements)</h4><p>每行至多包含一条语句，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">argv++; // Correct</div><div class="line"></div><div class="line">argc--; // Correct</div><div class="line"></div><div class="line">argv++; argc--; // AVOID!</div></pre></td></tr></table></figure>
+<h4 id="复合语句-Compound-Statements"><a href="#复合语句-Compound-Statements" class="headerlink" title="复合语句(Compound Statements)"></a>复合语句(Compound Statements)</h4><p>复合语句是包含在大括号中的语句序列，形如”{ 语句 }”。例如下面各段。</p>
+<ul>
+<li>被括其中的语句应该较之复合语句缩进一个层次</li>
+<li>左大括号”{“应位于复合语句起始行的行尾；右大括号”}”应另起一行并与复合语句首行对齐。</li>
+<li>大括号可以被用于所有语句，包括单个语句，只要这些语句是诸如if-else或for控制结构的一部分。这样便于添加语句而无需担心由于忘了加括号而引入bug。</li>
+</ul>
+<h4 id="返回语句-return-Statements"><a href="#返回语句-return-Statements" class="headerlink" title="返回语句(return Statements)"></a>返回语句(return Statements)</h4><p>一个带返回值的return语句不使用小括号”()”，除非它们以某种方式使返回值更为显见。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">return;</div><div class="line">return myDisk.size();</div><div class="line">return (size ? size : defaultSize);</div></pre></td></tr></table></figure>
+<h4 id="if，if-else，if-else-if-else语句-if-if-else-if-else-if-else-Statements"><a href="#if，if-else，if-else-if-else语句-if-if-else-if-else-if-else-Statements" class="headerlink" title="if，if-else，if else-if else语句(if, if-else, if else-if else Statements)"></a>if，if-else，if else-if else语句(if, if-else, if else-if else Statements)</h4><p>if-else语句应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else&#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：if语句总是用”{“和”}”括起来，避免使用如下容易引起错误的格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if (condition) //AVOID! THIS OMITS THE BRACES &#123;&#125;!</div><div class="line">    statement;</div></pre></td></tr></table></figure>
+<h4 id="for语句-for-Statements"><a href="#for语句-for-Statements" class="headerlink" title="for语句(for Statements)"></a>for语句(for Statements)</h4><p>一个for语句应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (initialization; condition; update) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个空的for语句(所有工作都在初始化，条件判断，更新子句中完成)应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for (initialization; condition; update);</div></pre></td></tr></table></figure>
+<p>当在for语句的初始化或更新子句中使用逗号时，避免因使用三个以上变量，而导致复杂度提高。若需要，可以在for循环之前(为初始化子句)或for循环末尾(为更新子句)使用单独的语句。 ### 6 while语句(while Statements) 一个while语句应该具有如下格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个空的while语句应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">while (condition);</div><div class="line">  ### 7 do-while语句(do-while Statements) 一个do-while语句应该具有如下格式：</div><div class="line">do &#123;</div><div class="line">    statements;</div><div class="line">&#125; while (condition);</div><div class="line">  ### 8 switch语句(switch Statements) 一个switch语句应该具有如下格式：</div><div class="line">switch (condition) &#123;</div><div class="line">    case ABC:</div><div class="line">        statements;</div><div class="line">        /* falls through */</div><div class="line">    case DEF:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">    case XYZ:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">    default:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每当一个case顺着往下执行时(因为没有break语句)，通常应在break语句的位置添加注释。上面的示例代码中就包含注释/<em> falls through </em>/。   ### 9 try-catch语句(try-catch Statements) 一个try-catch语句应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">    statements;</div><div class="line">&#125; catch (ExceptionClass e) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个try-catch语句后面也可能跟着一个finally语句，不论try代码块是否顺利执行完，它都会被执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">statements;</div><div class="line">&#125; catch (ExceptionClass e) &#123;</div><div class="line">    statements;</div><div class="line">&#125; finally &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="代码范例-Code-Examples"><a href="#代码范例-Code-Examples" class="headerlink" title="代码范例(Code Examples)"></a>代码范例(Code Examples)</h3><h4 id="Java源文件范例-Java-Source-File-Example"><a href="#Java源文件范例-Java-Source-File-Example" class="headerlink" title="Java源文件范例(Java Source File Example)"></a>Java源文件范例(Java Source File Example)</h4><p>下面的例子，展示了如何合理布局一个包含单一公共类的Java源程序。接口的布局与其相似。更多信息参见”类和接口声明”以及”文挡注释”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">package java.blah;</div><div class="line">import java.blah.blahdy.BlahBlah;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Class description goes here.</div><div class="line"> *</div><div class="line"> * @version 1.82 18 Mar 1999</div><div class="line"> * @author Firstname Lastname</div><div class="line"> */</div><div class="line">public class Blah extends SomeClass &#123;</div><div class="line">	/* A class implementation comment can go here. */</div><div class="line"></div><div class="line">	/* classVar1 documentation comment */</div><div class="line">	public static int classVar1;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * classVar2 documentation comment that happens to be more than one line long</div><div class="line">	 */</div><div class="line">	private static Object classVar2;</div><div class="line">	</div><div class="line">	/* instanceVar1 documentation comment */</div><div class="line">	public Object instanceVar1;</div><div class="line">	</div><div class="line">	/* instanceVar2 documentation comment */</div><div class="line">	protected int instanceVar2;</div><div class="line">	</div><div class="line">	/* instanceVar3 documentation comment */</div><div class="line">	private Object[] instanceVar3;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * …constructor Blah documentation comment…</div><div class="line">	 */</div><div class="line">	public Blah() &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * …method doSomething documentation comment…</div><div class="line">	 */</div><div class="line">	public void doSomething() &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * …method doSomethingElse documentation comment…</div><div class="line">	 * @param someParam description</div><div class="line">	 */</div><div class="line">	public void doSomethingElse(Object someParam) &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;命名规范-Naming-Conventions&quot;&gt;&lt;a href=&quot;#命名规范-Naming-Conventions&quot; class=&quot;headerlink&quot; title=&quot;命名规范(Naming Conventions)&quot;&gt;&lt;/a&gt;命名规范(Naming Conventions)&lt;/h3&gt;&lt;p&gt;命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="规范" scheme="http://fingerart.me/tags/%E8%A7%84%E8%8C%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android文件命名规范</title>
+    <link href="http://fingerart.me/2015/09/03/Android%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/"/>
+    <id>http://fingerart.me/2015/09/03/Android文件命名规范/</id>
+    <published>2015-09-02T16:00:00.000Z</published>
+    <updated>2017-02-16T03:43:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>以下基于 <a href="/2015/09/03/%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">开发代码规范</a></p>
+<h3 id="Layout命名"><a href="#Layout命名" class="headerlink" title="Layout命名"></a>Layout命名</h3><ol>
+<li>contentview命名：layout功能模块描述.xml<br>例如：layout_apps_category.xml layout_appsdetail.xml</li>
+<li>Dialog命名：dialog描述.xml<br>例如：dlghint.xml</li>
+<li>PopupWindow命名：ppw描述.xml<br>例如：pop info.xml</li>
+<li>列表项命item描述.xml<br>例如：itemcity.xml<br>5．包含项：include模块.xml<br>例如：include_head.xml include_bottom.xml</li>
+</ol>
+<a id="more"></a>
+<h3 id="图片命名"><a href="#图片命名" class="headerlink" title="图片命名"></a>图片命名</h3><h4 id="由设计人员命名"><a href="#由设计人员命名" class="headerlink" title="由设计人员命名"></a>由设计人员命名</h4><p>和设计人员进一步确认</p>
+<ol>
+<li><p>静态图片 模块前缀描述、通用图片 (common)<br>例如: main_bg.png login_btn.png manage_download.png common_btn_comfirm.png</p>
+</li>
+<li><p>有不同状态的图片 模块前缀描述状态、前缀描述_状态<br>状态: normal pressed focus checked<br>例如: film_buy_btn_normal.png film_buy_btn_pressed.png btn_back_normal.png</p>
+</li>
+</ol>
+<h4 id="由开发人员命名"><a href="#由开发人员命名" class="headerlink" title="由开发人员命名"></a>由开发人员命名</h4><p>自定义文件统一放在drawable目录下<br>如：自定义生成的图片 selector, 控件简称_描述_selector btn_ok_selector</p>
+<h3 id="控件命名"><a href="#控件命名" class="headerlink" title="控件命名"></a>控件命名</h3><p>以下方案确认一种实施</p>
+<p>Xml中的控件 id 命名：控件简称功能描述 —— tv login_name</p>
+<p>如果功能描述较长，使用 进行分割 —— tv login_student_name</p>
+<p>Java文件中控件 变量命名(遵循以上Java命名规范) ：</p>
+<p>成员变量 ：m_控件简称+控件描述 —— mTvName<br>局部变量 ：控件简称+控件描述 —— tvName<br>控件简称取每个单词首字母, 控件只是一个单词的，取三个字母, 自定义控件或者表上控件命名方式以此类推</p>
+<table>
+<thead>
+<tr>
+<th>Widget</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TextView</td>
+<td>tv</td>
+</tr>
+<tr>
+<td>Button</td>
+<td>btn</td>
+</tr>
+<tr>
+<td>ImageButton</td>
+<td>ib</td>
+</tr>
+<tr>
+<td>ImageView</td>
+<td>iv</td>
+</tr>
+<tr>
+<td>CheckBox</td>
+<td>cb</td>
+</tr>
+<tr>
+<td>RadioButton</td>
+<td>rb</td>
+</tr>
+<tr>
+<td>AnalogClock</td>
+<td>ac</td>
+</tr>
+<tr>
+<td>DigitalClock</td>
+<td>dc</td>
+</tr>
+<tr>
+<td>DatePicker</td>
+<td>dp</td>
+</tr>
+<tr>
+<td>TimePicker</td>
+<td>tp</td>
+</tr>
+<tr>
+<td>ToggleButton</td>
+<td>tb</td>
+</tr>
+<tr>
+<td>EditText</td>
+<td>et</td>
+</tr>
+<tr>
+<td>ProgressBar</td>
+<td>pb</td>
+</tr>
+<tr>
+<td>SeekBar</td>
+<td>sb</td>
+</tr>
+<tr>
+<td>AutoCompleteTextView</td>
+<td>actv</td>
+</tr>
+<tr>
+<td>MultiAutoCompleteTextView</td>
+<td>mctv</td>
+</tr>
+<tr>
+<td>ZoomControls</td>
+<td>zc</td>
+</tr>
+<tr>
+<td>Include</td>
+<td>inc</td>
+</tr>
+<tr>
+<td>VideoView</td>
+<td>vv</td>
+</tr>
+<tr>
+<td>WebView</td>
+<td>wv</td>
+</tr>
+<tr>
+<td>RatingBar</td>
+<td>rbar</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>tab</td>
+</tr>
+<tr>
+<td>Spinner</td>
+<td>spn</td>
+</tr>
+<tr>
+<td>Chronometer</td>
+<td>cm</td>
+</tr>
+<tr>
+<td>ScrollView</td>
+<td>sv</td>
+</tr>
+<tr>
+<td>TextSwitcher</td>
+<td>ts</td>
+</tr>
+<tr>
+<td>Gallery</td>
+<td>gal</td>
+</tr>
+<tr>
+<td>ImageSwitcher</td>
+<td>is</td>
+</tr>
+<tr>
+<td>GridView</td>
+<td>gv</td>
+</tr>
+<tr>
+<td>ListView</td>
+<td>lv</td>
+</tr>
+<tr>
+<td>ExpandableList</td>
+<td>exl</td>
+</tr>
+<tr>
+<td>MapView</td>
+<td>mv</td>
+</tr>
+<tr>
+<td>ViewPager</td>
+<td>vp</td>
+</tr>
+<tr>
+<td>ViewFlipper</td>
+<td>vf</td>
+</tr>
+<tr>
+<td>LinearLayout</td>
+<td>ll</td>
+</tr>
+<tr>
+<td>RelativeLayout</td>
+<td>rl</td>
+</tr>
+<tr>
+<td>FrameLayout</td>
+<td>fl</td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td>frg</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以下基于 &lt;a href=&quot;/2015/09/03/%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/&quot;&gt;开发代码规范&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Layout命名&quot;&gt;&lt;a href=&quot;#Layout命名&quot; class=&quot;headerlink&quot; title=&quot;Layout命名&quot;&gt;&lt;/a&gt;Layout命名&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;contentview命名：layout功能模块描述.xml&lt;br&gt;例如：layout_apps_category.xml layout_appsdetail.xml&lt;/li&gt;
+&lt;li&gt;Dialog命名：dialog描述.xml&lt;br&gt;例如：dlghint.xml&lt;/li&gt;
+&lt;li&gt;PopupWindow命名：ppw描述.xml&lt;br&gt;例如：pop info.xml&lt;/li&gt;
+&lt;li&gt;列表项命item描述.xml&lt;br&gt;例如：itemcity.xml&lt;br&gt;5．包含项：include模块.xml&lt;br&gt;例如：include_head.xml include_bottom.xml&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
+    
+    
+      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
+    
+      <category term="规范" scheme="http://fingerart.me/tags/%E8%A7%84%E8%8C%83/"/>
+    
+  </entry>
+  
+</feed>
