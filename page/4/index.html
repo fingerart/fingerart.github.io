@@ -293,6 +293,130 @@
             
               
                 
+                <a class="post-title-link" href="/2015/06/15/Apache开启运行状态网页/" itemprop="url">
+                  Apache开启运行状态网页
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-15T05:55:14+08:00" content="2015-06-15">
+              2015-06-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/15/Apache开启运行状态网页/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/15/Apache开启运行状态网页/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Apache 提供了特别功能来查询主机目前的状态！那就是 mod_status 这个模块！ 这个模块默认是关闭的，你必须要修改配置文件来启动他才行。</p>
+<p>先确定底下这几个项目真的有存在才行！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">LoadModule status_module modules/mod_status.so</div><div class="line">SetHandler server-status</div><div class="line">Order deny,allow</div><div class="line">Deny from all</div><div class="line">Allow from 192.168.1.0/24</div><div class="line">Allow from 127.0.0.1</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/15/Apache开启运行状态网页/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/06/15/Apache设置找不到网页时的显示信息通知/" itemprop="url">
                   Apache设置找不到网页时的显示信息通知
                 </a>
@@ -1431,129 +1555,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/21/Shell-Scripts学习笔记-1/" itemprop="url">
-                  Shell Scripts学习笔记 1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-21T23:04:17+08:00" content="2015-01-21">
-              2015-01-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/21/Shell-Scripts学习笔记-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/21/Shell-Scripts学习笔记-1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/bin/bash  &lt;==在#之后加上!与shell的名称，用来宣告使用的这个脚本的用途</span></div><div class="line">[root@localhost shell]<span class="comment"># sh  shell-001-hello.sh</span></div><div class="line"></div><div class="line">所有在 scripts 里面的东西，基本规则 ( 如变量设定规则 ) 需要与 <span class="built_in">command</span> line 时相同;</div><div class="line"></div><div class="line">脚本的后缀名最好为 .sh 提供他人的认识;</div><div class="line"></div><div class="line">并非加上 .sh 就可以是执行文件，还需要查看其属性中是否有 x 这个属性.</div><div class="line"></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">双引号与单引号的区别</div><div class="line">Date： 2015/01/21</div><div class="line">Made by FingerArt</div><div class="line"></div><div class="line">name=”FingerArt”</div><div class="line">name1=”My name is <span class="variable">$name</span>”</div><div class="line">name2=’My name is <span class="variable">$name</span>’</div><div class="line"><span class="built_in">echo</span> <span class="variable">$name</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$name1</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$name2</span></div><div class="line"></div><div class="line">[root@localhost shell]<span class="comment"># sh shell-001-引号区别.sh</span></div><div class="line">FingerArt</div><div class="line">My name is FingerArt</div><div class="line">My name is <span class="variable">$name</span></div></pre></td></tr></table></figure>
-<p>从中可以知道双引号能够解析变量, 单引号则不能.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/01/21/Shell-Scripts学习笔记-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1599,7 +1600,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1616,7 +1617,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
