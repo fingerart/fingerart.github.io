@@ -293,6 +293,128 @@
             
               
                 
+                <a class="post-title-link" href="/2015/07/02/装饰设计模式/" itemprop="url">
+                  装饰设计模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-02T11:56:20+08:00" content="2015-07-02">
+              2015-07-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/02/装饰设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/装饰设计模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * 装饰设计模式</div><div class="line"> * 当想要对已有的对象进行功能增强时, 可以定义一个类, 将已有对象传入, 基于已有的功能, </div><div class="line"> * 并提供增强功能.</div><div class="line"> * 那么自定义的该类称为装饰类</div><div class="line"> * 装饰类通常会通过构造方法接收被装饰的对象</div><div class="line"> * 并基于被装饰的对象的功能, 提供更强的功能.</div><div class="line"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IO06DecorativeDesignpattern</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	    <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	    EnhancePerson ep = <span class="keyword">new</span> EnhancePerson(<span class="keyword">new</span> Person());</div><div class="line">	    ep.enhanceOperation();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</div><div class="line">	System.out.println(“吃饭”);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EnhancePerson</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Person p = <span class="keyword">null</span>;</div><div class="line">	EnhancePerson (Person p) &#123;</div><div class="line">		<span class="keyword">this</span>.p = p;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enhanceOperation</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(“Get up”);</div><div class="line">		p.operation();</div><div class="line">		System.out.println(“Seelp”);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/02/装饰设计模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/06/15/Apache开启运行状态网页/" itemprop="url">
                   Apache开启运行状态网页
                 </a>
@@ -1396,165 +1518,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/22/Shell-Script学习笔记-2/" itemprop="url">
-                  Shell Script学习笔记 2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-22T00:01:42+08:00" content="2015-01-22">
-              2015-01-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/22/Shell-Script学习笔记-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/22/Shell-Script学习笔记-2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="逻辑判断式与表达式"><a href="#逻辑判断式与表达式" class="headerlink" title="逻辑判断式与表达式"></a>逻辑判断式与表达式</h3><h4 id="关于文件与目录的检测逻辑属"><a href="#关于文件与目录的检测逻辑属" class="headerlink" title="关于文件与目录的检测逻辑属"></a>关于文件与目录的检测逻辑属</h4><table>
-<thead>
-<tr>
-<th>逻辑属性</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-f</td>
-<td>常用！检测『文件』是否存</td>
-</tr>
-<tr>
-<td>-d</td>
-<td>常用！检测『目录』是否存</td>
-</tr>
-<tr>
-<td>-b</td>
-<td>检测是否为一个『 block 文』</td>
-</tr>
-<tr>
-<td>-c</td>
-<td>检测是否为一个『 character 文』</td>
-</tr>
-<tr>
-<td>-S</td>
-<td>检测是否为一个『 socket 标签文』</td>
-</tr>
-<tr>
-<td>-L</td>
-<td>检测是否为一个『 symbolic link 的文』</td>
-</tr>
-<tr>
-<td>-e</td>
-<td>检测『某个东』是否存在！</td>
-</tr>
-</tbody>
-</table>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/01/22/Shell-Script学习笔记-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1600,7 +1563,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1617,7 +1580,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -293,8 +293,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/03/开发代码规范/" itemprop="url">
-                  开发代码规范
+                <a class="post-title-link" href="/2015/09/19/AsyncTask原理/" itemprop="url">
+                  AsyncTask原理
                 </a>
               
             
@@ -307,8 +307,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-03T00:00:00+08:00" content="2015-09-03">
-              2015-09-03
+            <time itemprop="dateCreated" datetime="2015-09-19T00:00:00+08:00" content="2015-09-19">
+              2015-09-19
             </time>
           </span>
 
@@ -337,8 +337,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/03/开发代码规范/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/03/开发代码规范/" itemprop="commentsCount"></span>
+                <a href="/2015/09/19/AsyncTask原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/19/AsyncTask原理/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -362,9 +362,9 @@
 
       
         
-          <h3 id="命名规范-Naming-Conventions"><a href="#命名规范-Naming-Conventions" class="headerlink" title="命名规范(Naming Conventions)"></a>命名规范(Naming Conventions)</h3><p>命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。</p>
+          <h3 id="AsyncTask的来源"><a href="#AsyncTask的来源" class="headerlink" title="AsyncTask的来源"></a>AsyncTask的来源</h3><p>我们知道执行耗时任务需要在子线程中去操作, 完成后通过MessageQueue让主线程去更新UI, 不能在子线程操作UI, 原因在Handler的消息机制中已经讲过了; 而每一个子线程的开启和执行都是很消耗资源的, 线程是非常宝贵的资源, 可以进行复用, 避免重复创建和销毁, 于是Google的工程师就开发了一个ThreadPollExecutor(线程池的执行器), AsyncTask的底层使用的就是ThreadPollExecutor, 这样我们只需要使用AsyncTask就不需要再去手动的创建线程了.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/03/开发代码规范/#more" rel="contents">
+            <a class="btn" href="/2015/09/19/AsyncTask原理/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -493,6 +493,128 @@
 </ol>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/09/03/Android文件命名规范/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/03/开发代码规范/" itemprop="url">
+                  开发代码规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-03T00:00:00+08:00" content="2015-09-03">
+              2015-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/03/开发代码规范/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/03/开发代码规范/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="命名规范-Naming-Conventions"><a href="#命名规范-Naming-Conventions" class="headerlink" title="命名规范(Naming Conventions)"></a>命名规范(Naming Conventions)</h3><p>命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/03/开发代码规范/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1382,128 +1504,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/02/装饰设计模式/" itemprop="url">
-                  装饰设计模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-02T11:56:20+08:00" content="2015-07-02">
-              2015-07-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/02/装饰设计模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/装饰设计模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * 装饰设计模式</div><div class="line"> * 当想要对已有的对象进行功能增强时, 可以定义一个类, 将已有对象传入, 基于已有的功能, </div><div class="line"> * 并提供增强功能.</div><div class="line"> * 那么自定义的该类称为装饰类</div><div class="line"> * 装饰类通常会通过构造方法接收被装饰的对象</div><div class="line"> * 并基于被装饰的对象的功能, 提供更强的功能.</div><div class="line"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IO06DecorativeDesignpattern</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	    <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	    EnhancePerson ep = <span class="keyword">new</span> EnhancePerson(<span class="keyword">new</span> Person());</div><div class="line">	    ep.enhanceOperation();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</div><div class="line">	System.out.println(“吃饭”);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EnhancePerson</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Person p = <span class="keyword">null</span>;</div><div class="line">	EnhancePerson (Person p) &#123;</div><div class="line">		<span class="keyword">this</span>.p = p;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enhanceOperation</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(“Get up”);</div><div class="line">		p.operation();</div><div class="line">		System.out.println(“Seelp”);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/02/装饰设计模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1549,7 +1549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1566,7 +1566,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
