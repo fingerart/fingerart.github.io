@@ -293,6 +293,129 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/07/使用Android的adb命令录制视频/" itemprop="url">
+                  使用Android的adb命令录制视频
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-07T00:00:00+08:00" content="2015-11-07">
+              2015-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/07/使用Android的adb命令录制视频/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/07/使用Android的adb命令录制视频/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">shell@sltechn:/ $ screenrecord --help</div><div class="line"></div><div class="line">Usage: screenrecord [options] &lt;filename&gt;</div><div class="line"></div><div class="line">Records the device&apos;s display to a .mp4 file.</div><div class="line"></div><div class="line">Options:</div><div class="line">--size WIDTHxHEIGHT</div><div class="line">    Set the video size, e.g. &quot;1280x720&quot;.  Default is the device&apos;s main</div><div class="line">    display resolution (if supported), 1280x720 if not.  For best results,</div><div class="line">    use a size supported by the AVC encoder.</div><div class="line">--bit-rate RATE</div><div class="line">    Set the video bit rate, in megabits per second.  Default 4Mbps.</div><div class="line">--time-limit TIME</div><div class="line">    Set the maximum recording time, in seconds.  Default / maximum is 180.</div><div class="line">--rotate</div><div class="line">    Rotate the output 90 degrees.</div><div class="line">--verbose</div><div class="line">    Display interesting information on stdout.</div><div class="line">--help</div><div class="line">    Show this message.</div><div class="line"></div><div class="line">Recording continues until Ctrl-C is hit or the time limit is reached.</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/07/使用Android的adb命令录制视频/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/09/19/AsyncTask原理/" itemprop="url">
                   AsyncTask原理
                 </a>
@@ -365,128 +488,6 @@
           <h3 id="AsyncTask的来源"><a href="#AsyncTask的来源" class="headerlink" title="AsyncTask的来源"></a>AsyncTask的来源</h3><p>我们知道执行耗时任务需要在子线程中去操作, 完成后通过MessageQueue让主线程去更新UI, 不能在子线程操作UI, 原因在Handler的消息机制中已经讲过了; 而每一个子线程的开启和执行都是很消耗资源的, 线程是非常宝贵的资源, 可以进行复用, 避免重复创建和销毁, 于是Google的工程师就开发了一个ThreadPollExecutor(线程池的执行器), AsyncTask的底层使用的就是ThreadPollExecutor, 这样我们只需要使用AsyncTask就不需要再去手动的创建线程了.</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/09/19/AsyncTask原理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/03/开发代码规范/" itemprop="url">
-                  开发代码规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-03T00:00:00+08:00" content="2015-09-03">
-              2015-09-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/03/开发代码规范/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/03/开发代码规范/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="命名规范-Naming-Conventions"><a href="#命名规范-Naming-Conventions" class="headerlink" title="命名规范(Naming Conventions)"></a>命名规范(Naming Conventions)</h3><p>命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/03/开发代码规范/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -615,6 +616,128 @@
 </ol>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/09/03/Android文件命名规范/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/03/开发代码规范/" itemprop="url">
+                  开发代码规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-03T00:00:00+08:00" content="2015-09-03">
+              2015-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/03/开发代码规范/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/03/开发代码规范/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="命名规范-Naming-Conventions"><a href="#命名规范-Naming-Conventions" class="headerlink" title="命名规范(Naming Conventions)"></a>命名规范(Naming Conventions)</h3><p>命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/03/开发代码规范/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1381,129 +1504,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/02/装饰设计模式-与-继承-的区别/" itemprop="url">
-                  装饰设计模式 与 继承 的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-02T13:26:39+08:00" content="2015-07-02">
-              2015-07-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/02/装饰设计模式-与-继承-的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/装饰设计模式-与-继承-的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * MyReader</div><div class="line"> * 	|--MyTextReader</div><div class="line"> * 		|--MyBufferedTextReader</div><div class="line"> * 	|--MyMediaReader</div><div class="line"> * 		|--MyBufferedMediaReader</div><div class="line"> * 	|--MyOtherReader</div><div class="line"> * 		|--MyBufferedOtherReader</div><div class="line"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyBuffer</span> </span>&#123;</div><div class="line">	MyBuffer(MyTextReader mtr) &#123;</div><div class="line">	&#125;</div><div class="line">	MyBuffer(MyMediaReader mmr) &#123;</div><div class="line">	&#125;</div><div class="line">	MyBuffer(MyOtherReader mor) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面类的扩展性很差<br>找到其参数的共同类型。通过多态的形式。可以提高扩展性。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/02/装饰设计模式-与-继承-的区别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1549,7 +1549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

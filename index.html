@@ -293,6 +293,117 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/06/理解Docker三大组件之镜像/" itemprop="url">
+                  理解Docker三大组件之镜像
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-06T23:40:55+08:00" content="2017-06-06">
+              2017-06-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/06/理解Docker三大组件之镜像/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/06/理解Docker三大组件之镜像/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
+<blockquote>
+<p>操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root 文件系统。</p>
+</blockquote>
+<h2 id="镜像的分层存储"><a href="#镜像的分层存储" class="headerlink" title="镜像的分层存储"></a>镜像的分层存储</h2><p>因为完整的镜像体积过于庞大，Docker你用Union FS技术将镜像进行分层存储；与ISO不同，Docker镜像是一个虚拟概念，由一组文件系统组成或者说是多层文件系统联合组成。</p>
+<p>镜像是一层一层构建的，前一层是后一层的基础，如果删除前一层，仅仅是标记为删除，在容器中看不见，但还是会存在镜像中，所以构建镜像时需额外小心。</p>
+<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt;</code></p>
+<ul>
+<li>Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</li>
+<li>仓库名：&lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。</li>
+</ul>
+<h2 id="利用-commit-理解镜像构成"><a href="#利用-commit-理解镜像构成" class="headerlink" title="利用 commit 理解镜像构成"></a>利用 commit 理解镜像构成</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/04/mac下在线安装Visual-Studio-无法连接到网络/" itemprop="url">
                   解决mac下在线安装Visual Studio 无法连接到网络
                 </a>
@@ -1258,137 +1369,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/了解-Android-HandlerThread/" itemprop="url">
-                  了解 Android HandlerThread
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T22:47:00+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/13/了解-Android-HandlerThread/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/了解-Android-HandlerThread/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天在分析 <a href="http://github.com/square/picasso">Picasso</a> 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。</p>
-<ul>
-<li><a href="/2015/08/08/Handler和Message-异步消息机制-1/" title="了解Handler消息机制1">了解Handler消息机制1</a></li>
-<li><a href="/2015/08/10/Handler和Message-异步消息机制-2/" title="了解Handler消息机制2">了解Handler消息机制2</a>
-</li>
-</ul>
-<h3 id="HandlerThread-源码"><a href="#HandlerThread-源码" class="headerlink" title="HandlerThread 源码"></a>HandlerThread 源码</h3><blockquote>
-<p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p>
-<p>HandlerThread是一个线程，该线程会创建一个Looper，Looper可用于创建Handler，必需要调用 <code>start()</code></p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/13/了解-Android-HandlerThread/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1434,7 +1414,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

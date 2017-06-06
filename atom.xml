@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fingerart.me/"/>
-  <updated>2017-06-06T15:32:38.000Z</updated>
+  <updated>2017-06-06T16:36:52.000Z</updated>
   <id>http://fingerart.me/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>理解Docker三大组件之镜像</title>
+    <link href="http://fingerart.me/2017/06/06/%E7%90%86%E8%A7%A3Docker%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%95%9C%E5%83%8F/"/>
+    <id>http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/</id>
+    <published>2017-06-06T15:40:55.000Z</published>
+    <updated>2017-06-06T16:36:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
+<blockquote>
+<p>操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root 文件系统。</p>
+</blockquote>
+<h2 id="镜像的分层存储"><a href="#镜像的分层存储" class="headerlink" title="镜像的分层存储"></a>镜像的分层存储</h2><p>因为完整的镜像体积过于庞大，Docker你用Union FS技术将镜像进行分层存储；与ISO不同，Docker镜像是一个虚拟概念，由一组文件系统组成或者说是多层文件系统联合组成。</p>
+<p>镜像是一层一层构建的，前一层是后一层的基础，如果删除前一层，仅仅是标记为删除，在容器中看不见，但还是会存在镜像中，所以构建镜像时需额外小心。</p>
+<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt;</code></p>
+<ul>
+<li>Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</li>
+<li>仓库名：&lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。</li>
+</ul>
+<h2 id="利用-commit-理解镜像构成"><a href="#利用-commit-理解镜像构成" class="headerlink" title="利用 commit 理解镜像构成"></a>利用 commit 理解镜像构成</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名
+    
+    </summary>
+    
+    
+      <category term="Docker" scheme="http://fingerart.me/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>解决mac下在线安装Visual Studio 无法连接到网络</title>
@@ -756,39 +787,6 @@
     
     
       <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Android的adb命令录制视频</title>
-    <link href="http://fingerart.me/2015/11/07/%E4%BD%BF%E7%94%A8Android%E7%9A%84adb%E5%91%BD%E4%BB%A4%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91/"/>
-    <id>http://fingerart.me/2015/11/07/使用Android的adb命令录制视频/</id>
-    <published>2015-11-06T16:00:00.000Z</published>
-    <updated>2017-02-16T03:43:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">shell@sltechn:/ $ screenrecord --help</div><div class="line"></div><div class="line">Usage: screenrecord [options] &lt;filename&gt;</div><div class="line"></div><div class="line">Records the device&apos;s display to a .mp4 file.</div><div class="line"></div><div class="line">Options:</div><div class="line">--size WIDTHxHEIGHT</div><div class="line">    Set the video size, e.g. &quot;1280x720&quot;.  Default is the device&apos;s main</div><div class="line">    display resolution (if supported), 1280x720 if not.  For best results,</div><div class="line">    use a size supported by the AVC encoder.</div><div class="line">--bit-rate RATE</div><div class="line">    Set the video bit rate, in megabits per second.  Default 4Mbps.</div><div class="line">--time-limit TIME</div><div class="line">    Set the maximum recording time, in seconds.  Default / maximum is 180.</div><div class="line">--rotate</div><div class="line">    Rotate the output 90 degrees.</div><div class="line">--verbose</div><div class="line">    Display interesting information on stdout.</div><div class="line">--help</div><div class="line">    Show this message.</div><div class="line"></div><div class="line">Recording continues until Ctrl-C is hit or the time limit is reached.</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/* </div><div class="line"> * 录制</div><div class="line"> * 录制的格式是 .mp4</div><div class="line"> * Ctrl+C 提前结束视频录制</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 分辨率设置</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --size 1280*720 /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 比特率设置</div><div class="line"> * 默认是4Mbps, 比特率越大越清晰, 文件也会越大</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --bit-rate 2000000 /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 录制时间设置</div><div class="line"> * 默认是180s, Ctrl+C提前停止录制</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --time-limit 300 /sdcard/FingerArt.mp4</div></pre></td></tr></table></figure>
-<p>该方式不能录制音频.</p>
-<blockquote>
-<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你完全按照该博文的内容进行直接使用，你的一个回复即是对我的最大支持，如有任何疑问请留言。谢谢~~</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;shell@sltechn:/ $ screenrecord --help&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Usage: screenrecord [options] &amp;lt;filename&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Records the device&amp;apos;s display to a .mp4 file.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Options:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--size WIDTHxHEIGHT&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Set the video size, e.g. &amp;quot;1280x720&amp;quot;.  Default is the device&amp;apos;s main&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    display resolution (if supported), 1280x720 if not.  For best results,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    use a size supported by the AVC encoder.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--bit-rate RATE&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Set the video bit rate, in megabits per second.  Default 4Mbps.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--time-limit TIME&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Set the maximum recording time, in seconds.  Default / maximum is 180.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--rotate&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Rotate the output 90 degrees.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--verbose&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Display interesting information on stdout.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;--help&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Show this message.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Recording continues until Ctrl-C is hit or the time limit is reached.&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
-    
-    
-      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
-    
-      <category term="ADB" scheme="http://fingerart.me/tags/ADB/"/>
     
   </entry>
   

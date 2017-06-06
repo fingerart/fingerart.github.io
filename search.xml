@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[理解Docker三大组件之镜像]]></title>
+      <url>http://fingerart.me/2017/06/06/%E7%90%86%E8%A7%A3Docker%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%95%9C%E5%83%8F/</url>
+      <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
+<blockquote>
+<p>操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root 文件系统。</p>
+</blockquote>
+<h2 id="镜像的分层存储"><a href="#镜像的分层存储" class="headerlink" title="镜像的分层存储"></a>镜像的分层存储</h2><p>因为完整的镜像体积过于庞大，Docker你用Union FS技术将镜像进行分层存储；与ISO不同，Docker镜像是一个虚拟概念，由一组文件系统组成或者说是多层文件系统联合组成。</p>
+<p>镜像是一层一层构建的，前一层是后一层的基础，如果删除前一层，仅仅是标记为删除，在容器中看不见，但还是会存在镜像中，所以构建镜像时需额外小心。</p>
+<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt;</code></p>
+<ul>
+<li>Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</li>
+<li>仓库名：&lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。</li>
+</ul>
+<h2 id="利用-commit-理解镜像构成"><a href="#利用-commit-理解镜像构成" class="headerlink" title="利用 commit 理解镜像构成"></a>利用 commit 理解镜像构成</h2>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Docker </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[解决mac下在线安装Visual Studio 无法连接到网络]]></title>
       <url>http://fingerart.me/2017/06/04/mac%E4%B8%8B%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85Visual-Studio-%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E5%88%B0%E7%BD%91%E7%BB%9C/</url>
       <content type="html"><![CDATA[<p>准备要接手C#的项目了，自然需要好的工具(Visual Studio)。在微软的官网下载的安装包是一个在线的安装程序，在安装的第一步(检查网络环境)，出现无法连接到网络，有网络并且Shadowsocks也是开着全局的。</p>
@@ -699,181 +724,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[开发代码规范]]></title>
-      <url>http://fingerart.me/2015/09/03/%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</url>
-      <content type="html"><![CDATA[<h3 id="命名规范-Naming-Conventions"><a href="#命名规范-Naming-Conventions" class="headerlink" title="命名规范(Naming Conventions)"></a>命名规范(Naming Conventions)</h3><p>命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。</p>
-<a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>识符类型</th>
-<th>命名规则</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>包(Packages)</td>
-<td>一个唯一包名的前缀总是全部小写的ASCII字母并且是一个顶级域名，通常是com，edu，gov，mil，net，org，或1981年ISO 3166标准所指定的标识国家的英文双字符代码。包名的后续部分根据不同机构各自内部的命名规范而不尽相同。这类命名规范可能以特定目录名的组成来区分部门(department)，项目(project)，机器(machine)，或注册名(login names)。</td>
-<td>com.mobogenie.view<br>com.mobogenie.quicktime.v2</td>
-</tr>
-<tr>
-<td>类(Classes)</td>
-<td>命名规则：类名是个一名词，采用大小写混合的方式，每个单词的首字母大写。尽量使你的类名简洁而富于描述。使用完整单词，避免缩写词(除非该缩写词被更广泛使用，像URL，HTML)</td>
-<td>class Raster;<br>class ImageSprite;</td>
-</tr>
-<tr>
-<td>接口(Interfaces)</td>
-<td>命名规则：大小写规则与类名相似</td>
-<td>interface RasterDelegate;<br>interface Storing;</td>
-</tr>
-<tr>
-<td>方法(Methods)</td>
-<td>方法名是一个动词，采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。</td>
-<td>run();<br>runFast();<br>getBackground();</td>
-</tr>
-<tr>
-<td>变量(Variables)</td>
-<td>除了变量名外，所有实例，包括类，类常量，均采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。变量名不应以下划线或美元符号开头，尽管这在语法上是允许的。变量名应简短且富于描述。变量名的选用应该易于记忆，即，能够指出其用途。尽量避免单个字符的变量名，除非是一次性的临时变量。临时变量通常被取名为i，j，k，m和n，它们一般用于整型；c，d，e，它们一般用于字符型。</td>
-<td>成员变量 String mName;<br>局部变量 String name;<br>静态变量 static String sName;</td>
-</tr>
-<tr>
-<td>实例变量(InstanceVariables)</td>
-<td>大小写规则和变量名相似,按驼峰命名法，成员变量以m开头，局部变量按普通方式生成</td>
-<td>类的实例变量遵循以上规则(按照变量命名规则)</td>
-</tr>
-<tr>
-<td>常量(Constants)</td>
-<td>类常量和ANSI常量的声明，应该全部大写，单词间用下划线隔开。(尽量避免ANSI常量，容易引起错误)</td>
-<td>static final int MIN_WIDTH = 4;<br>static final int MAX_WIDTH = 999;<br>static final int GET_THE_CPU;</td>
-</tr>
-</tbody>
-</table>
-<h3 id="文件组织-File-Organization"><a href="#文件组织-File-Organization" class="headerlink" title="文件组织(File Organization)"></a>文件组织(File Organization)</h3><h4 id="Java源文件-Java-Source-Files"><a href="#Java源文件-Java-Source-Files" class="headerlink" title="Java源文件(Java Source Files)"></a>Java源文件(Java Source Files)</h4><p>每个Java源文件都包含一个单一的公共类或接口。若私有类和接口与一个公共类相关联，可以将它们和公共类放入同一个源文件。公共类必须是这个文件中的第一个类或接口。</p>
-<p>Java源文件还遵循以下规则：</p>
-<ul>
-<li>开头注释（参见”开头注释”）</li>
-<li>包和引入语句（参见”包和引入语句”）</li>
-<li>类和接口声明（参见”类和接口声明”）</li>
-</ul>
-<h4 id="开头注释-Beginning-Comments"><a href="#开头注释-Beginning-Comments" class="headerlink" title="开头注释(Beginning Comments)"></a>开头注释(Beginning Comments)</h4><p>所有的源文件都应该在开头有一个注释，其中列出类名、版本信息、日期和版权声明.</p>
-<h4 id="包和引入语句-Package-and-Import-Statements"><a href="#包和引入语句-Package-and-Import-Statements" class="headerlink" title="包和引入语句(Package and Import Statements)"></a>包和引入语句(Package and Import Statements)</h4><p>在多数Java源文件中，第一个非注释行是包语句。在它之后可以跟引入语句。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> java.awt;</div><div class="line"><span class="keyword">import</span> java.awt.peer.CanvasPeer;</div></pre></td></tr></table></figure>
-<h4 id="类和接口声明-Class-and-Interface-Declarations"><a href="#类和接口声明-Class-and-Interface-Declarations" class="headerlink" title="类和接口声明(Class and Interface Declarations)"></a>类和接口声明(Class and Interface Declarations)</h4><p>下表描述了类和接口声明的各个部分以及它们出现的先后次序。参见“Java源文件范例”中一个包含注释的例子。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>类/接口声明的各部分</th>
-<th>注解</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>类/接口文档注释(/*……/)</td>
-<td>该注释中所需包含的信息，参见”文档注释”</td>
-</tr>
-<tr>
-<td></td>
-<td>类或接口的声明</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>类/接口实现的注释(/……/)如果有必要的话</td>
-<td>该注释应包含任何有关整个类或接口的信息，而这些信息又不适合作为类/接口文档注释。</td>
-</tr>
-<tr>
-<td></td>
-<td>类的(静态)变量</td>
-<td>首先是类的公共变量，随后是保护变量，再后是包一级别的变量(没有访问修饰符，access modifier)，最后是私有变量。</td>
-</tr>
-<tr>
-<td></td>
-<td>实例变量</td>
-<td>首先是公共级别的，随后是保护级别的，再后是包一级别的(没有访问修饰符)，最后是私有级别的。</td>
-</tr>
-<tr>
-<td></td>
-<td>构造器</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>方法</td>
-<td>这些方法应该按功能，而非作用域或访问权限，分组。例如，一个私有的类方法可以置于两个公有的实例方法之间。其目的是为了更便于阅读和理解代码。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="编程惯例-Programming-Practices"><a href="#编程惯例-Programming-Practices" class="headerlink" title="编程惯例(Programming Practices)"></a>编程惯例(Programming Practices)</h3><h4 id="提供对实例以及类变量的访问控制-Providing-Access-to-Instance-and-Class-Variables"><a href="#提供对实例以及类变量的访问控制-Providing-Access-to-Instance-and-Class-Variables" class="headerlink" title="提供对实例以及类变量的访问控制(Providing Access to Instance and Class Variables)"></a>提供对实例以及类变量的访问控制(Providing Access to Instance and Class Variables)</h4><p>若没有足够理由，不要把实例或类变量声明为公有。通常，实例变量无需显式的设置(set)和获取(gotten)，通常这作为方法调用的边缘效应 (side effect)而产生。</p>
-<p>一个具有公有实例变量的恰当例子，是类仅作为数据结构，没有行为。亦即，若你要使用一个结构(struct)而非一个类(如果java支持结构的话)，那么把类的实例变量声明为公有是合适的。</p>
-<h4 id="引用类变量和类方法-Referring-to-Class-Variables-and-Methods"><a href="#引用类变量和类方法-Referring-to-Class-Variables-and-Methods" class="headerlink" title="引用类变量和类方法(Referring to Class Variables and Methods)"></a>引用类变量和类方法(Referring to Class Variables and Methods)</h4><p>避免用一个对象访问一个类的静态变量和方法。应该用类名替代。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">classMethod();             <span class="comment">//OK</span></div><div class="line">AClass.classMethod();      <span class="comment">//OK</span></div><div class="line">anObject.classMethod();    <span class="comment">//AVOID!</span></div></pre></td></tr></table></figure>
-<h4 id="常量-Constants"><a href="#常量-Constants" class="headerlink" title="常量(Constants)"></a>常量(Constants)</h4><p>位于for循环中作为计数器值的数字常量，除了-1,0和1之外，不应被直接写入代码。</p>
-<h4 id="变量赋值-Variable-Assignments"><a href="#变量赋值-Variable-Assignments" class="headerlink" title="变量赋值(Variable Assignments)"></a>变量赋值(Variable Assignments)</h4><p>避免在一个语句中给多个变量赋相同的值。它很难读懂。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fooBar.fChar = barFoo.lchar = &apos;c&apos;; // AVOID!</div></pre></td></tr></table></figure></p>
-<p>不要将赋值运算符用在容易与相等关系运算符混淆的地方。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (c++ = d++) &#123; <span class="comment">// AVOID! (Java disallows)</span></div><div class="line">    <span class="comment">//some code...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//应该写成</span></div><div class="line"><span class="keyword">if</span> ((c++ = d++) != <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">//some code...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//不要使用内嵌(embedded)赋值运算符试图提高运行时的效率，这是编译器的工作。例如：</span></div><div class="line"></div><div class="line">d = (a = b + c) + r;<span class="comment">// AVOID!</span></div><div class="line"></div><div class="line"><span class="comment">//应该写成</span></div><div class="line">a = b + c;</div><div class="line">d = a + r;</div></pre></td></tr></table></figure>
-<h4 id="其它惯例-Miscellaneous-Practices"><a href="#其它惯例-Miscellaneous-Practices" class="headerlink" title="其它惯例(Miscellaneous Practices)"></a>其它惯例(Miscellaneous Practices)</h4><ul>
-<li>圆括号(Parentheses)</li>
-</ul>
-<p>一般而言，在含有多种运算符的表达式中使用圆括号来避免运算符优先级问题，是个好方法。即使运算符的优先级对你而言可能很清楚，但对其他人未必如此。你不能假设别的程序员和你一样清楚运算符的优先级。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (a == b &amp;&amp; c == d) // AVOID!</div><div class="line"></div><div class="line">if ((a == b) &amp;&amp; (c == d)) // RIGHT</div></pre></td></tr></table></figure>
-<ul>
-<li>返回值(Returning Values)</li>
-</ul>
-<p>设法让你的程序结构符合目的。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if (booleanExpression) &#123;</div><div class="line">    return true;</div><div class="line">&#125; else &#123;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//应该代之以如下方法：</div><div class="line">return booleanExpression;</div><div class="line"></div><div class="line">//类似地：</div><div class="line">if (condition) &#123;</div><div class="line">    return x;</div><div class="line">&#125;</div><div class="line">return y;</div><div class="line"></div><div class="line">//应该写做：</div><div class="line">return (condition ? x : y);</div></pre></td></tr></table></figure>
-<ul>
-<li>条件运算符”?”前的表达式(Expressions before ‘?’ in the Conditional Operator)</li>
-</ul>
-<p>如果一个包含二元运算符的表达式出现在三元运算符” ? : “的”?”之前，那么应该给表达式添上一对圆括号。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(x &gt;= 0) ? x : -x;</div></pre></td></tr></table></figure>
-<h3 id="语句-Statements"><a href="#语句-Statements" class="headerlink" title="语句(Statements)"></a>语句(Statements)</h3><h4 id="简单语句-Simple-Statements"><a href="#简单语句-Simple-Statements" class="headerlink" title="简单语句(Simple Statements)"></a>简单语句(Simple Statements)</h4><p>每行至多包含一条语句，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">argv++; // Correct</div><div class="line"></div><div class="line">argc--; // Correct</div><div class="line"></div><div class="line">argv++; argc--; // AVOID!</div></pre></td></tr></table></figure>
-<h4 id="复合语句-Compound-Statements"><a href="#复合语句-Compound-Statements" class="headerlink" title="复合语句(Compound Statements)"></a>复合语句(Compound Statements)</h4><p>复合语句是包含在大括号中的语句序列，形如”{ 语句 }”。例如下面各段。</p>
-<ul>
-<li>被括其中的语句应该较之复合语句缩进一个层次</li>
-<li>左大括号”{“应位于复合语句起始行的行尾；右大括号”}”应另起一行并与复合语句首行对齐。</li>
-<li>大括号可以被用于所有语句，包括单个语句，只要这些语句是诸如if-else或for控制结构的一部分。这样便于添加语句而无需担心由于忘了加括号而引入bug。</li>
-</ul>
-<h4 id="返回语句-return-Statements"><a href="#返回语句-return-Statements" class="headerlink" title="返回语句(return Statements)"></a>返回语句(return Statements)</h4><p>一个带返回值的return语句不使用小括号”()”，除非它们以某种方式使返回值更为显见。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">return;</div><div class="line">return myDisk.size();</div><div class="line">return (size ? size : defaultSize);</div></pre></td></tr></table></figure>
-<h4 id="if，if-else，if-else-if-else语句-if-if-else-if-else-if-else-Statements"><a href="#if，if-else，if-else-if-else语句-if-if-else-if-else-if-else-Statements" class="headerlink" title="if，if-else，if else-if else语句(if, if-else, if else-if else Statements)"></a>if，if-else，if else-if else语句(if, if-else, if else-if else Statements)</h4><p>if-else语句应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else&#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意：if语句总是用”{“和”}”括起来，避免使用如下容易引起错误的格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if (condition) //AVOID! THIS OMITS THE BRACES &#123;&#125;!</div><div class="line">    statement;</div></pre></td></tr></table></figure>
-<h4 id="for语句-for-Statements"><a href="#for语句-for-Statements" class="headerlink" title="for语句(for Statements)"></a>for语句(for Statements)</h4><p>一个for语句应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (initialization; condition; update) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>一个空的for语句(所有工作都在初始化，条件判断，更新子句中完成)应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for (initialization; condition; update);</div></pre></td></tr></table></figure>
-<p>当在for语句的初始化或更新子句中使用逗号时，避免因使用三个以上变量，而导致复杂度提高。若需要，可以在for循环之前(为初始化子句)或for循环末尾(为更新子句)使用单独的语句。 ### 6 while语句(while Statements) 一个while语句应该具有如下格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>一个空的while语句应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">while (condition);</div><div class="line">  ### 7 do-while语句(do-while Statements) 一个do-while语句应该具有如下格式：</div><div class="line">do &#123;</div><div class="line">    statements;</div><div class="line">&#125; while (condition);</div><div class="line">  ### 8 switch语句(switch Statements) 一个switch语句应该具有如下格式：</div><div class="line">switch (condition) &#123;</div><div class="line">    case ABC:</div><div class="line">        statements;</div><div class="line">        /* falls through */</div><div class="line">    case DEF:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">    case XYZ:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">    default:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>每当一个case顺着往下执行时(因为没有break语句)，通常应在break语句的位置添加注释。上面的示例代码中就包含注释/<em> falls through </em>/。   ### 9 try-catch语句(try-catch Statements) 一个try-catch语句应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">    statements;</div><div class="line">&#125; catch (ExceptionClass e) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>一个try-catch语句后面也可能跟着一个finally语句，不论try代码块是否顺利执行完，它都会被执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">statements;</div><div class="line">&#125; catch (ExceptionClass e) &#123;</div><div class="line">    statements;</div><div class="line">&#125; finally &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="代码范例-Code-Examples"><a href="#代码范例-Code-Examples" class="headerlink" title="代码范例(Code Examples)"></a>代码范例(Code Examples)</h3><h4 id="Java源文件范例-Java-Source-File-Example"><a href="#Java源文件范例-Java-Source-File-Example" class="headerlink" title="Java源文件范例(Java Source File Example)"></a>Java源文件范例(Java Source File Example)</h4><p>下面的例子，展示了如何合理布局一个包含单一公共类的Java源程序。接口的布局与其相似。更多信息参见”类和接口声明”以及”文挡注释”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">package java.blah;</div><div class="line">import java.blah.blahdy.BlahBlah;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Class description goes here.</div><div class="line"> *</div><div class="line"> * @version 1.82 18 Mar 1999</div><div class="line"> * @author Firstname Lastname</div><div class="line"> */</div><div class="line">public class Blah extends SomeClass &#123;</div><div class="line">	/* A class implementation comment can go here. */</div><div class="line"></div><div class="line">	/* classVar1 documentation comment */</div><div class="line">	public static int classVar1;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * classVar2 documentation comment that happens to be more than one line long</div><div class="line">	 */</div><div class="line">	private static Object classVar2;</div><div class="line">	</div><div class="line">	/* instanceVar1 documentation comment */</div><div class="line">	public Object instanceVar1;</div><div class="line">	</div><div class="line">	/* instanceVar2 documentation comment */</div><div class="line">	protected int instanceVar2;</div><div class="line">	</div><div class="line">	/* instanceVar3 documentation comment */</div><div class="line">	private Object[] instanceVar3;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * …constructor Blah documentation comment…</div><div class="line">	 */</div><div class="line">	public Blah() &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * …method doSomething documentation comment…</div><div class="line">	 */</div><div class="line">	public void doSomething() &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * …method doSomethingElse documentation comment…</div><div class="line">	 * @param someParam description</div><div class="line">	 */</div><div class="line">	public void doSomethingElse(Object someParam) &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-      
-        <categories>
-            
-            <category> Code </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 规范 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Android文件命名规范]]></title>
       <url>http://fingerart.me/2015/09/03/Android%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/</url>
       <content type="html"><![CDATA[<p>以下基于 <a href="/2015/09/03/%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">开发代码规范</a></p>
@@ -1074,6 +924,181 @@
         <tags>
             
             <tag> Android </tag>
+            
+            <tag> 规范 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[开发代码规范]]></title>
+      <url>http://fingerart.me/2015/09/03/%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</url>
+      <content type="html"><![CDATA[<h3 id="命名规范-Naming-Conventions"><a href="#命名规范-Naming-Conventions" class="headerlink" title="命名规范(Naming Conventions)"></a>命名规范(Naming Conventions)</h3><p>命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>识符类型</th>
+<th>命名规则</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>包(Packages)</td>
+<td>一个唯一包名的前缀总是全部小写的ASCII字母并且是一个顶级域名，通常是com，edu，gov，mil，net，org，或1981年ISO 3166标准所指定的标识国家的英文双字符代码。包名的后续部分根据不同机构各自内部的命名规范而不尽相同。这类命名规范可能以特定目录名的组成来区分部门(department)，项目(project)，机器(machine)，或注册名(login names)。</td>
+<td>com.mobogenie.view<br>com.mobogenie.quicktime.v2</td>
+</tr>
+<tr>
+<td>类(Classes)</td>
+<td>命名规则：类名是个一名词，采用大小写混合的方式，每个单词的首字母大写。尽量使你的类名简洁而富于描述。使用完整单词，避免缩写词(除非该缩写词被更广泛使用，像URL，HTML)</td>
+<td>class Raster;<br>class ImageSprite;</td>
+</tr>
+<tr>
+<td>接口(Interfaces)</td>
+<td>命名规则：大小写规则与类名相似</td>
+<td>interface RasterDelegate;<br>interface Storing;</td>
+</tr>
+<tr>
+<td>方法(Methods)</td>
+<td>方法名是一个动词，采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。</td>
+<td>run();<br>runFast();<br>getBackground();</td>
+</tr>
+<tr>
+<td>变量(Variables)</td>
+<td>除了变量名外，所有实例，包括类，类常量，均采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。变量名不应以下划线或美元符号开头，尽管这在语法上是允许的。变量名应简短且富于描述。变量名的选用应该易于记忆，即，能够指出其用途。尽量避免单个字符的变量名，除非是一次性的临时变量。临时变量通常被取名为i，j，k，m和n，它们一般用于整型；c，d，e，它们一般用于字符型。</td>
+<td>成员变量 String mName;<br>局部变量 String name;<br>静态变量 static String sName;</td>
+</tr>
+<tr>
+<td>实例变量(InstanceVariables)</td>
+<td>大小写规则和变量名相似,按驼峰命名法，成员变量以m开头，局部变量按普通方式生成</td>
+<td>类的实例变量遵循以上规则(按照变量命名规则)</td>
+</tr>
+<tr>
+<td>常量(Constants)</td>
+<td>类常量和ANSI常量的声明，应该全部大写，单词间用下划线隔开。(尽量避免ANSI常量，容易引起错误)</td>
+<td>static final int MIN_WIDTH = 4;<br>static final int MAX_WIDTH = 999;<br>static final int GET_THE_CPU;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件组织-File-Organization"><a href="#文件组织-File-Organization" class="headerlink" title="文件组织(File Organization)"></a>文件组织(File Organization)</h3><h4 id="Java源文件-Java-Source-Files"><a href="#Java源文件-Java-Source-Files" class="headerlink" title="Java源文件(Java Source Files)"></a>Java源文件(Java Source Files)</h4><p>每个Java源文件都包含一个单一的公共类或接口。若私有类和接口与一个公共类相关联，可以将它们和公共类放入同一个源文件。公共类必须是这个文件中的第一个类或接口。</p>
+<p>Java源文件还遵循以下规则：</p>
+<ul>
+<li>开头注释（参见”开头注释”）</li>
+<li>包和引入语句（参见”包和引入语句”）</li>
+<li>类和接口声明（参见”类和接口声明”）</li>
+</ul>
+<h4 id="开头注释-Beginning-Comments"><a href="#开头注释-Beginning-Comments" class="headerlink" title="开头注释(Beginning Comments)"></a>开头注释(Beginning Comments)</h4><p>所有的源文件都应该在开头有一个注释，其中列出类名、版本信息、日期和版权声明.</p>
+<h4 id="包和引入语句-Package-and-Import-Statements"><a href="#包和引入语句-Package-and-Import-Statements" class="headerlink" title="包和引入语句(Package and Import Statements)"></a>包和引入语句(Package and Import Statements)</h4><p>在多数Java源文件中，第一个非注释行是包语句。在它之后可以跟引入语句。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> java.awt;</div><div class="line"><span class="keyword">import</span> java.awt.peer.CanvasPeer;</div></pre></td></tr></table></figure>
+<h4 id="类和接口声明-Class-and-Interface-Declarations"><a href="#类和接口声明-Class-and-Interface-Declarations" class="headerlink" title="类和接口声明(Class and Interface Declarations)"></a>类和接口声明(Class and Interface Declarations)</h4><p>下表描述了类和接口声明的各个部分以及它们出现的先后次序。参见“Java源文件范例”中一个包含注释的例子。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>类/接口声明的各部分</th>
+<th>注解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>类/接口文档注释(/*……/)</td>
+<td>该注释中所需包含的信息，参见”文档注释”</td>
+</tr>
+<tr>
+<td></td>
+<td>类或接口的声明</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>类/接口实现的注释(/……/)如果有必要的话</td>
+<td>该注释应包含任何有关整个类或接口的信息，而这些信息又不适合作为类/接口文档注释。</td>
+</tr>
+<tr>
+<td></td>
+<td>类的(静态)变量</td>
+<td>首先是类的公共变量，随后是保护变量，再后是包一级别的变量(没有访问修饰符，access modifier)，最后是私有变量。</td>
+</tr>
+<tr>
+<td></td>
+<td>实例变量</td>
+<td>首先是公共级别的，随后是保护级别的，再后是包一级别的(没有访问修饰符)，最后是私有级别的。</td>
+</tr>
+<tr>
+<td></td>
+<td>构造器</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>方法</td>
+<td>这些方法应该按功能，而非作用域或访问权限，分组。例如，一个私有的类方法可以置于两个公有的实例方法之间。其目的是为了更便于阅读和理解代码。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="编程惯例-Programming-Practices"><a href="#编程惯例-Programming-Practices" class="headerlink" title="编程惯例(Programming Practices)"></a>编程惯例(Programming Practices)</h3><h4 id="提供对实例以及类变量的访问控制-Providing-Access-to-Instance-and-Class-Variables"><a href="#提供对实例以及类变量的访问控制-Providing-Access-to-Instance-and-Class-Variables" class="headerlink" title="提供对实例以及类变量的访问控制(Providing Access to Instance and Class Variables)"></a>提供对实例以及类变量的访问控制(Providing Access to Instance and Class Variables)</h4><p>若没有足够理由，不要把实例或类变量声明为公有。通常，实例变量无需显式的设置(set)和获取(gotten)，通常这作为方法调用的边缘效应 (side effect)而产生。</p>
+<p>一个具有公有实例变量的恰当例子，是类仅作为数据结构，没有行为。亦即，若你要使用一个结构(struct)而非一个类(如果java支持结构的话)，那么把类的实例变量声明为公有是合适的。</p>
+<h4 id="引用类变量和类方法-Referring-to-Class-Variables-and-Methods"><a href="#引用类变量和类方法-Referring-to-Class-Variables-and-Methods" class="headerlink" title="引用类变量和类方法(Referring to Class Variables and Methods)"></a>引用类变量和类方法(Referring to Class Variables and Methods)</h4><p>避免用一个对象访问一个类的静态变量和方法。应该用类名替代。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">classMethod();             <span class="comment">//OK</span></div><div class="line">AClass.classMethod();      <span class="comment">//OK</span></div><div class="line">anObject.classMethod();    <span class="comment">//AVOID!</span></div></pre></td></tr></table></figure>
+<h4 id="常量-Constants"><a href="#常量-Constants" class="headerlink" title="常量(Constants)"></a>常量(Constants)</h4><p>位于for循环中作为计数器值的数字常量，除了-1,0和1之外，不应被直接写入代码。</p>
+<h4 id="变量赋值-Variable-Assignments"><a href="#变量赋值-Variable-Assignments" class="headerlink" title="变量赋值(Variable Assignments)"></a>变量赋值(Variable Assignments)</h4><p>避免在一个语句中给多个变量赋相同的值。它很难读懂。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fooBar.fChar = barFoo.lchar = &apos;c&apos;; // AVOID!</div></pre></td></tr></table></figure></p>
+<p>不要将赋值运算符用在容易与相等关系运算符混淆的地方。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (c++ = d++) &#123; <span class="comment">// AVOID! (Java disallows)</span></div><div class="line">    <span class="comment">//some code...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//应该写成</span></div><div class="line"><span class="keyword">if</span> ((c++ = d++) != <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">//some code...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//不要使用内嵌(embedded)赋值运算符试图提高运行时的效率，这是编译器的工作。例如：</span></div><div class="line"></div><div class="line">d = (a = b + c) + r;<span class="comment">// AVOID!</span></div><div class="line"></div><div class="line"><span class="comment">//应该写成</span></div><div class="line">a = b + c;</div><div class="line">d = a + r;</div></pre></td></tr></table></figure>
+<h4 id="其它惯例-Miscellaneous-Practices"><a href="#其它惯例-Miscellaneous-Practices" class="headerlink" title="其它惯例(Miscellaneous Practices)"></a>其它惯例(Miscellaneous Practices)</h4><ul>
+<li>圆括号(Parentheses)</li>
+</ul>
+<p>一般而言，在含有多种运算符的表达式中使用圆括号来避免运算符优先级问题，是个好方法。即使运算符的优先级对你而言可能很清楚，但对其他人未必如此。你不能假设别的程序员和你一样清楚运算符的优先级。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (a == b &amp;&amp; c == d) // AVOID!</div><div class="line"></div><div class="line">if ((a == b) &amp;&amp; (c == d)) // RIGHT</div></pre></td></tr></table></figure>
+<ul>
+<li>返回值(Returning Values)</li>
+</ul>
+<p>设法让你的程序结构符合目的。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if (booleanExpression) &#123;</div><div class="line">    return true;</div><div class="line">&#125; else &#123;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//应该代之以如下方法：</div><div class="line">return booleanExpression;</div><div class="line"></div><div class="line">//类似地：</div><div class="line">if (condition) &#123;</div><div class="line">    return x;</div><div class="line">&#125;</div><div class="line">return y;</div><div class="line"></div><div class="line">//应该写做：</div><div class="line">return (condition ? x : y);</div></pre></td></tr></table></figure>
+<ul>
+<li>条件运算符”?”前的表达式(Expressions before ‘?’ in the Conditional Operator)</li>
+</ul>
+<p>如果一个包含二元运算符的表达式出现在三元运算符” ? : “的”?”之前，那么应该给表达式添上一对圆括号。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(x &gt;= 0) ? x : -x;</div></pre></td></tr></table></figure>
+<h3 id="语句-Statements"><a href="#语句-Statements" class="headerlink" title="语句(Statements)"></a>语句(Statements)</h3><h4 id="简单语句-Simple-Statements"><a href="#简单语句-Simple-Statements" class="headerlink" title="简单语句(Simple Statements)"></a>简单语句(Simple Statements)</h4><p>每行至多包含一条语句，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">argv++; // Correct</div><div class="line"></div><div class="line">argc--; // Correct</div><div class="line"></div><div class="line">argv++; argc--; // AVOID!</div></pre></td></tr></table></figure>
+<h4 id="复合语句-Compound-Statements"><a href="#复合语句-Compound-Statements" class="headerlink" title="复合语句(Compound Statements)"></a>复合语句(Compound Statements)</h4><p>复合语句是包含在大括号中的语句序列，形如”{ 语句 }”。例如下面各段。</p>
+<ul>
+<li>被括其中的语句应该较之复合语句缩进一个层次</li>
+<li>左大括号”{“应位于复合语句起始行的行尾；右大括号”}”应另起一行并与复合语句首行对齐。</li>
+<li>大括号可以被用于所有语句，包括单个语句，只要这些语句是诸如if-else或for控制结构的一部分。这样便于添加语句而无需担心由于忘了加括号而引入bug。</li>
+</ul>
+<h4 id="返回语句-return-Statements"><a href="#返回语句-return-Statements" class="headerlink" title="返回语句(return Statements)"></a>返回语句(return Statements)</h4><p>一个带返回值的return语句不使用小括号”()”，除非它们以某种方式使返回值更为显见。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">return;</div><div class="line">return myDisk.size();</div><div class="line">return (size ? size : defaultSize);</div></pre></td></tr></table></figure>
+<h4 id="if，if-else，if-else-if-else语句-if-if-else-if-else-if-else-Statements"><a href="#if，if-else，if-else-if-else语句-if-if-else-if-else-if-else-Statements" class="headerlink" title="if，if-else，if else-if else语句(if, if-else, if else-if else Statements)"></a>if，if-else，if else-if else语句(if, if-else, if else-if else Statements)</h4><p>if-else语句应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else&#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：if语句总是用”{“和”}”括起来，避免使用如下容易引起错误的格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if (condition) //AVOID! THIS OMITS THE BRACES &#123;&#125;!</div><div class="line">    statement;</div></pre></td></tr></table></figure>
+<h4 id="for语句-for-Statements"><a href="#for语句-for-Statements" class="headerlink" title="for语句(for Statements)"></a>for语句(for Statements)</h4><p>一个for语句应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (initialization; condition; update) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个空的for语句(所有工作都在初始化，条件判断，更新子句中完成)应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for (initialization; condition; update);</div></pre></td></tr></table></figure>
+<p>当在for语句的初始化或更新子句中使用逗号时，避免因使用三个以上变量，而导致复杂度提高。若需要，可以在for循环之前(为初始化子句)或for循环末尾(为更新子句)使用单独的语句。 ### 6 while语句(while Statements) 一个while语句应该具有如下格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个空的while语句应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">while (condition);</div><div class="line">  ### 7 do-while语句(do-while Statements) 一个do-while语句应该具有如下格式：</div><div class="line">do &#123;</div><div class="line">    statements;</div><div class="line">&#125; while (condition);</div><div class="line">  ### 8 switch语句(switch Statements) 一个switch语句应该具有如下格式：</div><div class="line">switch (condition) &#123;</div><div class="line">    case ABC:</div><div class="line">        statements;</div><div class="line">        /* falls through */</div><div class="line">    case DEF:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">    case XYZ:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">    default:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每当一个case顺着往下执行时(因为没有break语句)，通常应在break语句的位置添加注释。上面的示例代码中就包含注释/<em> falls through </em>/。   ### 9 try-catch语句(try-catch Statements) 一个try-catch语句应该具有如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">    statements;</div><div class="line">&#125; catch (ExceptionClass e) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个try-catch语句后面也可能跟着一个finally语句，不论try代码块是否顺利执行完，它都会被执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">statements;</div><div class="line">&#125; catch (ExceptionClass e) &#123;</div><div class="line">    statements;</div><div class="line">&#125; finally &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="代码范例-Code-Examples"><a href="#代码范例-Code-Examples" class="headerlink" title="代码范例(Code Examples)"></a>代码范例(Code Examples)</h3><h4 id="Java源文件范例-Java-Source-File-Example"><a href="#Java源文件范例-Java-Source-File-Example" class="headerlink" title="Java源文件范例(Java Source File Example)"></a>Java源文件范例(Java Source File Example)</h4><p>下面的例子，展示了如何合理布局一个包含单一公共类的Java源程序。接口的布局与其相似。更多信息参见”类和接口声明”以及”文挡注释”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">package java.blah;</div><div class="line">import java.blah.blahdy.BlahBlah;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Class description goes here.</div><div class="line"> *</div><div class="line"> * @version 1.82 18 Mar 1999</div><div class="line"> * @author Firstname Lastname</div><div class="line"> */</div><div class="line">public class Blah extends SomeClass &#123;</div><div class="line">	/* A class implementation comment can go here. */</div><div class="line"></div><div class="line">	/* classVar1 documentation comment */</div><div class="line">	public static int classVar1;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * classVar2 documentation comment that happens to be more than one line long</div><div class="line">	 */</div><div class="line">	private static Object classVar2;</div><div class="line">	</div><div class="line">	/* instanceVar1 documentation comment */</div><div class="line">	public Object instanceVar1;</div><div class="line">	</div><div class="line">	/* instanceVar2 documentation comment */</div><div class="line">	protected int instanceVar2;</div><div class="line">	</div><div class="line">	/* instanceVar3 documentation comment */</div><div class="line">	private Object[] instanceVar3;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * …constructor Blah documentation comment…</div><div class="line">	 */</div><div class="line">	public Blah() &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * …method doSomething documentation comment…</div><div class="line">	 */</div><div class="line">	public void doSomething() &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * …method doSomethingElse documentation comment…</div><div class="line">	 * @param someParam description</div><div class="line">	 */</div><div class="line">	public void doSomethingElse(Object someParam) &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> Code </category>
+            
+        </categories>
+        
+        
+        <tags>
             
             <tag> 规范 </tag>
             

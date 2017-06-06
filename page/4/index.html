@@ -293,6 +293,129 @@
             
               
                 
+                <a class="post-title-link" href="/2015/07/02/装饰设计模式-与-继承-的区别/" itemprop="url">
+                  装饰设计模式 与 继承 的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-02T13:26:39+08:00" content="2015-07-02">
+              2015-07-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/02/装饰设计模式-与-继承-的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/装饰设计模式-与-继承-的区别/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * MyReader</div><div class="line"> * 	|--MyTextReader</div><div class="line"> * 		|--MyBufferedTextReader</div><div class="line"> * 	|--MyMediaReader</div><div class="line"> * 		|--MyBufferedMediaReader</div><div class="line"> * 	|--MyOtherReader</div><div class="line"> * 		|--MyBufferedOtherReader</div><div class="line"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyBuffer</span> </span>&#123;</div><div class="line">	MyBuffer(MyTextReader mtr) &#123;</div><div class="line">	&#125;</div><div class="line">	MyBuffer(MyMediaReader mmr) &#123;</div><div class="line">	&#125;</div><div class="line">	MyBuffer(MyOtherReader mor) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面类的扩展性很差<br>找到其参数的共同类型。通过多态的形式。可以提高扩展性。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/02/装饰设计模式-与-继承-的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/07/02/装饰设计模式/" itemprop="url">
                   装饰设计模式
                 </a>
@@ -1394,130 +1517,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/" itemprop="url">
-                  关于thinkphp-3.2.2在sae下部署的空白页及模块访问404问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-22T11:55:01+08:00" content="2015-01-22">
-              2015-01-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>刚做好的项目部署至SAE上面，出现了两个问题，这里分享给大家，遇到同样问题的朋友可以参考快速解决。<br>首先出现了空白页，有朋友说打开SAE上面的memcache即可解决；搞定后，访问正常的模块出现404 not found，真是奇怪了，明明跳转了，但是怎么会404，后来查看了SAE上面另一个项目，看看有什么区别。将config.yaml文件加上</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">handle:</span></div><div class="line"><span class="attr"> - rewrite:</span> if(! is_file() &amp;&amp; path ~ <span class="string">"^(.*)$"</span>) goto <span class="string">"/index.php/$1"</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1563,7 +1562,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

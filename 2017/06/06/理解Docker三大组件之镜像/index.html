@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="FingerArt, 指尖上的艺术" />
+  <meta name="keywords" content="Docker," />
 
 
 
@@ -86,15 +86,22 @@
 
 
 
-<meta name="description" content="George&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="指尖上的艺术">
-<meta property="og:url" content="http://fingerart.me/archives/2016/04/index.html">
+<meta name="description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+
+操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解Docker三大组件之镜像">
+<meta property="og:url" content="http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="George&apos;s blog">
+<meta property="og:description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+
+操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
+<meta property="og:updated_time" content="2017-06-06T16:36:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="指尖上的艺术">
-<meta name="twitter:description" content="George&apos;s blog">
+<meta name="twitter:title" content="理解Docker三大组件之镜像">
+<meta name="twitter:description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+
+操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
 
 
 
@@ -115,10 +122,10 @@
 
 
 
-  <link rel="canonical" href="http://fingerart.me/archives/2016/04/"/>
+  <link rel="canonical" href="http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/"/>
 
 
-  <title> 归档 | 指尖上的艺术 </title>
+  <title> 理解Docker三大组件之镜像 | 指尖上的艺术 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -158,7 +165,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -269,65 +276,158 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-        
-      好! 目前共计 69 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                理解Docker三大组件之镜像
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-06T23:40:55+08:00" content="2017-06-06">
+              2017-06-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/06/理解Docker三大组件之镜像/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/06/理解Docker三大组件之镜像/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
+<blockquote>
+<p>操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root 文件系统。</p>
+</blockquote>
+<h2 id="镜像的分层存储"><a href="#镜像的分层存储" class="headerlink" title="镜像的分层存储"></a>镜像的分层存储</h2><p>因为完整的镜像体积过于庞大，Docker你用Union FS技术将镜像进行分层存储；与ISO不同，Docker镜像是一个虚拟概念，由一组文件系统组成或者说是多层文件系统联合组成。</p>
+<p>镜像是一层一层构建的，前一层是后一层的基础，如果删除前一层，仅仅是标记为删除，在容器中看不见，但还是会存在镜像中，所以构建镜像时需额外小心。</p>
+<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt;</code></p>
+<ul>
+<li>Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</li>
+<li>仓库名：&lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。</li>
+</ul>
+<h2 id="利用-commit-理解镜像构成"><a href="#利用-commit-理解镜像构成" class="headerlink" title="利用 commit 理解镜像构成"></a>利用 commit 理解镜像构成</h2>
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag">#Docker</a>
+          
         </div>
       
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/04/mac下在线安装Visual-Studio-无法连接到网络/" rel="next" title="解决mac下在线安装Visual Studio 无法连接到网络">
+                <i class="fa fa-chevron-left"></i> 解决mac下在线安装Visual Studio 无法连接到网络
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/18/Hexo博客的搭建记录/" itemprop="url">
-              
-                <span itemprop="name">Hexo博客的搭建记录</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-18T14:33:26+08:00"
-              content="2016-04-18" >
-          04-18
-        </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/06/06/理解Docker三大组件之镜像/"
+     data-title="理解Docker三大组件之镜像"
+     data-content=""
+     data-url="http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  </section>
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-  
-
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -335,6 +435,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/06/06/理解Docker三大组件之镜像/"
+           data-title="理解Docker三大组件之镜像" data-url="http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -354,8 +462,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/George.png"
@@ -432,6 +549,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像的分层存储"><span class="nav-number">2.</span> <span class="nav-text">镜像的分层存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取镜像"><span class="nav-number">3.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用-commit-理解镜像构成"><span class="nav-number">4.</span> <span class="nav-text">利用 commit 理解镜像构成</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -535,11 +663,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
 
 
   
