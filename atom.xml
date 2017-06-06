@@ -48,18 +48,18 @@
     <link href="http://fingerart.me/2017/05/25/Docker-%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
     <id>http://fingerart.me/2017/05/25/Docker-新手入门/</id>
     <published>2017-05-24T16:07:48.000Z</published>
-    <updated>2017-05-24T16:57:14.000Z</updated>
+    <updated>2017-06-06T15:25:14.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://fingerart.qiniudn.com/image/docker.png" alt=""></p>
 <p>该文章以Mac为例。</p>
-<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><p>请至Docker官网下载Mac版：<a href="https://www.docker.com/docker-mac" target="_blank" rel="external">https://www.docker.com/docker-mac</a></p>
+<h2 id="一、创建你的第一个Docker容器"><a href="#一、创建你的第一个Docker容器" class="headerlink" title="一、创建你的第一个Docker容器"></a>一、创建你的第一个Docker容器</h2><h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><p>请至Docker官网下载Mac版：<a href="https://www.docker.com/docker-mac" target="_blank" rel="external">https://www.docker.com/docker-mac</a></p>
 <a id="more"></a>
-<h2 id="二、创建你的第一个Web服务器"><a href="#二、创建你的第一个Web服务器" class="headerlink" title="二、创建你的第一个Web服务器"></a>二、创建你的第一个Web服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Mac:~ fingerart$ docker run <span class="_">-d</span> -p 80:80 --name webserver nginx</div><div class="line"></div><div class="line">Unable to find image <span class="string">'nginx:latest'</span> locally</div><div class="line">latest: Pulling from library/nginx</div><div class="line">ff3d52d8f55f: Pull complete</div><div class="line">b05436c68d6a: Pull complete</div><div class="line">961dd3f5d836: Pull complete</div><div class="line">Digest: sha256:12d30ce421ad530494d588f87b2328ddc3cae666e77ea1ae5ac3a6661e52cde6</div><div class="line">Status: Downloaded newer image <span class="keyword">for</span> nginx:latest</div><div class="line">97503a2fbca4c2796975085c7d6e853243522c974803e23805e6d301787e9133</div></pre></td></tr></table></figure>
-<p>因为是第一次使用，Docker会从Docker Hub拉取Nginx，拉取完成后你可以在浏览器访问<code>localhost</code>即可访问到Nginx的欢迎页。<br>注意，如果你有程序占用了80端口，请先关闭。</p>
+<h3 id="1-2-创建Web服务器"><a href="#1-2-创建Web服务器" class="headerlink" title="1.2 创建Web服务器"></a>1.2 创建Web服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Mac:~ fingerart$ docker run <span class="_">-d</span> -p 80:80 --name webserver nginx</div><div class="line"></div><div class="line">Unable to find image <span class="string">'nginx:latest'</span> locally</div><div class="line">latest: Pulling from library/nginx</div><div class="line">ff3d52d8f55f: Pull complete</div><div class="line">b05436c68d6a: Pull complete</div><div class="line">961dd3f5d836: Pull complete</div><div class="line">Digest: sha256:12d30ce421ad530494d588f87b2328ddc3cae666e77ea1ae5ac3a6661e52cde6</div><div class="line">Status: Downloaded newer image <span class="keyword">for</span> nginx:latest</div><div class="line">97503a2fbca4c2796975085c7d6e853243522c974803e23805e6d301787e9133</div></pre></td></tr></table></figure>
+<p>因为是第一次使用，Docker会从Docker Hub拉取Nginx，拉取完成后你可以在浏览器访问 <code>http://localhost</code> 即可访问到Nginx的欢迎页。<br>注意，如果你有程序占用了80端口，请先关闭。</p>
 <p>运行 <code>docker ps</code> 你会看到正在运行的Web服务器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                NAMES</div><div class="line">97503a2fbca4        nginx               <span class="string">"nginx -g 'daemon ..."</span>   About a minute ago   Up About a minute   0.0.0.0:80-&gt;80/tcp   webserver</div></pre></td></tr></table></figure>
 <p><img src="http://fingerart.qiniudn.com/image/docker-preview-nginx.png" alt=""></p>
-<h3 id="三、操作"><a href="#三、操作" class="headerlink" title="三、操作"></a>三、操作</h3><ul>
+<h3 id="1-3-操作"><a href="#1-3-操作" class="headerlink" title="1.3 操作"></a>1.3 操作</h3><ul>
 <li>开启容器: <code>docker start webserver</code></li>
 <li>停止容器: <code>docker stop webwerver</code></li>
 <li>查看所有容器: <code>docker ps -a</code></li>
@@ -69,13 +69,13 @@
 <blockquote>
 <p>更多信息请查阅官方文档 <a href="https://docs.docker.com/docker-for-mac" target="_blank" rel="external">https://docs.docker.com/docker-for-mac</a></p>
 </blockquote>
-]]></content>
+<h2 id="二、深入理解Docker"><a href="#二、深入理解Docker" class="headerlink" title="二、深入理解Docker"></a>二、深入理解Docker</h2><h3 id="2-1-底层实现"><a href="#2-1-底层实现" class="headerlink" title="2.1 底层实现"></a>2.1 底层实现</h3>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://fingerart.qiniudn.com/image/docker.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;该文章以Mac为例。&lt;/p&gt;
-&lt;h2 id=&quot;一、安装&quot;&gt;&lt;a href=&quot;#一、安装&quot; class=&quot;headerlink&quot; title=&quot;一、安装&quot;&gt;&lt;/a&gt;一、安装&lt;/h2&gt;&lt;p&gt;请至Docker官网下载Mac版：&lt;a href=&quot;https://www.docker.com/docker-mac&quot;&gt;https://www.docker.com/docker-mac&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一、创建你的第一个Docker容器&quot;&gt;&lt;a href=&quot;#一、创建你的第一个Docker容器&quot; class=&quot;headerlink&quot; title=&quot;一、创建你的第一个Docker容器&quot;&gt;&lt;/a&gt;一、创建你的第一个Docker容器&lt;/h2&gt;&lt;h3 id=&quot;1-1-安装&quot;&gt;&lt;a href=&quot;#1-1-安装&quot; class=&quot;headerlink&quot; title=&quot;1.1 安装&quot;&gt;&lt;/a&gt;1.1 安装&lt;/h3&gt;&lt;p&gt;请至Docker官网下载Mac版：&lt;a href=&quot;https://www.docker.com/docker-mac&quot;&gt;https://www.docker.com/docker-mac&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
