@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fingerart.me/"/>
-  <updated>2017-06-06T16:36:52.000Z</updated>
+  <updated>2017-06-07T16:56:42.000Z</updated>
   <id>http://fingerart.me/</id>
   
   <author>
@@ -16,11 +16,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>“使用 Dockerfile 定制镜像”</title>
+    <link href="http://fingerart.me/2017/06/08/%E4%BD%BF%E7%94%A8%20Dockerfile%20%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/"/>
+    <id>http://fingerart.me/2017/06/08/使用 Dockerfile 定制镜像/</id>
+    <published>2017-06-07T16:54:59.000Z</published>
+    <updated>2017-06-07T16:56:42.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Docker" scheme="http://fingerart.me/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>理解Docker三大组件之镜像</title>
     <link href="http://fingerart.me/2017/06/06/%E7%90%86%E8%A7%A3Docker%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%95%9C%E5%83%8F/"/>
     <id>http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/</id>
     <published>2017-06-06T15:40:55.000Z</published>
-    <updated>2017-06-06T16:36:52.000Z</updated>
+    <updated>2017-06-07T16:52:51.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
 <blockquote>
@@ -33,7 +49,33 @@
 <li>Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</li>
 <li>仓库名：&lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。</li>
 </ul>
-<h2 id="利用-commit-理解镜像构成"><a href="#利用-commit-理解镜像构成" class="headerlink" title="利用 commit 理解镜像构成"></a>利用 commit 理解镜像构成</h2>]]></content>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker pull nginx</div></pre></td></tr></table></figure>
+<h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><p>我们现在可以通过创建一个容器并运行镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -it --rm nginx bash</div></pre></td></tr></table></figure>
+<ul>
+<li>-i 交互式操作</li>
+<li>-t 终端</li>
+<li>–rm 退出容器后，自动删除该容器</li>
+</ul>
+<h2 id="利用-commit-理解镜像构成"><a href="#利用-commit-理解镜像构成" class="headerlink" title="利用 commit 理解镜像构成"></a>利用 commit 理解镜像构成</h2><blockquote>
+<p>镜像是容器的基础，每次执行 docker run 的时候都会指定哪个镜像作为容器运行的基础。</p>
+</blockquote>
+<p>以nginx镜像创建一个webserver的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --name webserver <span class="_">-d</span> -p 80:80 nginx</div></pre></td></tr></table></figure>
+<p>进入已启动的webserver容器的交互式shell终端，修改nginx默认的index.html内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ docker <span class="built_in">exec</span> -it webserver bash</div><div class="line">root@3729b97e8226:/<span class="comment"># echo '&lt;h1&gt;Hello, Docker!&lt;/h1&gt;' &gt; /usr/share/nginx/html/index.html</span></div><div class="line">root@3729b97e8226:/<span class="comment"># exit</span></div><div class="line"><span class="built_in">exit</span></div></pre></td></tr></table></figure>
+<p>查看webserver容器当前存储层的改动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$ docker diff webserver</div><div class="line">C /root</div><div class="line">A /root/.bash_history</div><div class="line">C /run</div><div class="line">C /usr</div><div class="line">C /usr/share</div><div class="line">C /usr/share/nginx</div><div class="line">C /usr/share/nginx/html</div><div class="line">C /usr/share/nginx/html/index.html</div><div class="line">C /var</div><div class="line">C /var/cache</div><div class="line">C /var/cache/nginx</div><div class="line">A /var/cache/nginx/client_temp</div><div class="line">A /var/cache/nginx/fastcgi_temp</div><div class="line">A /var/cache/nginx/proxy_temp</div><div class="line">A /var/cache/nginx/scgi_temp</div><div class="line">A /var/cache/nginx/uwsgi_temp</div></pre></td></tr></table></figure>
+<p>此时，可以通过 <code>docker commit</code> 命令将webserver容器在原有镜像的基础上，再叠加容器存储层构建成一个新的镜像</p>
+<p><code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ docker commit \</div><div class="line">  --author <span class="string">"FingerArt &lt;george@chengguo.io&gt;"</span> \</div><div class="line">  --message <span class="string">"修改了默认网页"</span> \</div><div class="line">  webserver \</div><div class="line">  nginx:v2</div><div class="line">sha256:07e33465974800ce65751acc279adc6ed2dc5ed4e0838f8b86f0c87aa1795214</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 可查看到生成的 nginx:v2 镜像</span></div><div class="line">$ docker images nginx</div><div class="line"></div><div class="line"><span class="comment"># 查看 nginx:v2 相比 nginx:latest 历史记录</span></div><div class="line">$ docker <span class="built_in">history</span> nginx:v2</div></pre></td></tr></table></figure>
+<p>此时你可以通过 <code>docker run</code> 来创建容器。</p>
+<h2 id="慎用-docker-commit"><a href="#慎用-docker-commit" class="headerlink" title="慎用 docker commit"></a>慎用 <code>docker commit</code></h2><p>前面通过 <code>docker diff webserver</code> 命令看到的信息中，出了改动了nginx的默认index.html文件外，还生成了一些缓存等文件， <code>docker commit</code> 进行了黑箱操作，生成了黑箱镜像，将不该添加的文件添加进了镜像中，如果删除上层的东西，却仍然存在镜像中，都将导致生成的镜像臃肿。<br>所以，除了一些特殊的场景，如黑客入侵保留现场等，都不要使用 <code>docker commit</code> 来制作镜像。</p>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。</p>
+</blockquote>
+]]></content>
     
     <summary type="html">
     
@@ -79,18 +121,18 @@
     <link href="http://fingerart.me/2017/05/25/Docker-%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/"/>
     <id>http://fingerart.me/2017/05/25/Docker-新手入门/</id>
     <published>2017-05-24T16:07:48.000Z</published>
-    <updated>2017-06-06T15:32:43.000Z</updated>
+    <updated>2017-06-07T16:52:36.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://fingerart.qiniudn.com/image/docker.png" alt=""></p>
 <p>该文章以Mac为例。</p>
-<h2 id="一、创建你的第一个Docker容器"><a href="#一、创建你的第一个Docker容器" class="headerlink" title="一、创建你的第一个Docker容器"></a>一、创建你的第一个Docker容器</h2><h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><p>请至Docker官网下载Mac版：<a href="https://www.docker.com/docker-mac" target="_blank" rel="external">https://www.docker.com/docker-mac</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>请至Docker官网下载Mac版：<a href="https://www.docker.com/docker-mac" target="_blank" rel="external">https://www.docker.com/docker-mac</a></p>
 <a id="more"></a>
-<h3 id="1-2-创建Web服务器"><a href="#1-2-创建Web服务器" class="headerlink" title="1.2 创建Web服务器"></a>1.2 创建Web服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Mac:~ fingerart$ docker run <span class="_">-d</span> -p 80:80 --name webserver nginx</div><div class="line"></div><div class="line">Unable to find image <span class="string">'nginx:latest'</span> locally</div><div class="line">latest: Pulling from library/nginx</div><div class="line">ff3d52d8f55f: Pull complete</div><div class="line">b05436c68d6a: Pull complete</div><div class="line">961dd3f5d836: Pull complete</div><div class="line">Digest: sha256:12d30ce421ad530494d588f87b2328ddc3cae666e77ea1ae5ac3a6661e52cde6</div><div class="line">Status: Downloaded newer image <span class="keyword">for</span> nginx:latest</div><div class="line">97503a2fbca4c2796975085c7d6e853243522c974803e23805e6d301787e9133</div></pre></td></tr></table></figure>
+<h2 id="创建Web服务器"><a href="#创建Web服务器" class="headerlink" title="创建Web服务器"></a>创建Web服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Mac:~ fingerart$ docker run <span class="_">-d</span> -p 80:80 --name webserver nginx</div><div class="line"></div><div class="line">Unable to find image <span class="string">'nginx:latest'</span> locally</div><div class="line">latest: Pulling from library/nginx</div><div class="line">ff3d52d8f55f: Pull complete</div><div class="line">b05436c68d6a: Pull complete</div><div class="line">961dd3f5d836: Pull complete</div><div class="line">Digest: sha256:12d30ce421ad530494d588f87b2328ddc3cae666e77ea1ae5ac3a6661e52cde6</div><div class="line">Status: Downloaded newer image <span class="keyword">for</span> nginx:latest</div><div class="line">97503a2fbca4c2796975085c7d6e853243522c974803e23805e6d301787e9133</div></pre></td></tr></table></figure>
 <p>因为是第一次使用，Docker会从Docker Hub拉取Nginx，拉取完成后你可以在浏览器访问 <code>http://localhost</code> 即可访问到Nginx的欢迎页。<br>注意，如果你有程序占用了80端口，请先关闭。</p>
 <p>运行 <code>docker ps</code> 你会看到正在运行的Web服务器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                NAMES</div><div class="line">97503a2fbca4        nginx               <span class="string">"nginx -g 'daemon ..."</span>   About a minute ago   Up About a minute   0.0.0.0:80-&gt;80/tcp   webserver</div></pre></td></tr></table></figure>
 <p><img src="http://fingerart.qiniudn.com/image/docker-preview-nginx.png" alt=""></p>
-<h3 id="1-3-操作"><a href="#1-3-操作" class="headerlink" title="1.3 操作"></a>1.3 操作</h3><ul>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ul>
 <li>开启容器: <code>docker start webserver</code></li>
 <li>停止容器: <code>docker stop webwerver</code></li>
 <li>查看所有容器: <code>docker ps -a</code></li>
@@ -99,14 +141,15 @@
 </ul>
 <blockquote>
 <p>更多信息请查阅官方文档 <a href="https://docs.docker.com/docker-for-mac" target="_blank" rel="external">https://docs.docker.com/docker-for-mac</a></p>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。</p>
 </blockquote>
-<h2 id="二、深入理解Docker"><a href="#二、深入理解Docker" class="headerlink" title="二、深入理解Docker"></a>二、深入理解Docker</h2><h3 id="2-1-底层实现"><a href="#2-1-底层实现" class="headerlink" title="2.1 底层实现"></a>2.1 底层实现</h3>]]></content>
+]]></content>
     
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://fingerart.qiniudn.com/image/docker.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;该文章以Mac为例。&lt;/p&gt;
-&lt;h2 id=&quot;一、创建你的第一个Docker容器&quot;&gt;&lt;a href=&quot;#一、创建你的第一个Docker容器&quot; class=&quot;headerlink&quot; title=&quot;一、创建你的第一个Docker容器&quot;&gt;&lt;/a&gt;一、创建你的第一个Docker容器&lt;/h2&gt;&lt;h3 id=&quot;1-1-安装&quot;&gt;&lt;a href=&quot;#1-1-安装&quot; class=&quot;headerlink&quot; title=&quot;1.1 安装&quot;&gt;&lt;/a&gt;1.1 安装&lt;/h3&gt;&lt;p&gt;请至Docker官网下载Mac版：&lt;a href=&quot;https://www.docker.com/docker-mac&quot;&gt;https://www.docker.com/docker-mac&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;请至Docker官网下载Mac版：&lt;a href=&quot;https://www.docker.com/docker-mac&quot;&gt;https://www.docker.com/docker-mac&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -754,39 +797,6 @@
       <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
     
       <category term="Android Studio" scheme="http://fingerart.me/tags/Android-Studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android studio快速修改包名</title>
-    <link href="http://fingerart.me/2016/02/27/android-studio%E5%BF%AB%E9%80%9F%E4%BF%AE%E6%94%B9%E5%8C%85%E5%90%8D/"/>
-    <id>http://fingerart.me/2016/02/27/android-studio快速修改包名/</id>
-    <published>2016-02-26T16:00:00.000Z</published>
-    <updated>2017-02-16T03:43:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>开始转向Android Studio了, 记得去年就已经学习AS了, 可是公司的项目是在eclipse上面构建的, 加上外包那边也是eclipse开发, 所以也不敢将它轻易的转过去.<br>一直在技术总监耳边说AS如何如何的好, 终于, 他要求我将这个项目转到AS上面去了.万分欣喜, 终于要告别eclipse了.<br>在eclipse上面修改包名是我遇到非常懊恼的一件事, 公司的APP需要给别的公司定制, 但是包名不能和我们的相同, 所以就得修改包名了. 选中包名然后rename-&gt;enter. 确实是被修改了, 可是eclipse在替换XML文件中自定义的View时, 却出现乱掉, 错位的情况.<br>编译成apk时却没有错误, 运行时就Crash, 最后只得去XML中去搜索, 然后手动改掉!<br>因为最初构建这个项目的人, 不知道怎么想的, 将子包名作为主包名来命名, 让我包名改的非常dt.</p>
-<p>现在用上AS了, 用它修改包名方便多了</p>
-<a id="more"></a>
-<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/320-1.png" alt=""></p>
-<p>去掉第二步的勾, 然后选择你要修改的包名, Shift + F6 rename!</p>
-<p><img src="http://77fzuw.com1.z0.glb.clouddn.com/320-2.png" alt=""></p>
-<p>最后修改build.gradle文件中的applicationId<br>这样就完成了!</p>
-<blockquote>
-<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你完全按照该博文的内容进行直接使用，你的一个回复即是对我的最大支持，如有任何疑问请留言。谢谢~~</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;开始转向Android Studio了, 记得去年就已经学习AS了, 可是公司的项目是在eclipse上面构建的, 加上外包那边也是eclipse开发, 所以也不敢将它轻易的转过去.&lt;br&gt;一直在技术总监耳边说AS如何如何的好, 终于, 他要求我将这个项目转到AS上面去了.万分欣喜, 终于要告别eclipse了.&lt;br&gt;在eclipse上面修改包名是我遇到非常懊恼的一件事, 公司的APP需要给别的公司定制, 但是包名不能和我们的相同, 所以就得修改包名了. 选中包名然后rename-&amp;gt;enter. 确实是被修改了, 可是eclipse在替换XML文件中自定义的View时, 却出现乱掉, 错位的情况.&lt;br&gt;编译成apk时却没有错误, 运行时就Crash, 最后只得去XML中去搜索, 然后手动改掉!&lt;br&gt;因为最初构建这个项目的人, 不知道怎么想的, 将子包名作为主包名来命名, 让我包名改的非常dt.&lt;/p&gt;
-&lt;p&gt;现在用上AS了, 用它修改包名方便多了&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Code" scheme="http://fingerart.me/categories/Code/"/>
-    
-    
-      <category term="Android" scheme="http://fingerart.me/tags/Android/"/>
     
   </entry>
   

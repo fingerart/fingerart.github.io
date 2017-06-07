@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Docker," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="1234567891011121314package other;public class ChangeableArgument &amp;#123;	/**	 * @param args	 */	public static void main(String[] args) &amp;#123;	    demo(1, 2, 3, 4);	&amp;#125;	public static void demo(int ..">
+<meta name="description" content="George&apos;s blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 可变参数">
-<meta property="og:url" content="http://fingerart.me/2014/10/18/Java-可变参数/index.html">
+<meta property="og:title" content="“使用 Dockerfile 定制镜像”">
+<meta property="og:url" content="http://fingerart.me/2017/06/08/使用 Dockerfile 定制镜像/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="1234567891011121314package other;public class ChangeableArgument &amp;#123;	/**	 * @param args	 */	public static void main(String[] args) &amp;#123;	    demo(1, 2, 3, 4);	&amp;#125;	public static void demo(int ..">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="George&apos;s blog">
+<meta property="og:updated_time" content="2017-06-07T16:56:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 可变参数">
-<meta name="twitter:description" content="1234567891011121314package other;public class ChangeableArgument &amp;#123;	/**	 * @param args	 */	public static void main(String[] args) &amp;#123;	    demo(1, 2, 3, 4);	&amp;#125;	public static void demo(int ..">
+<meta name="twitter:title" content="“使用 Dockerfile 定制镜像”">
+<meta name="twitter:description" content="George&apos;s blog">
 
 
 
@@ -116,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://fingerart.me/2014/10/18/Java-可变参数/"/>
+  <link rel="canonical" href="http://fingerart.me/2017/06/08/使用 Dockerfile 定制镜像/"/>
 
 
-  <title> Java 可变参数 | 指尖上的艺术 </title>
+  <title> “使用 Dockerfile 定制镜像” | 指尖上的艺术 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +291,7 @@
             
             
               
-                Java 可变参数
+                “使用 Dockerfile 定制镜像”
               
             
           </h1>
@@ -303,38 +303,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-10-18T10:00:29+08:00" content="2014-10-18">
-              2014-10-18
+            <time itemprop="dateCreated" datetime="2017-06-08T00:54:59+08:00" content="2017-06-08">
+              2017-06-08
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/10/18/Java-可变参数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/18/Java-可变参数/" itemprop="commentsCount"></span>
+                <a href="/2017/06/08/使用 Dockerfile 定制镜像/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/08/使用 Dockerfile 定制镜像/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -357,11 +338,7 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> other;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChangeableArgument</span> </span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	    demo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">demo</span><span class="params">(<span class="keyword">int</span> ...num)</span> </span>&#123;</div><div class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> v : num) &#123;</div><div class="line">	        System.out.println(v);</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
-</blockquote>
-
+        
       
     </div>
 
@@ -383,7 +360,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag">#Java</a>
+            <a href="/tags/Docker/" rel="tag">#Docker</a>
           
         </div>
       
@@ -392,17 +369,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/09/30/国庆已至/" rel="next" title="国庆已至">
-                <i class="fa fa-chevron-left"></i> 国庆已至
+              <a href="/2017/06/06/理解Docker三大组件之镜像/" rel="next" title="理解Docker三大组件之镜像">
+                <i class="fa fa-chevron-left"></i> 理解Docker三大组件之镜像
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2014/10/18/Java-枚举/" rel="prev" title="Java 枚举">
-                Java 枚举 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -417,10 +390,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/10/18/Java-可变参数/"
-     data-title="Java 可变参数"
+        <div class="ds-share flat" data-thread-key="2017/06/08/使用 Dockerfile 定制镜像/"
+     data-title="“使用 Dockerfile 定制镜像”"
      data-content=""
-     data-url="http://fingerart.me/2014/10/18/Java-可变参数/">
+     data-url="http://fingerart.me/2017/06/08/使用 Dockerfile 定制镜像/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -447,8 +420,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2014/10/18/Java-可变参数/"
-           data-title="Java 可变参数" data-url="http://fingerart.me/2014/10/18/Java-可变参数/">
+      <div class="ds-thread" data-thread-key="2017/06/08/使用 Dockerfile 定制镜像/"
+           data-title="“使用 Dockerfile 定制镜像”" data-url="http://fingerart.me/2017/06/08/使用 Dockerfile 定制镜像/">
       </div>
     
   </div>
