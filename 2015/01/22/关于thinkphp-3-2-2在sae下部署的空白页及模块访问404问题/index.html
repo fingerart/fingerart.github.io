@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="刚做好的项目部署至SAE上面，出现了两个问题，这里分享给大家，遇到同样问题的朋友可以参考快速解决。首先出现了空白页，有朋友说打开SAE上面的memcache即可解决；搞定后，访问正常的模块出现404 not found，真是奇怪了，明明跳转了，但是怎么会404，后来查看了SAE上面另一个项目，看看有什么区别。将config.yaml文件加上
-12handle: - rewrite: if(! is">
+<meta name="description" content="刚做好的项目部署至SAE上面，出现了两个问题，这里分享给大家，遇到同样问题的朋友可以参考快速解决。首先出现了空白页，有朋友说打开SAE上面的memcache即可解决；搞定后，访问正常的模块出现404 not found，真是奇怪了，明明跳转了，但是怎么会404，后来查看了SAE上面另一个项目，看看有什么区别。将config.yaml文件加上 12handle: - rewrite: if(! is">
+<meta name="keywords" content="Thinkphp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于thinkphp-3.2.2在sae下部署的空白页及模块访问404问题">
 <meta property="og:url" content="http://fingerart.me/2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="刚做好的项目部署至SAE上面，出现了两个问题，这里分享给大家，遇到同样问题的朋友可以参考快速解决。首先出现了空白页，有朋友说打开SAE上面的memcache即可解决；搞定后，访问正常的模块出现404 not found，真是奇怪了，明明跳转了，但是怎么会404，后来查看了SAE上面另一个项目，看看有什么区别。将config.yaml文件加上
-12handle: - rewrite: if(! is">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="刚做好的项目部署至SAE上面，出现了两个问题，这里分享给大家，遇到同样问题的朋友可以参考快速解决。首先出现了空白页，有朋友说打开SAE上面的memcache即可解决；搞定后，访问正常的模块出现404 not found，真是奇怪了，明明跳转了，但是怎么会404，后来查看了SAE上面另一个项目，看看有什么区别。将config.yaml文件加上 12handle: - rewrite: if(! is">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于thinkphp-3.2.2在sae下部署的空白页及模块访问404问题">
-<meta name="twitter:description" content="刚做好的项目部署至SAE上面，出现了两个问题，这里分享给大家，遇到同样问题的朋友可以参考快速解决。首先出现了空白页，有朋友说打开SAE上面的memcache即可解决；搞定后，访问正常的模块出现404 not found，真是奇怪了，明明跳转了，但是怎么会404，后来查看了SAE上面另一个项目，看看有什么区别。将config.yaml文件加上
-12handle: - rewrite: if(! is">
+<meta name="twitter:description" content="刚做好的项目部署至SAE上面，出现了两个问题，这里分享给大家，遇到同样问题的朋友可以参考快速解决。首先出现了空白页，有朋友说打开SAE上面的memcache即可解决；搞定后，访问正常的模块出现404 not found，真是奇怪了，明明跳转了，但是怎么会404，后来查看了SAE上面另一个项目，看看有什么区别。将config.yaml文件加上 12handle: - rewrite: if(! is">
 
 
 
@@ -334,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -361,7 +353,7 @@
 
       
         <p>刚做好的项目部署至SAE上面，出现了两个问题，这里分享给大家，遇到同样问题的朋友可以参考快速解决。<br>首先出现了空白页，有朋友说打开SAE上面的memcache即可解决；搞定后，访问正常的模块出现404 not found，真是奇怪了，明明跳转了，但是怎么会404，后来查看了SAE上面另一个项目，看看有什么区别。将config.yaml文件加上</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">handle:</span></div><div class="line"><span class="attr"> - rewrite:</span> if(! is_file() &amp;&amp; path ~ <span class="string">"^(.*)$"</span>) goto <span class="string">"/index.php/$1"</span></div></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">handle:</span></span><br><span class="line"><span class="attr"> - rewrite:</span> <span class="string">if(!</span> <span class="string">is_file()</span> <span class="string">&amp;&amp;</span> <span class="string">path</span> <span class="string">~</span> <span class="string">"^(.*)$"</span><span class="string">)</span> <span class="string">goto</span> <span class="string">"/index.php/$1"</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
 </blockquote>
@@ -421,25 +413,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/"
-     data-title="关于thinkphp-3.2.2在sae下部署的空白页及模块访问404问题"
-     data-content=""
-     data-url="http://fingerart.me/2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -450,10 +423,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/"
-           data-title="关于thinkphp-3.2.2在sae下部署的空白页及模块访问404问题" data-url="http://fingerart.me/2015/01/22/关于thinkphp-3-2-2在sae下部署的空白页及模块访问404问题/">
-      </div>
     
   </div>
 
@@ -497,7 +466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -514,7 +483,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -589,7 +558,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -691,30 +660,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

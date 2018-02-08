@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.
-1234567891011121314151617181920212223shell@sltechn:/ $ screenrecord --helpUsage: screenrecor">
+<meta name="description" content="之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮. 1234567891011121314151617181920212223shell@sltechn:/ $ screenrecord --helpUsage: screenrecor">
+<meta name="keywords" content="Android,ADB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Android的adb命令录制视频">
 <meta property="og:url" content="http://fingerart.me/2015/11/07/使用Android的adb命令录制视频/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.
-1234567891011121314151617181920212223shell@sltechn:/ $ screenrecord --helpUsage: screenrecor">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮. 1234567891011121314151617181920212223shell@sltechn:/ $ screenrecord --helpUsage: screenrecor">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Android的adb命令录制视频">
-<meta name="twitter:description" content="之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.
-1234567891011121314151617181920212223shell@sltechn:/ $ screenrecord --helpUsage: screenrecor">
+<meta name="twitter:description" content="之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮. 1234567891011121314151617181920212223shell@sltechn:/ $ screenrecord --helpUsage: screenrecor">
 
 
 
@@ -334,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/07/使用Android的adb命令录制视频/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/07/使用Android的adb命令录制视频/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -361,9 +353,9 @@
 
       
         <p>之前一直寻找录制的软件, 并且还有一些模拟器也有自带的, 其实在 Android4.4 Kitkat(API level 19)以上 就提供了这样的功能, 在Android Studio 中也有一个录屏的功能按钮.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">shell@sltechn:/ $ screenrecord --help</div><div class="line"></div><div class="line">Usage: screenrecord [options] &lt;filename&gt;</div><div class="line"></div><div class="line">Records the device&apos;s display to a .mp4 file.</div><div class="line"></div><div class="line">Options:</div><div class="line">--size WIDTHxHEIGHT</div><div class="line">    Set the video size, e.g. &quot;1280x720&quot;.  Default is the device&apos;s main</div><div class="line">    display resolution (if supported), 1280x720 if not.  For best results,</div><div class="line">    use a size supported by the AVC encoder.</div><div class="line">--bit-rate RATE</div><div class="line">    Set the video bit rate, in megabits per second.  Default 4Mbps.</div><div class="line">--time-limit TIME</div><div class="line">    Set the maximum recording time, in seconds.  Default / maximum is 180.</div><div class="line">--rotate</div><div class="line">    Rotate the output 90 degrees.</div><div class="line">--verbose</div><div class="line">    Display interesting information on stdout.</div><div class="line">--help</div><div class="line">    Show this message.</div><div class="line"></div><div class="line">Recording continues until Ctrl-C is hit or the time limit is reached.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">shell@sltechn:/ $ screenrecord --help</span><br><span class="line"></span><br><span class="line">Usage: screenrecord [options] &lt;filename&gt;</span><br><span class="line"></span><br><span class="line">Records the device&apos;s display to a .mp4 file.</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">--size WIDTHxHEIGHT</span><br><span class="line">    Set the video size, e.g. &quot;1280x720&quot;.  Default is the device&apos;s main</span><br><span class="line">    display resolution (if supported), 1280x720 if not.  For best results,</span><br><span class="line">    use a size supported by the AVC encoder.</span><br><span class="line">--bit-rate RATE</span><br><span class="line">    Set the video bit rate, in megabits per second.  Default 4Mbps.</span><br><span class="line">--time-limit TIME</span><br><span class="line">    Set the maximum recording time, in seconds.  Default / maximum is 180.</span><br><span class="line">--rotate</span><br><span class="line">    Rotate the output 90 degrees.</span><br><span class="line">--verbose</span><br><span class="line">    Display interesting information on stdout.</span><br><span class="line">--help</span><br><span class="line">    Show this message.</span><br><span class="line"></span><br><span class="line">Recording continues until Ctrl-C is hit or the time limit is reached.</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/* </div><div class="line"> * 录制</div><div class="line"> * 录制的格式是 .mp4</div><div class="line"> * Ctrl+C 提前结束视频录制</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 分辨率设置</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --size 1280*720 /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 比特率设置</div><div class="line"> * 默认是4Mbps, 比特率越大越清晰, 文件也会越大</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --bit-rate 2000000 /sdcard/FingerArt.mp4</div><div class="line"></div><div class="line">/* </div><div class="line"> * 录制时间设置</div><div class="line"> * 默认是180s, Ctrl+C提前停止录制</div><div class="line"> */</div><div class="line">shell@sltechn:/ $ screenrecord --time-limit 300 /sdcard/FingerArt.mp4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/* </span><br><span class="line"> * 录制</span><br><span class="line"> * 录制的格式是 .mp4</span><br><span class="line"> * Ctrl+C 提前结束视频录制</span><br><span class="line"> */</span><br><span class="line">shell@sltechn:/ $ screenrecord /sdcard/FingerArt.mp4</span><br><span class="line"></span><br><span class="line">/* </span><br><span class="line"> * 分辨率设置</span><br><span class="line"> */</span><br><span class="line">shell@sltechn:/ $ screenrecord --size 1280*720 /sdcard/FingerArt.mp4</span><br><span class="line"></span><br><span class="line">/* </span><br><span class="line"> * 比特率设置</span><br><span class="line"> * 默认是4Mbps, 比特率越大越清晰, 文件也会越大</span><br><span class="line"> */</span><br><span class="line">shell@sltechn:/ $ screenrecord --bit-rate 2000000 /sdcard/FingerArt.mp4</span><br><span class="line"></span><br><span class="line">/* </span><br><span class="line"> * 录制时间设置</span><br><span class="line"> * 默认是180s, Ctrl+C提前停止录制</span><br><span class="line"> */</span><br><span class="line">shell@sltechn:/ $ screenrecord --time-limit 300 /sdcard/FingerArt.mp4</span><br></pre></td></tr></table></figure>
 <p>该方式不能录制音频.</p>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你完全按照该博文的内容进行直接使用，你的一个回复即是对我的最大支持，如有任何疑问请留言。谢谢~~</p>
@@ -426,25 +418,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/11/07/使用Android的adb命令录制视频/"
-     data-title="使用Android的adb命令录制视频"
-     data-content=""
-     data-url="http://fingerart.me/2015/11/07/使用Android的adb命令录制视频/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -455,10 +428,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/11/07/使用Android的adb命令录制视频/"
-           data-title="使用Android的adb命令录制视频" data-url="http://fingerart.me/2015/11/07/使用Android的adb命令录制视频/">
-      </div>
     
   </div>
 
@@ -502,7 +471,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -519,7 +488,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -594,7 +563,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -696,30 +665,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

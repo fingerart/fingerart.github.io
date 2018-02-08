@@ -92,6 +92,7 @@
 <meta property="og:url" content="http://fingerart.me/page/6/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
 <meta property="og:description" content="George&apos;s blog">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指尖上的艺术">
 <meta name="twitter:description" content="George&apos;s blog">
@@ -293,6 +294,352 @@
             
               
                 
+                <a class="post-title-link" href="/2014/10/27/内省Introspector/" itemprop="url">
+                  内省Introspector
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-27T22:15:55+08:00" content="2014-10-27">
+              2014-10-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> other;</span><br><span class="line"><span class="keyword">import</span> java.beans.BeanInfo;</span><br><span class="line"><span class="keyword">import</span> java.beans.IntrospectionException;</span><br><span class="line"><span class="keyword">import</span> java.beans.Introspector;</span><br><span class="line"><span class="keyword">import</span> java.beans.PropertyDescriptor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">内省(Introspector)</span></span><br><span class="line"><span class="comment">为什么要学习内省</span></span><br><span class="line"><span class="comment">开发框架时，经常使用java对象的属性来封装程序的数据，每次都是用反射技术完成此类</span></span><br><span class="line"><span class="comment">操作过于麻烦，所以sun公司开发了一套API，专门用于操作java对象的属性。</span></span><br><span class="line"><span class="comment">内省访问JavaBean属性的两种方式</span></span><br><span class="line"><span class="comment">通过propertyDescriptor类操作BeanInfo，然后通过BeanInfo来获取属性的描述器(PropertyDescriptor)</span></span><br><span class="line"><span class="comment">通过这个属性描述器就可以获取某个属性对应的getter/setter方法，然后通过反射机制来调用这些方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntrospectorDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	<span class="doctag">@throws</span> IntrospectionException</span></span><br><span class="line"><span class="comment">	<span class="doctag">@throws</span> InvocationTargetException</span></span><br><span class="line"><span class="comment">	<span class="doctag">@throws</span> IllegalArgumentException</span></span><br><span class="line"><span class="comment">	<span class="doctag">@throws</span> IllegalAccessException</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IntrospectionException, IllegalAccessException, 	IllegalArgumentException, InvocationTargetException </span>&#123;</span><br><span class="line">		test2();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//遍历bean的所有属性</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> IntrospectionException </span>&#123;</span><br><span class="line">		BeanInfo info = Introspector.getBeanInfo(Person.class, Object.class);<span class="comment">//getBeanInfo可传入其他类class文件排除其属性</span></span><br><span class="line">		PropertyDescriptor[] pd = info.getPropertyDescriptors();<span class="comment">//属性描述器</span></span><br><span class="line">		<span class="keyword">for</span>( PropertyDescriptor v : pd) &#123;</span><br><span class="line">			System.out.println(v.getName());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//操纵bean的指定属性</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> <span class="keyword">throws</span> IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException </span>&#123;</span><br><span class="line">		Person p = <span class="keyword">new</span> Person();</span><br><span class="line">		PropertyDescriptor pd = <span class="keyword">new</span> PropertyDescriptor(“name”, Person.class);</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//设置属性</span></span><br><span class="line">		Method m = pd.getWriteMethod();</span><br><span class="line">		m.invoke(p, “赵橙”);</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//获取属性</span></span><br><span class="line">		Method mr = pd.getReadMethod();</span><br><span class="line">		System.out.print(mr.invoke(p, <span class="keyword">null</span>));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取字段类型</span></span><br><span class="line">		System.out.print(pd.getPropertyType().toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123; <span class="comment">//javaBean</span></span><br><span class="line">	<span class="keyword">private</span> String name ;</span><br><span class="line">	<span class="keyword">private</span> String password ;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">this</span>.password = password;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/10/27/内省Introspector/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/10/19/JAVA反射-笔记/" itemprop="url">
+                  JAVA反射-笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-19T23:39:36+08:00" content="2014-10-19">
+              2014-10-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> other;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Modifier;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 反射，加载类并解剖出类的各个组成部分</span></span><br><span class="line"><span class="comment"> * 	getConstrctors()		获取所有public权限的构造函数、方法、字段</span></span><br><span class="line"><span class="comment"> * 	getDeclaredConstrctors()	获取所有声明的构造函数、方法、字段</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 	Method</span></span><br><span class="line"><span class="comment"> * 	Field</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Administrator</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReflectDemo</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取类字节码文件的三种方法</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getFlectClass</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> Demo(<span class="number">0</span>).getClass();</span><br><span class="line">		Demo.class.getName();</span><br><span class="line"></span><br><span class="line">		Class.forName(<span class="string">"other.Demo"</span>).getName();<span class="comment">//反射技术获取</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 创建实例对象</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getInstance</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//使用newInstance()获取类的实例对象，会抛出异常</span></span><br><span class="line">		Class&lt;?&gt; demoClass = Class.forName(<span class="string">"other.Demo"</span>);</span><br><span class="line">		demoClass.newInstance();<span class="comment">//等效于使用构造函数传入null</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//通过Sting.class指向对应参数的构造函数</span></span><br><span class="line">		Constructor&lt;?&gt; c = demoClass.getConstructor(String.class);</span><br><span class="line">		<span class="comment">//最后通过构造函数对象创建对应的类对象</span></span><br><span class="line">		Demo d = (Demo) c.newInstance(<span class="string">"hello"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 暴力反射</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConstructForPrivate</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		Class&lt;?&gt; d = Class.forName(<span class="string">"other.Demo"</span>);</span><br><span class="line"></span><br><span class="line">		Constructor&lt;?&gt; c = d.getDeclaredConstructor(<span class="keyword">boolean</span>.class);</span><br><span class="line">		c.setAccessible(<span class="keyword">true</span>);<span class="comment">//暴力反射，取消访问控制权限检测</span></span><br><span class="line">		Demo demo = (Demo) c.newInstance(<span class="keyword">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 方法</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getMethod</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		Class&lt;?&gt; d = Class.forName(<span class="string">"other.Demo"</span>);</span><br><span class="line">		Object obj = d.newInstance();</span><br><span class="line"></span><br><span class="line">		Method test = d.getMethod(<span class="string">"test"</span>, <span class="keyword">null</span>);</span><br><span class="line">		test.invoke(obj, <span class="keyword">null</span>);	<span class="comment">//运行取得的test方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//		main方法，JDK1.4将传入的数组每个值作为参数，1.5为多参数，直接传入数组的话会出现参数个数异常</span></span><br><span class="line"></span><br><span class="line">		Method m = d.getMethod(<span class="string">"main"</span>, String[].class);</span><br><span class="line">		m.invoke(<span class="keyword">null</span>, <span class="keyword">new</span> Object[]&#123;<span class="keyword">new</span> String[]&#123;<span class="string">"aa"</span>,<span class="string">"bb"</span>&#125;&#125;);<span class="comment">//解决1.5对1.4的兼容性：方式1</span></span><br><span class="line">		m.invoke(<span class="keyword">null</span>, (Object)<span class="keyword">new</span> String[]&#123;<span class="string">"aa"</span>, <span class="string">"bb"</span>&#125;);<span class="comment">//解决1.5.对1.4的兼容性：方式2</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取字段</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getField</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		Class&lt;?&gt; d = Class.forName(<span class="string">"other.Demo"</span>);</span><br><span class="line"></span><br><span class="line">		Object obj = d.newInstance();</span><br><span class="line"></span><br><span class="line">		Field[] field = d.getFields();<span class="comment">//获取public权限的字段</span></span><br><span class="line">		<span class="keyword">for</span>(Field f : field) &#123;</span><br><span class="line">			String fieldStr = f.getName();<span class="comment">//字段名</span></span><br><span class="line">			String fieldVal = f.get(obj).toString();<span class="comment">//取值</span></span><br><span class="line">			String fieldTyp = f.getType().toString();<span class="comment">//类型</span></span><br><span class="line">			System.out.println(fieldTyp+ <span class="string">" "</span> + fieldStr +<span class="string">" = "</span>+ fieldVal);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 使用反射获取Demo类的构造函数方法;</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConstructors</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		Class&lt;?&gt; d = Class.forName(<span class="string">"other.Demo"</span>);</span><br><span class="line">		Constructor&lt;?&gt;[] constructor = d.getDeclaredConstructors();<span class="comment">//获取一个装载所有存在的构造函数的数组(包括私有)</span></span><br><span class="line">		String name = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">for</span>(Constructor&lt;?&gt; c : constructor) &#123;</span><br><span class="line">			name = c.getName();<span class="comment">//构造函数名</span></span><br><span class="line">			System.out.print(Modifier.toString(c.getModifiers())+ <span class="string">" "</span> + name +<span class="string">" ("</span>);<span class="comment">//构造函数的全县修饰符</span></span><br><span class="line">			<span class="keyword">for</span>(Class&lt;?&gt; p : c.getParameterTypes()) &#123;</span><br><span class="line">				System.out.print(<span class="string">" "</span>+p.getName());<span class="comment">//遍历参数</span></span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">" )"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/10/19/JAVA反射-笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/10/18/Java-枚举/" itemprop="url">
+                  Java 枚举
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-18T16:59:03+08:00" content="2014-10-18">
+              2014-10-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> JDK5.0前的枚举</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Grade</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Grade</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Grade A = <span class="keyword">new</span> Grade();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Grade B = <span class="keyword">new</span> Grade();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//——————————</span></span><br><span class="line"><span class="keyword">package</span> other;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnumDemo</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	    System.out.println(Grade.A.getValue());</span><br><span class="line">	    System.out.println(Grade.B.nameG());</span><br><span class="line">	    <span class="comment">//将字符串转为枚举型(检测该字符串是否是枚举中的值)</span></span><br><span class="line">	    <span class="keyword">try</span> &#123;</span><br><span class="line">	        Grade g = Grade.valueOf(Grade.class , <span class="string">"B"</span>);</span><br><span class="line">	    &#125;<span class="keyword">catch</span>(IllegalArgumentException e) &#123;</span><br><span class="line">	        System.out.println(e.getMessage());</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="comment">//获取所有的枚举常量</span></span><br><span class="line">	    Grade[] gArr = Grade.values();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">带抽象类的枚举</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">enum</span> Grade &#123;</span><br><span class="line">	A(“<span class="number">100</span>-<span class="number">90</span>”) &#123;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">nameG</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		    <span class="keyword">return</span> <span class="string">"优"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	B(“<span class="number">89</span>-<span class="number">80</span>”) &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">nameG</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> <span class="string">"良"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">private</span> String value;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Grade</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value = value;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.value;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">nameG</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/10/18/Java-可变参数/" itemprop="url">
                   Java 可变参数
                 </a>
@@ -335,13 +682,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/10/18/Java-可变参数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/18/Java-可变参数/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -363,7 +703,7 @@
       
         
           
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> other;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChangeableArgument</span> </span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	    demo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">demo</span><span class="params">(<span class="keyword">int</span> ...num)</span> </span>&#123;</div><div class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> v : num) &#123;</div><div class="line">	        System.out.println(v);</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> other;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChangeableArgument</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	    demo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">demo</span><span class="params">(<span class="keyword">int</span> ...num)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> v : num) &#123;</span><br><span class="line">	        System.out.println(v);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
 </blockquote>
@@ -457,13 +797,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/30/国庆已至/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/30/国庆已至/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -583,13 +916,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/19/应届毕业生/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/19/应届毕业生/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -706,13 +1032,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/03/JavaScript开发时的五个小提示/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/03/JavaScript开发时的五个小提示/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -831,13 +1150,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/02/科目二终已告一段落/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/02/科目二终已告一段落/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -953,13 +1265,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/30/Canvas绘制绚丽的倒计时/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/30/Canvas绘制绚丽的倒计时/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -981,7 +1286,7 @@
       
         
           <p>最近想把一直没好好研究的HTML5和CSS3给搞定了，前天才去图书馆借了有关的书籍。<br>这个效果是跟着网上的一个教程制作的，还没来得及加入自己的想法，原教程上面本是一个显示倒计时的，为了省事而跳过了。<br>在里面学到了一个对js数组处理地方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> newL = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; balls.length; i++) &#123;</div><div class="line">	<span class="keyword">if</span> (条件成立)</div><div class="line">		balls[newL++] = balls[i];</div><div class="line">&#125;</div><div class="line"><span class="keyword">while</span>(balls.length &gt; newL) &#123;</div><div class="line">	balls.pop();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newL = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; balls.length; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (条件成立)</span><br><span class="line">		balls[newL++] = balls[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(balls.length &gt; newL) &#123;</span><br><span class="line">	balls.pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/08/30/Canvas绘制绚丽的倒计时/#more" rel="contents">
               阅读全文 &raquo;
@@ -1076,13 +1381,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/28/Servlet调用过程以及生命周期/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/28/Servlet调用过程以及生命周期/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1132,384 +1430,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/25/解决电驴-该内容尚未提供权利证明-无法提供下载/" itemprop="url">
-                  解决电驴:该内容尚未提供权利证明,无法提供下载
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-25T10:47:22+08:00" content="2014-08-25">
-              2014-08-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技巧/" itemprop="url" rel="index">
-                    <span itemprop="name">技巧</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/25/解决电驴-该内容尚未提供权利证明-无法提供下载/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/25/解决电驴-该内容尚未提供权利证明-无法提供下载/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>该内容尚未提供权利证明，无法提供下载。</p>
-</blockquote>
-<p>在电驴找到了你想要的资源后, 可是却提示无法下载, 是不是有种fuck的冲动?</p>
-<p>这是我以前遇到的问题, 后来找到了一个电驴的镜像网站, 真的非常感谢啊. 在博客记录一下, 免得给忘记了, 同时也分享给更多的盆友.</p>
-<p>例如你找到的资源地址是: <a href="http://www.verycd.com/topics/*/*" target="_blank" rel="external">http://www.verycd.com/topics/*/*</a></p>
-<p>将该地址改为: <a href="http://www.verycd.gdajie.com/topics/*/*" target="_blank" rel="external">http://www.verycd.gdajie.com/topics/*/*</a></p>
-<p>这样就可以下载到这个资源了.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/25/MySql学习笔记/" itemprop="url">
-                  MySql学习笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-25T10:41:40+08:00" content="2014-08-25">
-              2014-08-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/25/MySql学习笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/25/MySql学习笔记/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="数据库的连接与关闭"><a href="#数据库的连接与关闭" class="headerlink" title="数据库的连接与关闭"></a>数据库的连接与关闭</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//连接数据库</div><div class="line">mysql -h 服务器主机地址 -u 用户名 -p</div><div class="line">Enter password:密码</div><div class="line">//关闭连接, 两者其一</div><div class="line">exit;</div><div class="line">quit;</div></pre></td></tr></table></figure>
-<h3 id="创建用户并授权"><a href="#创建用户并授权" class="headerlink" title="创建用户并授权"></a>创建用户并授权</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GRANT</span> 权限 <span class="keyword">ON</span> 数据库.数据表 <span class="keyword">TO</span> 用户名@登陆主机 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">"密码"</span></div><div class="line">//例如</div><div class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">INSERT</span>,<span class="keyword">UPDATE</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> fingerart@<span class="string">"%"</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">"password"</span>;//将所有数据库及其下面表的增删改查权限给了fingerart用户,可在任何主机下登陆</div><div class="line">//权限还可以使用 ALL</div><div class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;//刷新系统权限表。</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/08/25/MySql学习笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/25/Linux-xampp-搭载环境之设置外部访问/" itemprop="url">
-                  Linux xampp 搭载环境之设置外部访问
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-08-25T10:37:51+08:00" content="2014-08-25">
-              2014-08-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Code/" itemprop="url" rel="index">
-                    <span itemprop="name">Code</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/25/Linux-xampp-搭载环境之设置外部访问/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/25/Linux-xampp-搭载环境之设置外部访问/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在Linux上 搭载xampp又遇到了一些问题, 有时在网上找的答案并不能解决我的问题. 这里记录一下我的解决方案.</p>
-<p>在此之前我先说一下你会遇到的另外一点问题.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/08/25/Linux-xampp-搭载环境之设置外部访问/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1550,7 +1475,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1567,7 +1492,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1631,7 +1556,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1729,30 +1654,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

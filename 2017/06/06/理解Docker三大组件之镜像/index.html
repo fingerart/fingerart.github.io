@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
-
-操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
+<meta name="description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。  操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解Docker三大组件之镜像">
 <meta property="og:url" content="http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
-
-操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
-<meta property="og:updated_time" content="2017-06-07T16:52:51.000Z">
+<meta property="og:description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。  操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解Docker三大组件之镜像">
-<meta name="twitter:description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
-
-操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
+<meta name="twitter:description" content="概念Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。  操作系统分为内核和用户空间，对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root">
 
 
 
@@ -318,13 +314,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/06/06/理解Docker三大组件之镜像/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/06/理解Docker三大组件之镜像/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -355,9 +344,9 @@
 <li>Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</li>
 <li>仓库名：&lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker pull nginx</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull nginx</span><br></pre></td></tr></table></figure>
 <h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><p>我们现在可以通过创建一个容器并运行镜像。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -it --rm nginx bash</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --rm nginx bash</span><br></pre></td></tr></table></figure>
 <ul>
 <li>-i 交互式操作</li>
 <li>-t 终端</li>
@@ -367,15 +356,15 @@
 <p>镜像是容器的基础，每次执行 docker run 的时候都会指定哪个镜像作为容器运行的基础。</p>
 </blockquote>
 <p>以nginx镜像创建一个webserver的容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --name webserver <span class="_">-d</span> -p 80:80 nginx</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --name webserver -d -p 80:80 nginx</span><br></pre></td></tr></table></figure>
 <p>进入已启动的webserver容器的交互式shell终端，修改nginx默认的index.html内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ docker <span class="built_in">exec</span> -it webserver bash</div><div class="line">root@3729b97e8226:/<span class="comment"># echo '&lt;h1&gt;Hello, Docker!&lt;/h1&gt;' &gt; /usr/share/nginx/html/index.html</span></div><div class="line">root@3729b97e8226:/<span class="comment"># exit</span></div><div class="line"><span class="built_in">exit</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it webserver bash</span><br><span class="line">root@3729b97e8226:/<span class="comment"># echo '&lt;h1&gt;Hello, Docker!&lt;/h1&gt;' &gt; /usr/share/nginx/html/index.html</span></span><br><span class="line">root@3729b97e8226:/<span class="comment"># exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
 <p>查看webserver容器当前存储层的改动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$ docker diff webserver</div><div class="line">C /root</div><div class="line">A /root/.bash_history</div><div class="line">C /run</div><div class="line">C /usr</div><div class="line">C /usr/share</div><div class="line">C /usr/share/nginx</div><div class="line">C /usr/share/nginx/html</div><div class="line">C /usr/share/nginx/html/index.html</div><div class="line">C /var</div><div class="line">C /var/cache</div><div class="line">C /var/cache/nginx</div><div class="line">A /var/cache/nginx/client_temp</div><div class="line">A /var/cache/nginx/fastcgi_temp</div><div class="line">A /var/cache/nginx/proxy_temp</div><div class="line">A /var/cache/nginx/scgi_temp</div><div class="line">A /var/cache/nginx/uwsgi_temp</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ docker diff webserver</span><br><span class="line">C /root</span><br><span class="line">A /root/.bash_history</span><br><span class="line">C /run</span><br><span class="line">C /usr</span><br><span class="line">C /usr/share</span><br><span class="line">C /usr/share/nginx</span><br><span class="line">C /usr/share/nginx/html</span><br><span class="line">C /usr/share/nginx/html/index.html</span><br><span class="line">C /var</span><br><span class="line">C /var/cache</span><br><span class="line">C /var/cache/nginx</span><br><span class="line">A /var/cache/nginx/client_temp</span><br><span class="line">A /var/cache/nginx/fastcgi_temp</span><br><span class="line">A /var/cache/nginx/proxy_temp</span><br><span class="line">A /var/cache/nginx/scgi_temp</span><br><span class="line">A /var/cache/nginx/uwsgi_temp</span><br></pre></td></tr></table></figure>
 <p>此时，可以通过 <code>docker commit</code> 命令将webserver容器在原有镜像的基础上，再叠加容器存储层构建成一个新的镜像</p>
 <p><code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ docker commit \</div><div class="line">  --author <span class="string">"FingerArt &lt;george@chengguo.io&gt;"</span> \</div><div class="line">  --message <span class="string">"修改了默认网页"</span> \</div><div class="line">  webserver \</div><div class="line">  nginx:v2</div><div class="line">sha256:07e33465974800ce65751acc279adc6ed2dc5ed4e0838f8b86f0c87aa1795214</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 可查看到生成的 nginx:v2 镜像</span></div><div class="line">$ docker images nginx</div><div class="line"></div><div class="line"><span class="comment"># 查看 nginx:v2 相比 nginx:latest 历史记录</span></div><div class="line">$ docker <span class="built_in">history</span> nginx:v2</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker commit \</span><br><span class="line">  --author <span class="string">"FingerArt &lt;george@chengguo.io&gt;"</span> \</span><br><span class="line">  --message <span class="string">"修改了默认网页"</span> \</span><br><span class="line">  webserver \</span><br><span class="line">  nginx:v2</span><br><span class="line">sha256:07e33465974800ce65751acc279adc6ed2dc5ed4e0838f8b86f0c87aa1795214</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可查看到生成的 nginx:v2 镜像</span></span><br><span class="line">$ docker images nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 nginx:v2 相比 nginx:latest 历史记录</span></span><br><span class="line">$ docker <span class="built_in">history</span> nginx:v2</span><br></pre></td></tr></table></figure>
 <p>此时你可以通过 <code>docker run</code> 来创建容器。</p>
 <h2 id="慎用-docker-commit"><a href="#慎用-docker-commit" class="headerlink" title="慎用 docker commit"></a>慎用 <code>docker commit</code></h2><p>前面通过 <code>docker diff webserver</code> 命令看到的信息中，出了改动了nginx的默认index.html文件外，还生成了一些缓存等文件， <code>docker commit</code> 进行了黑箱操作，生成了黑箱镜像，将不该添加的文件添加进了镜像中，如果删除上层的东西，却仍然存在镜像中，都将导致生成的镜像臃肿。<br>所以，除了一些特殊的场景，如黑客入侵保留现场等，都不要使用 <code>docker commit</code> 来制作镜像。</p>
 <blockquote>
@@ -437,25 +426,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/06/06/理解Docker三大组件之镜像/"
-     data-title="理解Docker三大组件之镜像"
-     data-content=""
-     data-url="http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -466,10 +436,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/06/06/理解Docker三大组件之镜像/"
-           data-title="理解Docker三大组件之镜像" data-url="http://fingerart.me/2017/06/06/理解Docker三大组件之镜像/">
-      </div>
     
   </div>
 
@@ -513,7 +479,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -530,7 +496,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -605,7 +571,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -707,30 +673,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

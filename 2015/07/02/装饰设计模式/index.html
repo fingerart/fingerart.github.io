@@ -87,12 +87,14 @@
 
 
 <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637/** * 装饰设计模式 * 当想要对已有的对象进行功能增强时, 可以定义一个类, 将已有对象传入, 基于已有的功能,  * 并提供增强功能. * 那么自定义的该类称为装饰类 * 装饰类通常会通过构造方法接收被装饰的对象 * 并基于被装饰的对象的功能, 提供更强的功能.">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="装饰设计模式">
 <meta property="og:url" content="http://fingerart.me/2015/07/02/装饰设计模式/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
 <meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637/** * 装饰设计模式 * 当想要对已有的对象进行功能增强时, 可以定义一个类, 将已有对象传入, 基于已有的功能,  * 并提供增强功能. * 那么自定义的该类称为装饰类 * 装饰类通常会通过构造方法接收被装饰的对象 * 并基于被装饰的对象的功能, 提供更强的功能.">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="装饰设计模式">
 <meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637/** * 装饰设计模式 * 当想要对已有的对象进行功能增强时, 可以定义一个类, 将已有对象传入, 基于已有的功能,  * 并提供增强功能. * 那么自定义的该类称为装饰类 * 装饰类通常会通过构造方法接收被装饰的对象 * 并基于被装饰的对象的功能, 提供更强的功能.">
@@ -331,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/02/装饰设计模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/装饰设计模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -357,7 +352,7 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 装饰设计模式</div><div class="line"> * 当想要对已有的对象进行功能增强时, 可以定义一个类, 将已有对象传入, 基于已有的功能, </div><div class="line"> * 并提供增强功能.</div><div class="line"> * 那么自定义的该类称为装饰类</div><div class="line"> * 装饰类通常会通过构造方法接收被装饰的对象</div><div class="line"> * 并基于被装饰的对象的功能, 提供更强的功能.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IO06DecorativeDesignpattern</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	    <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	    EnhancePerson ep = <span class="keyword">new</span> EnhancePerson(<span class="keyword">new</span> Person());</div><div class="line">	    ep.enhanceOperation();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</div><div class="line">	System.out.println(“吃饭”);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EnhancePerson</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Person p = <span class="keyword">null</span>;</div><div class="line">	EnhancePerson (Person p) &#123;</div><div class="line">		<span class="keyword">this</span>.p = p;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enhanceOperation</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(“Get up”);</div><div class="line">		p.operation();</div><div class="line">		System.out.println(“Seelp”);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 装饰设计模式</span></span><br><span class="line"><span class="comment"> * 当想要对已有的对象进行功能增强时, 可以定义一个类, 将已有对象传入, 基于已有的功能, </span></span><br><span class="line"><span class="comment"> * 并提供增强功能.</span></span><br><span class="line"><span class="comment"> * 那么自定义的该类称为装饰类</span></span><br><span class="line"><span class="comment"> * 装饰类通常会通过构造方法接收被装饰的对象</span></span><br><span class="line"><span class="comment"> * 并基于被装饰的对象的功能, 提供更强的功能.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IO06DecorativeDesignpattern</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	    <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">	    EnhancePerson ep = <span class="keyword">new</span> EnhancePerson(<span class="keyword">new</span> Person());</span><br><span class="line">	    ep.enhanceOperation();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	System.out.println(“吃饭”);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EnhancePerson</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Person p = <span class="keyword">null</span>;</span><br><span class="line">	EnhancePerson (Person p) &#123;</span><br><span class="line">		<span class="keyword">this</span>.p = p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enhanceOperation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(“Get up”);</span><br><span class="line">		p.operation();</span><br><span class="line">		System.out.println(“Seelp”);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
@@ -418,25 +413,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/02/装饰设计模式/"
-     data-title="装饰设计模式"
-     data-content=""
-     data-url="http://fingerart.me/2015/07/02/装饰设计模式/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -447,10 +423,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/07/02/装饰设计模式/"
-           data-title="装饰设计模式" data-url="http://fingerart.me/2015/07/02/装饰设计模式/">
-      </div>
     
   </div>
 
@@ -494,7 +466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -511,7 +483,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -586,7 +558,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -688,30 +660,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

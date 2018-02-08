@@ -86,34 +86,18 @@
 
 
 
-<meta name="description" content="今天在分析 Picasso 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。
-
-了解Handler消息机制1
-了解Handler消息机制2
-
-
-HandlerThread">
+<meta name="description" content="今天在分析 Picasso 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。  了解Handler消息机制1 了解Handler消息机制2   HandlerThread">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="了解 Android HandlerThread">
 <meta property="og:url" content="http://fingerart.me/2016/09/13/了解-Android-HandlerThread/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="今天在分析 Picasso 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。
-
-了解Handler消息机制1
-了解Handler消息机制2
-
-
-HandlerThread">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="今天在分析 Picasso 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。  了解Handler消息机制1 了解Handler消息机制2   HandlerThread">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解 Android HandlerThread">
-<meta name="twitter:description" content="今天在分析 Picasso 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。
-
-了解Handler消息机制1
-了解Handler消息机制2
-
-
-HandlerThread">
+<meta name="twitter:description" content="今天在分析 Picasso 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。  了解Handler消息机制1 了解Handler消息机制2   HandlerThread">
 
 
 
@@ -349,13 +333,6 @@ HandlerThread">
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/13/了解-Android-HandlerThread/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/了解-Android-HandlerThread/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -375,7 +352,7 @@ HandlerThread">
       
 
       
-        <p>今天在分析 <a href="http://github.com/square/picasso" target="_blank" rel="external">Picasso</a> 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。</p>
+        <p>今天在分析 <a href="http://github.com/square/picasso" target="_blank" rel="noopener">Picasso</a> 源码是时看到里面有一个HandlerThread类，之前从未见过，查看HandlerThread源码并跟踪Picasso的用法，理解了这个类的作用。通俗的讲就是这个线程不是用来直接执行自己的run方法的，而是将Message发送到该线程的MessageQueen中，间接工作。</p>
 <ul>
 <li><a href="/2015/08/08/Handler和Message-异步消息机制-1/" title="了解Handler消息机制1">了解Handler消息机制1</a></li>
 <li><a href="/2015/08/10/Handler和Message-异步消息机制-2/" title="了解Handler消息机制2">了解Handler消息机制2</a>
@@ -386,10 +363,10 @@ HandlerThread">
 <p>HandlerThread是一个线程，该线程会创建一个Looper，Looper可用于创建Handler，必需要调用 <code>start()</code></p>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">   mTid = Process.myTid();</div><div class="line">   Looper.prepare();</div><div class="line">   <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">       mLooper = Looper.myLooper();</div><div class="line">       notifyAll();</div><div class="line">   &#125;</div><div class="line">   Process.setThreadPriority(mPriority);</div><div class="line">   onLooperPrepared();</div><div class="line">   Looper.loop();</div><div class="line">   mTid = -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   mTid = Process.myTid();</span><br><span class="line">   Looper.prepare();</span><br><span class="line">   <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">       mLooper = Looper.myLooper();</span><br><span class="line">       notifyAll();</span><br><span class="line">   &#125;</span><br><span class="line">   Process.setThreadPriority(mPriority);</span><br><span class="line">   onLooperPrepared();</span><br><span class="line">   Looper.loop();</span><br><span class="line">   mTid = -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>该方法在 <code>start()</code> 之后执行，创建Looper、MessageQueen，然后 <code>loop()</code> 让这个Looper工作。</p>
-<h3 id="Picasso源码中的使用示例"><a href="#Picasso源码中的使用示例" class="headerlink" title="Picasso源码中的使用示例"></a>Picasso源码中的使用示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//package com.squareup.picasso.Dispatcher</span></div><div class="line"></div><div class="line">Dispatcher(Context context, ExecutorService service</div><div class="line">, Handler mainThreadHandler,</div><div class="line">      Downloader downloader, Cache cache, Stats stats) &#123;</div><div class="line">    <span class="keyword">this</span>.dispatcherThread = <span class="keyword">new</span> DispatcherThread();</div><div class="line">    <span class="keyword">this</span>.dispatcherThread.start();</div><div class="line">    <span class="keyword">this</span>.handler = <span class="keyword">new</span> DispatcherHandler(dispatcherThread.getLooper(), <span class="keyword">this</span>);</div><div class="line">    <span class="comment">//some code ...</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">dispatchSubmit</span><span class="params">(Action action)</span> </span>&#123;</div><div class="line">    handler.sendMessage(handler.obtainMessage(REQUEST_SUBMIT, action));</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//package com.squareup.picasso.Dispatcher.DispatcherHandler</span></div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DispatcherHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Dispatcher dispatcher;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DispatcherHandler</span><span class="params">(Looper looper, Dispatcher dispatcher)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(looper);</div><div class="line">        <span class="keyword">this</span>.dispatcher = dispatcher;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(<span class="keyword">final</span> Message msg)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (msg.what) &#123;</div><div class="line">          <span class="keyword">case</span> REQUEST_SUBMIT:</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">          <span class="comment">//some case ...</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Picasso源码中的使用示例"><a href="#Picasso源码中的使用示例" class="headerlink" title="Picasso源码中的使用示例"></a>Picasso源码中的使用示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//package com.squareup.picasso.Dispatcher</span></span><br><span class="line"></span><br><span class="line">Dispatcher(Context context, ExecutorService service</span><br><span class="line">, Handler mainThreadHandler,</span><br><span class="line">      Downloader downloader, Cache cache, Stats stats) &#123;</span><br><span class="line">    <span class="keyword">this</span>.dispatcherThread = <span class="keyword">new</span> DispatcherThread();</span><br><span class="line">    <span class="keyword">this</span>.dispatcherThread.start();</span><br><span class="line">    <span class="keyword">this</span>.handler = <span class="keyword">new</span> DispatcherHandler(dispatcherThread.getLooper(), <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//some code ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">dispatchSubmit</span><span class="params">(Action action)</span> </span>&#123;</span><br><span class="line">    handler.sendMessage(handler.obtainMessage(REQUEST_SUBMIT, action));</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//package com.squareup.picasso.Dispatcher.DispatcherHandler</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DispatcherHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Dispatcher dispatcher;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DispatcherHandler</span><span class="params">(Looper looper, Dispatcher dispatcher)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(looper);</span><br><span class="line">        <span class="keyword">this</span>.dispatcher = dispatcher;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(<span class="keyword">final</span> Message msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (msg.what) &#123;</span><br><span class="line">          <span class="keyword">case</span> REQUEST_SUBMIT:</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">          <span class="comment">//some case ...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用，你的一个回复即是对我的最大支持，如有任何疑问请留言。谢谢~~</p>
 </blockquote>
@@ -449,25 +426,6 @@ HandlerThread">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/13/了解-Android-HandlerThread/"
-     data-title="了解 Android HandlerThread"
-     data-content=""
-     data-url="http://fingerart.me/2016/09/13/了解-Android-HandlerThread/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -478,10 +436,6 @@ HandlerThread">
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/09/13/了解-Android-HandlerThread/"
-           data-title="了解 Android HandlerThread" data-url="http://fingerart.me/2016/09/13/了解-Android-HandlerThread/">
-      </div>
     
   </div>
 
@@ -525,7 +479,7 @@ HandlerThread">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -542,7 +496,7 @@ HandlerThread">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -617,7 +571,7 @@ HandlerThread">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -719,30 +673,9 @@ HandlerThread">
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

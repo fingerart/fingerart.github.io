@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="真是五个很quick的小提示：
-只在元素上使用submit事件如果要在form中绑定事件处理程序时，应该只在元素上绑定submit事件，而不是给提交按钮绑定click事件。
-March：这个方式固然很好，但是，公司开发时使用了Web Flow，一个页面就一个大form，而里面可能有若干个提交按钮，所以不得不把部分事件处理程序绑定在了提交按钮的click事件上。">
+<meta name="description" content="真是五个很quick的小提示： 只在元素上使用submit事件如果要在form中绑定事件处理程序时，应该只在元素上绑定submit事件，而不是给提交按钮绑定click事件。 March：这个方式固然很好，但是，公司开发时使用了Web Flow，一个页面就一个大form，而里面可能有若干个提交按钮，所以不得不把部分事件处理程序绑定在了提交按钮的click事件上。">
+<meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript开发时的五个小提示">
 <meta property="og:url" content="http://fingerart.me/2014/09/03/JavaScript开发时的五个小提示/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="真是五个很quick的小提示：
-只在元素上使用submit事件如果要在form中绑定事件处理程序时，应该只在元素上绑定submit事件，而不是给提交按钮绑定click事件。
-March：这个方式固然很好，但是，公司开发时使用了Web Flow，一个页面就一个大form，而里面可能有若干个提交按钮，所以不得不把部分事件处理程序绑定在了提交按钮的click事件上。">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="真是五个很quick的小提示： 只在元素上使用submit事件如果要在form中绑定事件处理程序时，应该只在元素上绑定submit事件，而不是给提交按钮绑定click事件。 March：这个方式固然很好，但是，公司开发时使用了Web Flow，一个页面就一个大form，而里面可能有若干个提交按钮，所以不得不把部分事件处理程序绑定在了提交按钮的click事件上。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript开发时的五个小提示">
-<meta name="twitter:description" content="真是五个很quick的小提示：
-只在元素上使用submit事件如果要在form中绑定事件处理程序时，应该只在元素上绑定submit事件，而不是给提交按钮绑定click事件。
-March：这个方式固然很好，但是，公司开发时使用了Web Flow，一个页面就一个大form，而里面可能有若干个提交按钮，所以不得不把部分事件处理程序绑定在了提交按钮的click事件上。">
+<meta name="twitter:description" content="真是五个很quick的小提示： 只在元素上使用submit事件如果要在form中绑定事件处理程序时，应该只在元素上绑定submit事件，而不是给提交按钮绑定click事件。 March：这个方式固然很好，但是，公司开发时使用了Web Flow，一个页面就一个大form，而里面可能有若干个提交按钮，所以不得不把部分事件处理程序绑定在了提交按钮的click事件上。">
 
 
 
@@ -337,13 +333,6 @@ March：这个方式固然很好，但是，公司开发时使用了Web Flow，�
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/03/JavaScript开发时的五个小提示/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/03/JavaScript开发时的五个小提示/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -371,13 +360,13 @@ March：这个方式固然很好，但是，公司开发时使用了Web Flow，�
 <p>March：不过个人感觉锚元素还是应该只用作链接，而一些功能性的操作（比如Google Reader的Mark all as new），最好还是用来标注，accessibility的问题可以通过快捷键等方式解决。这样做可以更好的还原HTML元素的语义。</p>
 <p>###简单的for循环优化</p>
 <p>在你写一个for循环时，有个很简单的技巧能够提高性能。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elements.length; ++i )</div><div class="line"><span class="comment">//使用下面的语句代替上面的：</span></div><div class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span>, j = elements.length; i &lt; j; ++i )</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elements.length; ++i )</span><br><span class="line"><span class="comment">//使用下面的语句代替上面的：</span></span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span>, j = elements.length; i &lt; j; ++i )</span><br></pre></td></tr></table></figure>
 <p>这样可以把元素的个数（elements.length的值）储存在一个变量j中，这样就不必在每次循环时都计算一遍元素的个数。</p>
 <h3 id="用匿名函数来作为事件处理程序"><a href="#用匿名函数来作为事件处理程序" class="headerlink" title="用匿名函数来作为事件处理程序"></a>用匿名函数来作为事件处理程序</h3><p>尤其是对于短小的函数，创建一个匿名函数会比使用一个命名函数的引用更具可读性。</p>
 <p>anchor.onclick = function() { map.goToPosition( home ); return false; }</p>
 <p>March：在较复杂的JavaScript开发时还是使用命名函数效率更高。</p>
 <h3 id="使用Array-join代替字符串连接（concatenating-strings）"><a href="#使用Array-join代替字符串连接（concatenating-strings）" class="headerlink" title="使用Array.join代替字符串连接（concatenating strings）"></a>使用Array.join代替字符串连接（concatenating strings）</h3><p>在将很多字符串、变量等连接成一个很长的字符串时，将所有字符串和变量放入一个数组，然后用join方法将他们组成一个长字符串，这样无论从代码可读性还是从性能上都更胜于字符串连接。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = ‘There are’ + elements.length + ‘members <span class="keyword">in</span> the elements array.’;</div><div class="line"><span class="comment">//下面的替代上面</span></div><div class="line"><span class="keyword">var</span> text = [‘There are’, elements.length, ‘members <span class="keyword">in</span> the elements array.’].join(‘ ‘);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = ‘There are’ + elements.length + ‘members <span class="keyword">in</span> the elements array.’;</span><br><span class="line"><span class="comment">//下面的替代上面</span></span><br><span class="line"><span class="keyword">var</span> text = [‘There are’, elements.length, ‘members <span class="keyword">in</span> the elements array.’].join(‘ ‘);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>转载自互联网</p>
 </blockquote>
@@ -437,25 +426,6 @@ March：这个方式固然很好，但是，公司开发时使用了Web Flow，�
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/09/03/JavaScript开发时的五个小提示/"
-     data-title="JavaScript开发时的五个小提示"
-     data-content=""
-     data-url="http://fingerart.me/2014/09/03/JavaScript开发时的五个小提示/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -466,10 +436,6 @@ March：这个方式固然很好，但是，公司开发时使用了Web Flow，�
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2014/09/03/JavaScript开发时的五个小提示/"
-           data-title="JavaScript开发时的五个小提示" data-url="http://fingerart.me/2014/09/03/JavaScript开发时的五个小提示/">
-      </div>
     
   </div>
 
@@ -513,7 +479,7 @@ March：这个方式固然很好，但是，公司开发时使用了Web Flow，�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -530,7 +496,7 @@ March：这个方式固然很好，但是，公司开发时使用了Web Flow，�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -605,7 +571,7 @@ March：这个方式固然很好，但是，公司开发时使用了Web Flow，�
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -707,30 +673,9 @@ March：这个方式固然很好，但是，公司开发时使用了Web Flow，�
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

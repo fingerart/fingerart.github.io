@@ -86,25 +86,18 @@
 
 
 
-<meta name="description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。
-因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果：
-定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在 
-再三">
+<meta name="description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。 因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果： 定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在  再三">
+<meta name="keywords" content="ThinkPHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于ThinkPHP5 子域名路由问题">
 <meta property="og:url" content="http://fingerart.me/2016/12/01/关于ThinkPHP5-子域名路由问题/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。
-因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果：
-定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在 
-再三">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。 因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果： 定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在  再三">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于ThinkPHP5 子域名路由问题">
-<meta name="twitter:description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。
-因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果：
-定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在 
-再三">
+<meta name="twitter:description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。 因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果： 定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在  再三">
 
 
 
@@ -321,13 +314,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/01/关于ThinkPHP5-子域名路由问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/关于ThinkPHP5-子域名路由问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -351,9 +337,9 @@
 <p>因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果：</p>
 <p>定义某个api路由规则时，可以根据 <code>api.domain.com</code> 子域名来检测；非 <code>api.domain.com</code> 子域名访问其他模块。但是根据文档配置后却会报 <strong>模块不存在</strong> </p>
 <p>再三查看文档后决定没错，后来跟进源码查看关键位置</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//thinkphp/library/think/Route.php</span></div><div class="line"></div><div class="line"><span class="number">182</span> <span class="keyword">if</span> (<span class="keyword">isset</span>($rule[<span class="string">'__domain__'</span>])) &#123;</div><div class="line"><span class="number">183</span>     <span class="keyword">self</span>::domain($rule[<span class="string">'__domain__'</span>]);</div><div class="line"><span class="number">184</span>     <span class="keyword">unset</span>($rule[<span class="string">'__domain__'</span>]);</div><div class="line"><span class="number">185</span> &#125;</div><div class="line"></div><div class="line"><span class="number">119</span> <span class="keyword">self</span>::$rules[<span class="string">'domain'</span>][$domain][<span class="string">'[bind]'</span>] = [$rule, $option, $pattern];</div><div class="line"></div><div class="line"><span class="number">1132</span> <span class="keyword">if</span>(<span class="keyword">isset</span>($option[<span class="string">'domain'</span>]) &amp;&amp; !in_array($option[<span class="string">'domain'</span>], [$_SERVER[<span class="string">'HTTP_HOST'</span>], <span class="keyword">self</span>::$subDomain])) <span class="comment">// 域名检测</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//thinkphp/library/think/Route.php</span></span><br><span class="line"></span><br><span class="line"><span class="number">182</span> <span class="keyword">if</span> (<span class="keyword">isset</span>($rule[<span class="string">'__domain__'</span>])) &#123;</span><br><span class="line"><span class="number">183</span>     <span class="keyword">self</span>::domain($rule[<span class="string">'__domain__'</span>]);</span><br><span class="line"><span class="number">184</span>     <span class="keyword">unset</span>($rule[<span class="string">'__domain__'</span>]);</span><br><span class="line"><span class="number">185</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="number">119</span> <span class="keyword">self</span>::$rules[<span class="string">'domain'</span>][$domain][<span class="string">'[bind]'</span>] = [$rule, $option, $pattern];</span><br><span class="line"></span><br><span class="line"><span class="number">1132</span> <span class="keyword">if</span>(<span class="keyword">isset</span>($option[<span class="string">'domain'</span>]) &amp;&amp; !in_array($option[<span class="string">'domain'</span>], [$_SERVER[<span class="string">'HTTP_HOST'</span>], <span class="keyword">self</span>::$subDomain])) <span class="comment">// 域名检测</span></span><br></pre></td></tr></table></figure>
 <p>会发现通过如下设置即可完成：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//route.php</span></div><div class="line"></div><div class="line"><span class="string">'__domain__'</span>=&gt;[</div><div class="line">   <span class="string">'api'</span> =&gt; <span class="string">'api/User/index'</span>,</div><div class="line">],</div><div class="line"></div><div class="line"><span class="string">'user'</span> =&gt; [<span class="string">'api/User/create'</span>, [<span class="string">'method'</span> =&gt; <span class="string">'get'</span>, <span class="string">'domain'</span>=&gt;<span class="string">'api'</span>]],</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//route.php</span></span><br><span class="line"></span><br><span class="line"><span class="string">'__domain__'</span>=&gt;[</span><br><span class="line">   <span class="string">'api'</span> =&gt; <span class="string">'api/User/index'</span>,</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line"><span class="string">'user'</span> =&gt; [<span class="string">'api/User/create'</span>, [<span class="string">'method'</span> =&gt; <span class="string">'get'</span>, <span class="string">'domain'</span>=&gt;<span class="string">'api'</span>]],</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -410,25 +396,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/01/关于ThinkPHP5-子域名路由问题/"
-     data-title="关于ThinkPHP5 子域名路由问题"
-     data-content=""
-     data-url="http://fingerart.me/2016/12/01/关于ThinkPHP5-子域名路由问题/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -439,10 +406,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/12/01/关于ThinkPHP5-子域名路由问题/"
-           data-title="关于ThinkPHP5 子域名路由问题" data-url="http://fingerart.me/2016/12/01/关于ThinkPHP5-子域名路由问题/">
-      </div>
     
   </div>
 
@@ -486,7 +449,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -503,7 +466,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -578,7 +541,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -680,30 +643,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

@@ -87,12 +87,14 @@
 
 
 <meta name="description" content="12345678910111213141516171819202122232425#!/bin/bash  &amp;lt;==在#之后加上!与shell的名称，用来宣告使用的这个脚本的用途[root@localhost shell]# sh  shell-001-hello.sh所有在 scripts 里面的东西，基本规则 ( 如变量设定规则 ) 需要与 command line 时相同;脚本的后缀名最">
+<meta name="keywords" content="Linux,Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell Scripts学习笔记 1">
 <meta property="og:url" content="http://fingerart.me/2015/01/21/Shell-Scripts学习笔记-1/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
 <meta property="og:description" content="12345678910111213141516171819202122232425#!/bin/bash  &amp;lt;==在#之后加上!与shell的名称，用来宣告使用的这个脚本的用途[root@localhost shell]# sh  shell-001-hello.sh所有在 scripts 里面的东西，基本规则 ( 如变量设定规则 ) 需要与 command line 时相同;脚本的后缀名最">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell Scripts学习笔记 1">
 <meta name="twitter:description" content="12345678910111213141516171819202122232425#!/bin/bash  &amp;lt;==在#之后加上!与shell的名称，用来宣告使用的这个脚本的用途[root@localhost shell]# sh  shell-001-hello.sh所有在 scripts 里面的东西，基本规则 ( 如变量设定规则 ) 需要与 command line 时相同;脚本的后缀名最">
@@ -331,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/21/Shell-Scripts学习笔记-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/21/Shell-Scripts学习笔记-1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -357,13 +352,13 @@
       
 
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/bin/bash  &lt;==在#之后加上!与shell的名称，用来宣告使用的这个脚本的用途</span></div><div class="line">[root@localhost shell]<span class="comment"># sh  shell-001-hello.sh</span></div><div class="line"></div><div class="line">所有在 scripts 里面的东西，基本规则 ( 如变量设定规则 ) 需要与 <span class="built_in">command</span> line 时相同;</div><div class="line"></div><div class="line">脚本的后缀名最好为 .sh 提供他人的认识;</div><div class="line"></div><div class="line">并非加上 .sh 就可以是执行文件，还需要查看其属性中是否有 x 这个属性.</div><div class="line"></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">双引号与单引号的区别</div><div class="line">Date： 2015/01/21</div><div class="line">Made by FingerArt</div><div class="line"></div><div class="line">name=”FingerArt”</div><div class="line">name1=”My name is <span class="variable">$name</span>”</div><div class="line">name2=’My name is <span class="variable">$name</span>’</div><div class="line"><span class="built_in">echo</span> <span class="variable">$name</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$name1</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$name2</span></div><div class="line"></div><div class="line">[root@localhost shell]<span class="comment"># sh shell-001-引号区别.sh</span></div><div class="line">FingerArt</div><div class="line">My name is FingerArt</div><div class="line">My name is <span class="variable">$name</span></div></pre></td></tr></table></figure>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash  &lt;==在#之后加上!与shell的名称，用来宣告使用的这个脚本的用途</span></span><br><span class="line">[root@localhost shell]<span class="comment"># sh  shell-001-hello.sh</span></span><br><span class="line"></span><br><span class="line">所有在 scripts 里面的东西，基本规则 ( 如变量设定规则 ) 需要与 <span class="built_in">command</span> line 时相同;</span><br><span class="line"></span><br><span class="line">脚本的后缀名最好为 .sh 提供他人的认识;</span><br><span class="line"></span><br><span class="line">并非加上 .sh 就可以是执行文件，还需要查看其属性中是否有 x 这个属性.</span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">双引号与单引号的区别</span><br><span class="line">Date： 2015/01/21</span><br><span class="line">Made by FingerArt</span><br><span class="line"></span><br><span class="line">name=”FingerArt”</span><br><span class="line">name1=”My name is <span class="variable">$name</span>”</span><br><span class="line">name2=’My name is <span class="variable">$name</span>’</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$name</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$name1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$name2</span></span><br><span class="line"></span><br><span class="line">[root@localhost shell]<span class="comment"># sh shell-001-引号区别.sh</span></span><br><span class="line">FingerArt</span><br><span class="line">My name is FingerArt</span><br><span class="line">My name is <span class="variable">$name</span></span><br></pre></td></tr></table></figure>
 <p>从中可以知道双引号能够解析变量, 单引号则不能.</p>
 <a id="more"></a>
 <p>声明变量类型 declare</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[root@localhost shell]<span class="comment"># declare [-afirx] </span></div><div class="line">参数说明：</div><div class="line"><span class="_">-a</span>  ：定义为数组 array</div><div class="line"><span class="_">-f</span>  ：定义为函数 <span class="keyword">function</span></div><div class="line">-i  ：定义为整数 <span class="built_in">integer</span></div><div class="line">-r  ：定义为『只读』</div><div class="line">-x  ：定义为透过环境输出变量</div><div class="line"></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment"># 变量声明</span></div><div class="line"><span class="comment"># Date： 2015/01/21</span></div><div class="line"><span class="comment"># Made by FingerArt</span></div><div class="line"></div><div class="line">a=3</div><div class="line">b=4</div><div class="line">ab=<span class="variable">$a</span>*<span class="variable">$b</span></div><div class="line"><span class="built_in">declare</span> -i c=3</div><div class="line"><span class="built_in">declare</span> -i d=4</div><div class="line"><span class="built_in">declare</span> -i <span class="built_in">cd</span>=<span class="variable">$c</span>*<span class="variable">$d</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$ab</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$cd</span></div><div class="line"></div><div class="line">[root@localhost shell]<span class="comment">#sh shell-003-declare.sh</span></div><div class="line">3*4 //原样输出,ab没声明变量类</div><div class="line">12</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost shell]<span class="comment"># declare [-afirx] </span></span><br><span class="line">参数说明：</span><br><span class="line">-a  ：定义为数组 array</span><br><span class="line">-f  ：定义为函数 <span class="keyword">function</span></span><br><span class="line">-i  ：定义为整数 <span class="built_in">integer</span></span><br><span class="line">-r  ：定义为『只读』</span><br><span class="line">-x  ：定义为透过环境输出变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 变量声明</span></span><br><span class="line"><span class="comment"># Date： 2015/01/21</span></span><br><span class="line"><span class="comment"># Made by FingerArt</span></span><br><span class="line"></span><br><span class="line">a=3</span><br><span class="line">b=4</span><br><span class="line">ab=<span class="variable">$a</span>*<span class="variable">$b</span></span><br><span class="line"><span class="built_in">declare</span> -i c=3</span><br><span class="line"><span class="built_in">declare</span> -i d=4</span><br><span class="line"><span class="built_in">declare</span> -i <span class="built_in">cd</span>=<span class="variable">$c</span>*<span class="variable">$d</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$ab</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$cd</span></span><br><span class="line"></span><br><span class="line">[root@localhost shell]<span class="comment">#sh shell-003-declare.sh</span></span><br><span class="line">3*4 //原样输出,ab没声明变量类</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
 <p>交互式shell脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment"># read 等待键盘输入</span></div><div class="line"><span class="comment"># Date: 2014-12-28</span></div><div class="line"><span class="comment"># Made: FingerArt</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">"Please input your name, and press Enter to complate."</span></div><div class="line"><span class="built_in">read</span> name</div><div class="line"><span class="built_in">echo</span> <span class="string">"Your name is <span class="variable">$name</span>"</span></div><div class="line"></div><div class="line">[root@localhost shell]<span class="comment">#sh shell-003-declare.sh</span></div><div class="line">Please input your name, and press Enter to complate. //提示信息</div><div class="line">FingerArt //键盘输入的内容</div><div class="line">Your name is FingerArt //输出内容</div><div class="line">执行 .sh 文档时附加参数</div><div class="line"></div><div class="line">[root@localhost shell]<span class="comment">#sh shell-003-declare.sh 参数1 参数2 ...</span></div><div class="line">文件名=&gt;<span class="variable">$0</span> , 参数1=&gt; <span class="variable">$1</span>, 参数2=&gt;<span class="variable">$2</span> ...</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># read 等待键盘输入</span></span><br><span class="line"><span class="comment"># Date: 2014-12-28</span></span><br><span class="line"><span class="comment"># Made: FingerArt</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Please input your name, and press Enter to complate."</span></span><br><span class="line"><span class="built_in">read</span> name</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Your name is <span class="variable">$name</span>"</span></span><br><span class="line"></span><br><span class="line">[root@localhost shell]<span class="comment">#sh shell-003-declare.sh</span></span><br><span class="line">Please input your name, and press Enter to complate. //提示信息</span><br><span class="line">FingerArt //键盘输入的内容</span><br><span class="line">Your name is FingerArt //输出内容</span><br><span class="line">执行 .sh 文档时附加参数</span><br><span class="line"></span><br><span class="line">[root@localhost shell]<span class="comment">#sh shell-003-declare.sh 参数1 参数2 ...</span></span><br><span class="line">文件名=&gt;<span class="variable">$0</span> , 参数1=&gt; <span class="variable">$1</span>, 参数2=&gt;<span class="variable">$2</span> ...</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
 </blockquote>
@@ -425,25 +420,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/01/21/Shell-Scripts学习笔记-1/"
-     data-title="Shell Scripts学习笔记 1"
-     data-content=""
-     data-url="http://fingerart.me/2015/01/21/Shell-Scripts学习笔记-1/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -454,10 +430,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/01/21/Shell-Scripts学习笔记-1/"
-           data-title="Shell Scripts学习笔记 1" data-url="http://fingerart.me/2015/01/21/Shell-Scripts学习笔记-1/">
-      </div>
     
   </div>
 
@@ -501,7 +473,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -518,7 +490,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -593,7 +565,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -695,30 +667,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

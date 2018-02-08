@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="需求在一个APP的基础上，构建另外一个APP，与之不同的是部分代码和资源改变为了节约工作量和更好的后期维护，我们决定共用同一套代码。
-像这种需求我已经遇到好几次了，这里只讲在Android Studio上进行多版本构建的步骤和一些配置
-多版本构建Gradle简介Gradle 是一个基于Ant和Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，这比">
+<meta name="description" content="需求在一个APP的基础上，构建另外一个APP，与之不同的是部分代码和资源改变为了节约工作量和更好的后期维护，我们决定共用同一套代码。 像这种需求我已经遇到好几次了，这里只讲在Android Studio上进行多版本构建的步骤和一些配置 多版本构建Gradle简介Gradle 是一个基于Ant和Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，这比">
+<meta name="keywords" content="Android,Gradle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio 多版本构建指南">
 <meta property="og:url" content="http://fingerart.me/2016/06/15/Android-Studio-多版本构建指南/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="需求在一个APP的基础上，构建另外一个APP，与之不同的是部分代码和资源改变为了节约工作量和更好的后期维护，我们决定共用同一套代码。
-像这种需求我已经遇到好几次了，这里只讲在Android Studio上进行多版本构建的步骤和一些配置
-多版本构建Gradle简介Gradle 是一个基于Ant和Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，这比">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="需求在一个APP的基础上，构建另外一个APP，与之不同的是部分代码和资源改变为了节约工作量和更好的后期维护，我们决定共用同一套代码。 像这种需求我已经遇到好几次了，这里只讲在Android Studio上进行多版本构建的步骤和一些配置 多版本构建Gradle简介Gradle 是一个基于Ant和Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，这比">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio 多版本构建指南">
-<meta name="twitter:description" content="需求在一个APP的基础上，构建另外一个APP，与之不同的是部分代码和资源改变为了节约工作量和更好的后期维护，我们决定共用同一套代码。
-像这种需求我已经遇到好几次了，这里只讲在Android Studio上进行多版本构建的步骤和一些配置
-多版本构建Gradle简介Gradle 是一个基于Ant和Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，这比">
+<meta name="twitter:description" content="需求在一个APP的基础上，构建另外一个APP，与之不同的是部分代码和资源改变为了节约工作量和更好的后期维护，我们决定共用同一套代码。 像这种需求我已经遇到好几次了，这里只讲在Android Studio上进行多版本构建的步骤和一些配置 多版本构建Gradle简介Gradle 是一个基于Ant和Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，这比">
 
 
 
@@ -337,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/15/Android-Studio-多版本构建指南/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/Android-Studio-多版本构建指南/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -395,20 +384,20 @@
 <li>defaultConfig</li>
 </ul>
 <p>这个模块一些默认配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">defaultConfig &#123;</div><div class="line">	applicationId &quot;me.fingerart.android&quot;</div><div class="line">	minSdkVersion 13</div><div class="line">	targetSdkVersion 23</div><div class="line">	versionCode 1</div><div class="line">	versionName &quot;1.0&quot;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">	applicationId &quot;me.fingerart.android&quot;</span><br><span class="line">	minSdkVersion 13</span><br><span class="line">	targetSdkVersion 23</span><br><span class="line">	versionCode 1</span><br><span class="line">	versionName &quot;1.0&quot;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>buildTypes</li>
 </ul>
 <p>构建的类型，一般是发行和debug两种</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">buildTypes &#123;</div><div class="line">    release &#123;</div><div class="line">        minifyEnabled true</div><div class="line">        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.txt&apos;</div><div class="line">        //signingConfig signingConfigs.release</div><div class="line">    &#125;</div><div class="line">    debug &#123;</div><div class="line">        minifyEnabled false</div><div class="line">        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.txt&apos;</div><div class="line">        //signingConfig signingConfigs.debug</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">    release &#123;</span><br><span class="line">        minifyEnabled true</span><br><span class="line">        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.txt&apos;</span><br><span class="line">        //signingConfig signingConfigs.release</span><br><span class="line">    &#125;</span><br><span class="line">    debug &#123;</span><br><span class="line">        minifyEnabled false</span><br><span class="line">        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.txt&apos;</span><br><span class="line">        //signingConfig signingConfigs.debug</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>productFlavors</li>
 </ul>
 <p>产品的变种，体现不同版本之前配置的差异，这也就是我们构建多个版本的主要配置了<br>productFlavors的配置会覆盖与defaultConfig中的相同配置，也就是说productFlavors+defaultConfig组成最终的配置<br>比如，productB的applicationId会覆盖defaultConfig，最后打出apk的applicationId是productB中的；而productA因为没有配置applicationId所以会使用defaultConfig中的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">productFlavors &#123;</div><div class="line">        productA &#123;</div><div class="line">            resValue &apos;string&apos;, &apos;app_name&apos;, &apos;APP_A&apos;</div><div class="line">            buildConfigField &apos;String&apos;, &apos;URL_PATH&apos;, &apos;&quot;http://fingerart.me/APP_A&quot;&apos;</div><div class="line">            manifestPlaceholders = [</div><div class="line">                    appkey_easeMob  : &apos;a&apos;,</div><div class="line">					appkey_baidu : &apos;a&apos;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        productB &#123;</div><div class="line">            applicationId &apos;com.hysd.skyworth.productb&apos;</div><div class="line">            resValue &apos;string&apos;, &apos;app_name&apos;, &apos;APP_B&apos;</div><div class="line">            buildConfigField &apos;String&apos;, &apos;URL_PATH&apos;, &apos;&quot;http://fingerart.me/APP_B&quot;&apos;</div><div class="line">            manifestPlaceholders = [</div><div class="line">                    appkey_easeMob : &apos;b&apos;,</div><div class="line">					appkey_baidu   : &apos;b&apos;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">productFlavors &#123;</span><br><span class="line">        productA &#123;</span><br><span class="line">            resValue &apos;string&apos;, &apos;app_name&apos;, &apos;APP_A&apos;</span><br><span class="line">            buildConfigField &apos;String&apos;, &apos;URL_PATH&apos;, &apos;&quot;http://fingerart.me/APP_A&quot;&apos;</span><br><span class="line">            manifestPlaceholders = [</span><br><span class="line">                    appkey_easeMob  : &apos;a&apos;,</span><br><span class="line">					appkey_baidu : &apos;a&apos;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        productB &#123;</span><br><span class="line">            applicationId &apos;com.hysd.skyworth.productb&apos;</span><br><span class="line">            resValue &apos;string&apos;, &apos;app_name&apos;, &apos;APP_B&apos;</span><br><span class="line">            buildConfigField &apos;String&apos;, &apos;URL_PATH&apos;, &apos;&quot;http://fingerart.me/APP_B&quot;&apos;</span><br><span class="line">            manifestPlaceholders = [</span><br><span class="line">                    appkey_easeMob : &apos;b&apos;,</span><br><span class="line">					appkey_baidu   : &apos;b&apos;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h4><p>你可以手动的添加上面我们介绍过的这些配置，你需要sync project才会生效。<br>你还可以<code>Project Structure(Ctrl+Shift+Alt+S) -&gt; 选中Module -&gt; flavors</code>进行配置</p>
 <p>当你配置完成之后</p>
-<h3 id="示例参考"><a href="#示例参考" class="headerlink" title="示例参考"></a>示例参考</h3><p><a href="https://github.com/fingerart" target="_blank" rel="external">https://github.com/fingerart</a></p>
+<h3 id="示例参考"><a href="#示例参考" class="headerlink" title="示例参考"></a>示例参考</h3><p><a href="https://github.com/fingerart" target="_blank" rel="noopener">https://github.com/fingerart</a></p>
 
       
     </div>
@@ -467,25 +456,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/15/Android-Studio-多版本构建指南/"
-     data-title="Android Studio 多版本构建指南"
-     data-content=""
-     data-url="http://fingerart.me/2016/06/15/Android-Studio-多版本构建指南/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -496,10 +466,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/06/15/Android-Studio-多版本构建指南/"
-           data-title="Android Studio 多版本构建指南" data-url="http://fingerart.me/2016/06/15/Android-Studio-多版本构建指南/">
-      </div>
     
   </div>
 
@@ -543,7 +509,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -560,7 +526,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -635,7 +601,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -737,30 +703,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

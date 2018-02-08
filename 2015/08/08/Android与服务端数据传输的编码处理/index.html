@@ -86,21 +86,20 @@
 
 
 
-<meta name="description" content="乱码的问题不管是在BS或是CS架构中都会存在, 都有自己默认的编码, 不同的编码就会造成乱码, 处理乱码的最好办法就是保持服务端与客户的编码一致!
-GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”)); //在不设置编码的情况下, 默认是以GBK编码的, 编码的内容在ISO-8859-1中查询不到, 使用Tomcat所在系统的默认编码读取数据: n">
+<meta name="description" content="乱码的问题不管是在BS或是CS架构中都会存在, 都有自己默认的编码, 不同的编码就会造成乱码, 处理乱码的最好办法就是保持服务端与客户的编码一致! GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”)); //在不设置编码的情况下, 默认是以GBK编码的, 编码的内容在ISO-8859-1中查询不到, 使用Tomcat所在系统的默认编码读取数据: n">
+<meta name="keywords" content="Android,编码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android与服务端数据传输的编码处理">
 <meta property="og:url" content="http://fingerart.me/2015/08/08/Android与服务端数据传输的编码处理/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="乱码的问题不管是在BS或是CS架构中都会存在, 都有自己默认的编码, 不同的编码就会造成乱码, 处理乱码的最好办法就是保持服务端与客户的编码一致!
-GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”)); //在不设置编码的情况下, 默认是以GBK编码的, 编码的内容在ISO-8859-1中查询不到, 使用Tomcat所在系统的默认编码读取数据: n">
+<meta property="og:description" content="乱码的问题不管是在BS或是CS架构中都会存在, 都有自己默认的编码, 不同的编码就会造成乱码, 处理乱码的最好办法就是保持服务端与客户的编码一致! GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”)); //在不设置编码的情况下, 默认是以GBK编码的, 编码的内容在ISO-8859-1中查询不到, 使用Tomcat所在系统的默认编码读取数据: n">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/255-android-login-view.png">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/255-android-log.png">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android与服务端数据传输的编码处理">
-<meta name="twitter:description" content="乱码的问题不管是在BS或是CS架构中都会存在, 都有自己默认的编码, 不同的编码就会造成乱码, 处理乱码的最好办法就是保持服务端与客户的编码一致!
-GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”)); //在不设置编码的情况下, 默认是以GBK编码的, 编码的内容在ISO-8859-1中查询不到, 使用Tomcat所在系统的默认编码读取数据: n">
+<meta name="twitter:description" content="乱码的问题不管是在BS或是CS架构中都会存在, 都有自己默认的编码, 不同的编码就会造成乱码, 处理乱码的最好办法就是保持服务端与客户的编码一致! GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”)); //在不设置编码的情况下, 默认是以GBK编码的, 编码的内容在ISO-8859-1中查询不到, 使用Tomcat所在系统的默认编码读取数据: n">
 <meta name="twitter:image" content="http://77fzuw.com1.z0.glb.clouddn.com/255-android-login-view.png">
 
 
@@ -337,13 +336,6 @@ GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”));
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/08/Android与服务端数据传输的编码处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/08/Android与服务端数据传输的编码处理/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -433,25 +425,6 @@ GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”));
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/08/08/Android与服务端数据传输的编码处理/"
-     data-title="Android与服务端数据传输的编码处理"
-     data-content=""
-     data-url="http://fingerart.me/2015/08/08/Android与服务端数据传输的编码处理/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -462,10 +435,6 @@ GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”));
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/08/08/Android与服务端数据传输的编码处理/"
-           data-title="Android与服务端数据传输的编码处理" data-url="http://fingerart.me/2015/08/08/Android与服务端数据传输的编码处理/">
-      </div>
     
   </div>
 
@@ -509,7 +478,7 @@ GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”));
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -526,7 +495,7 @@ GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”));
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -601,7 +570,7 @@ GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”));
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -703,30 +672,9 @@ GET方式Tomcat写出数据: os.write(“登陆成功”.getBytes(“UTF-8”));
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

@@ -87,12 +87,14 @@
 
 
 <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374package other;import java.beans.BeanInfo;import java.beans.In">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内省Introspector">
 <meta property="og:url" content="http://fingerart.me/2014/10/27/内省Introspector/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
 <meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374package other;import java.beans.BeanInfo;import java.beans.In">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内省Introspector">
 <meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374package other;import java.beans.BeanInfo;import java.beans.In">
@@ -331,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/10/27/内省Introspector/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/27/内省Introspector/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -357,7 +352,7 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> other;</div><div class="line"><span class="keyword">import</span> java.beans.BeanInfo;</div><div class="line"><span class="keyword">import</span> java.beans.IntrospectionException;</div><div class="line"><span class="keyword">import</span> java.beans.Introspector;</div><div class="line"><span class="keyword">import</span> java.beans.PropertyDescriptor;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.Method;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">内省(Introspector)</div><div class="line">为什么要学习内省</div><div class="line">开发框架时，经常使用java对象的属性来封装程序的数据，每次都是用反射技术完成此类</div><div class="line">操作过于麻烦，所以sun公司开发了一套API，专门用于操作java对象的属性。</div><div class="line">内省访问JavaBean属性的两种方式</div><div class="line">通过propertyDescriptor类操作BeanInfo，然后通过BeanInfo来获取属性的描述器(PropertyDescriptor)</div><div class="line">通过这个属性描述器就可以获取某个属性对应的getter/setter方法，然后通过反射机制来调用这些方法</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntrospectorDemo</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	<span class="doctag">@param</span> args</div><div class="line">	<span class="doctag">@throws</span> IntrospectionException</div><div class="line">	<span class="doctag">@throws</span> InvocationTargetException</div><div class="line">	<span class="doctag">@throws</span> IllegalArgumentException</div><div class="line">	<span class="doctag">@throws</span> IllegalAccessException</div><div class="line">	*/</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IntrospectionException, IllegalAccessException, 	IllegalArgumentException, InvocationTargetException </span>&#123;</div><div class="line">		test2();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//遍历bean的所有属性</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> IntrospectionException </span>&#123;</div><div class="line">		BeanInfo info = Introspector.getBeanInfo(Person.class, Object.class);<span class="comment">//getBeanInfo可传入其他类class文件排除其属性</span></div><div class="line">		PropertyDescriptor[] pd = info.getPropertyDescriptors();<span class="comment">//属性描述器</span></div><div class="line">		<span class="keyword">for</span>( PropertyDescriptor v : pd) &#123;</div><div class="line">			System.out.println(v.getName());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//操纵bean的指定属性</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> <span class="keyword">throws</span> IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException </span>&#123;</div><div class="line">		Person p = <span class="keyword">new</span> Person();</div><div class="line">		PropertyDescriptor pd = <span class="keyword">new</span> PropertyDescriptor(“name”, Person.class);</div><div class="line">	</div><div class="line">		<span class="comment">//设置属性</span></div><div class="line">		Method m = pd.getWriteMethod();</div><div class="line">		m.invoke(p, “赵橙”);</div><div class="line">	</div><div class="line">		<span class="comment">//获取属性</span></div><div class="line">		Method mr = pd.getReadMethod();</div><div class="line">		System.out.print(mr.invoke(p, <span class="keyword">null</span>));</div><div class="line">		</div><div class="line">		<span class="comment">//获取字段类型</span></div><div class="line">		System.out.print(pd.getPropertyType().toString());</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123; <span class="comment">//javaBean</span></div><div class="line">	<span class="keyword">private</span> String name ;</div><div class="line">	<span class="keyword">private</span> String password ;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">	    <span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">	    <span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</div><div class="line">	    <span class="keyword">return</span> password;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</div><div class="line">	    <span class="keyword">this</span>.password = password;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> other;</span><br><span class="line"><span class="keyword">import</span> java.beans.BeanInfo;</span><br><span class="line"><span class="keyword">import</span> java.beans.IntrospectionException;</span><br><span class="line"><span class="keyword">import</span> java.beans.Introspector;</span><br><span class="line"><span class="keyword">import</span> java.beans.PropertyDescriptor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">内省(Introspector)</span></span><br><span class="line"><span class="comment">为什么要学习内省</span></span><br><span class="line"><span class="comment">开发框架时，经常使用java对象的属性来封装程序的数据，每次都是用反射技术完成此类</span></span><br><span class="line"><span class="comment">操作过于麻烦，所以sun公司开发了一套API，专门用于操作java对象的属性。</span></span><br><span class="line"><span class="comment">内省访问JavaBean属性的两种方式</span></span><br><span class="line"><span class="comment">通过propertyDescriptor类操作BeanInfo，然后通过BeanInfo来获取属性的描述器(PropertyDescriptor)</span></span><br><span class="line"><span class="comment">通过这个属性描述器就可以获取某个属性对应的getter/setter方法，然后通过反射机制来调用这些方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntrospectorDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	<span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	<span class="doctag">@throws</span> IntrospectionException</span></span><br><span class="line"><span class="comment">	<span class="doctag">@throws</span> InvocationTargetException</span></span><br><span class="line"><span class="comment">	<span class="doctag">@throws</span> IllegalArgumentException</span></span><br><span class="line"><span class="comment">	<span class="doctag">@throws</span> IllegalAccessException</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IntrospectionException, IllegalAccessException, 	IllegalArgumentException, InvocationTargetException </span>&#123;</span><br><span class="line">		test2();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//遍历bean的所有属性</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> IntrospectionException </span>&#123;</span><br><span class="line">		BeanInfo info = Introspector.getBeanInfo(Person.class, Object.class);<span class="comment">//getBeanInfo可传入其他类class文件排除其属性</span></span><br><span class="line">		PropertyDescriptor[] pd = info.getPropertyDescriptors();<span class="comment">//属性描述器</span></span><br><span class="line">		<span class="keyword">for</span>( PropertyDescriptor v : pd) &#123;</span><br><span class="line">			System.out.println(v.getName());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//操纵bean的指定属性</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> <span class="keyword">throws</span> IllegalAccessException, IllegalArgumentException, InvocationTargetException, IntrospectionException </span>&#123;</span><br><span class="line">		Person p = <span class="keyword">new</span> Person();</span><br><span class="line">		PropertyDescriptor pd = <span class="keyword">new</span> PropertyDescriptor(“name”, Person.class);</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//设置属性</span></span><br><span class="line">		Method m = pd.getWriteMethod();</span><br><span class="line">		m.invoke(p, “赵橙”);</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//获取属性</span></span><br><span class="line">		Method mr = pd.getReadMethod();</span><br><span class="line">		System.out.print(mr.invoke(p, <span class="keyword">null</span>));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取字段类型</span></span><br><span class="line">		System.out.print(pd.getPropertyType().toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123; <span class="comment">//javaBean</span></span><br><span class="line">	<span class="keyword">private</span> String name ;</span><br><span class="line">	<span class="keyword">private</span> String password ;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">this</span>.password = password;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
@@ -418,25 +413,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/10/27/内省Introspector/"
-     data-title="内省Introspector"
-     data-content=""
-     data-url="http://fingerart.me/2014/10/27/内省Introspector/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -447,10 +423,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2014/10/27/内省Introspector/"
-           data-title="内省Introspector" data-url="http://fingerart.me/2014/10/27/内省Introspector/">
-      </div>
     
   </div>
 
@@ -494,7 +466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -511,7 +483,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -586,7 +558,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -688,30 +660,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

@@ -86,25 +86,18 @@
 
 
 
-<meta name="description" content="认识shell简介shell是使用者与内核沟通以达到理想工作的方式，Linux发展中出现多种shell，Bourne Again SHell是Linux使用的一个shell版本简称bash。
-history~/.bash_history 记录了前一次登录是说运行的命令，当前登录说运行的命令记录在内存中，成功注销后悔记录到 ~/.bash_history 中。
-alias命令的别名
-内建命令type">
+<meta name="description" content="认识shell简介shell是使用者与内核沟通以达到理想工作的方式，Linux发展中出现多种shell，Bourne Again SHell是Linux使用的一个shell版本简称bash。 history~/.bash_history 记录了前一次登录是说运行的命令，当前登录说运行的命令记录在内存中，成功注销后悔记录到 ~/.bash_history 中。 alias命令的别名 内建命令type">
+<meta name="keywords" content="Linux,Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="认识与学习BASH">
 <meta property="og:url" content="http://fingerart.me/2016/09/03/认识与学习BASH/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="认识shell简介shell是使用者与内核沟通以达到理想工作的方式，Linux发展中出现多种shell，Bourne Again SHell是Linux使用的一个shell版本简称bash。
-history~/.bash_history 记录了前一次登录是说运行的命令，当前登录说运行的命令记录在内存中，成功注销后悔记录到 ~/.bash_history 中。
-alias命令的别名
-内建命令type">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="认识shell简介shell是使用者与内核沟通以达到理想工作的方式，Linux发展中出现多种shell，Bourne Again SHell是Linux使用的一个shell版本简称bash。 history~/.bash_history 记录了前一次登录是说运行的命令，当前登录说运行的命令记录在内存中，成功注销后悔记录到 ~/.bash_history 中。 alias命令的别名 内建命令type">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="认识与学习BASH">
-<meta name="twitter:description" content="认识shell简介shell是使用者与内核沟通以达到理想工作的方式，Linux发展中出现多种shell，Bourne Again SHell是Linux使用的一个shell版本简称bash。
-history~/.bash_history 记录了前一次登录是说运行的命令，当前登录说运行的命令记录在内存中，成功注销后悔记录到 ~/.bash_history 中。
-alias命令的别名
-内建命令type">
+<meta name="twitter:description" content="认识shell简介shell是使用者与内核沟通以达到理想工作的方式，Linux发展中出现多种shell，Bourne Again SHell是Linux使用的一个shell版本简称bash。 history~/.bash_history 记录了前一次登录是说运行的命令，当前登录说运行的命令记录在内存中，成功注销后悔记录到 ~/.bash_history 中。 alias命令的别名 内建命令type">
 
 
 
@@ -340,13 +333,6 @@ alias命令的别名
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/03/认识与学习BASH/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/认识与学习BASH/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -369,7 +355,7 @@ alias命令的别名
         <h3 id="认识shell"><a href="#认识shell" class="headerlink" title="认识shell"></a>认识shell</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>shell是使用者与内核沟通以达到理想工作的方式，Linux发展中出现多种shell，Bourne Again SHell是Linux使用的一个shell版本简称bash。</p>
 <h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><p><code>~/.bash_history</code> 记录了前一次登录是说运行的命令，当前登录说运行的命令记录在内存中，成功注销后悔记录到 <code>~/.bash_history</code> 中。</p>
 <h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><p>命令的别名</p>
-<h3 id="内建命令type"><a href="#内建命令type" class="headerlink" title="内建命令type"></a>内建命令type</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@www ~]<span class="comment"># type [-tpa] name</span></div><div class="line">选项与参数：</div><div class="line">    ：不加任何选项与参数时，<span class="built_in">type</span> 会显示出 name 是外部命令还是 bash 内建命令</div><div class="line">-t  ：当加入 -t 参数时，<span class="built_in">type</span> 会将 name 以底下这些字眼显示出他的意义：</div><div class="line">      file    ：表示为外部命令；</div><div class="line">      <span class="built_in">alias</span>   ：表示该命令为命令别名所配置的名称；</div><div class="line">      <span class="built_in">builtin</span> ：表示该命令为 bash 内建的命令功能；</div><div class="line">-p  ：如果后面接的 name 为外部命令时，才会显示完整文件名；</div><div class="line"><span class="_">-a</span>  ：会由 PATH 变量定义的路径中，将所有含 name 的命令都列出来，包含 <span class="built_in">alias</span></div></pre></td></tr></table></figure>
+<h3 id="内建命令type"><a href="#内建命令type" class="headerlink" title="内建命令type"></a>内建命令type</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]<span class="comment"># type [-tpa] name</span></span><br><span class="line">选项与参数：</span><br><span class="line">    ：不加任何选项与参数时，<span class="built_in">type</span> 会显示出 name 是外部命令还是 bash 内建命令</span><br><span class="line">-t  ：当加入 -t 参数时，<span class="built_in">type</span> 会将 name 以底下这些字眼显示出他的意义：</span><br><span class="line">      file    ：表示为外部命令；</span><br><span class="line">      <span class="built_in">alias</span>   ：表示该命令为命令别名所配置的名称；</span><br><span class="line">      <span class="built_in">builtin</span> ：表示该命令为 bash 内建的命令功能；</span><br><span class="line">-p  ：如果后面接的 name 为外部命令时，才会显示完整文件名；</span><br><span class="line">-a  ：会由 PATH 变量定义的路径中，将所有含 name 的命令都列出来，包含 <span class="built_in">alias</span></span><br></pre></td></tr></table></figure>
 <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3>
       
     </div>
@@ -428,25 +414,6 @@ alias命令的别名
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/03/认识与学习BASH/"
-     data-title="认识与学习BASH"
-     data-content=""
-     data-url="http://fingerart.me/2016/09/03/认识与学习BASH/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -457,10 +424,6 @@ alias命令的别名
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/09/03/认识与学习BASH/"
-           data-title="认识与学习BASH" data-url="http://fingerart.me/2016/09/03/认识与学习BASH/">
-      </div>
     
   </div>
 
@@ -504,7 +467,7 @@ alias命令的别名
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -521,7 +484,7 @@ alias命令的别名
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -596,7 +559,7 @@ alias命令的别名
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -698,30 +661,9 @@ alias命令的别名
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

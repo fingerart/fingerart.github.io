@@ -86,37 +86,18 @@
 
 
 
-<meta name="description" content="LAMP 所需套件与其结构
-httpd(Apache)
-mysql
-php
-Apache 目前有几种主要版本，包括 1.3.x, 2.0.x, 以及 2.2.x 等等，在 1.3.x 以前的版本通常取名为 apache ，2.x 以后则称为
-httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提供 Apache 2.0.x 这个版本。
-
-1[root@li">
+<meta name="description" content="LAMP 所需套件与其结构 httpd(Apache) mysql php Apache 目前有几种主要版本，包括 1.3.x, 2.0.x, 以及 2.2.x 等等，在 1.3.x 以前的版本通常取名为 apache ，2.x 以后则称为 httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提供 Apache 2.0.x 这个版本。  1[root@li">
+<meta name="keywords" content="Linux,PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux(CentOs)下PHP环境搭载与配置">
 <meta property="og:url" content="http://fingerart.me/2015/06/15/Linux-CentOs-下PHP环境搭载与配置/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="LAMP 所需套件与其结构
-httpd(Apache)
-mysql
-php
-Apache 目前有几种主要版本，包括 1.3.x, 2.0.x, 以及 2.2.x 等等，在 1.3.x 以前的版本通常取名为 apache ，2.x 以后则称为
-httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提供 Apache 2.0.x 这个版本。
-
-1[root@li">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="LAMP 所需套件与其结构 httpd(Apache) mysql php Apache 目前有几种主要版本，包括 1.3.x, 2.0.x, 以及 2.2.x 等等，在 1.3.x 以前的版本通常取名为 apache ，2.x 以后则称为 httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提供 Apache 2.0.x 这个版本。  1[root@li">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux(CentOs)下PHP环境搭载与配置">
-<meta name="twitter:description" content="LAMP 所需套件与其结构
-httpd(Apache)
-mysql
-php
-Apache 目前有几种主要版本，包括 1.3.x, 2.0.x, 以及 2.2.x 等等，在 1.3.x 以前的版本通常取名为 apache ，2.x 以后则称为
-httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提供 Apache 2.0.x 这个版本。
-
-1[root@li">
+<meta name="twitter:description" content="LAMP 所需套件与其结构 httpd(Apache) mysql php Apache 目前有几种主要版本，包括 1.3.x, 2.0.x, 以及 2.2.x 等等，在 1.3.x 以前的版本通常取名为 apache ，2.x 以后则称为 httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提供 Apache 2.0.x 这个版本。  1[root@li">
 
 
 
@@ -352,13 +333,6 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/06/15/Linux-CentOs-下PHP环境搭载与配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/15/Linux-CentOs-下PHP环境搭载与配置/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -385,7 +359,7 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
 <li>Apache 目前有几种主要版本，包括 1.3.x, 2.0.x, 以及 2.2.x 等等，在 1.3.x 以前的版本通常取名为 apache ，2.x 以后则称为</li>
 <li>httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提供 Apache 2.0.x 这个版本。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@linux ~]# yum install httpd mysql-server php //安装所需的套件</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linux ~]# yum install httpd mysql-server php //安装所需的套件</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="Apache结构"><a href="#Apache结构" class="headerlink" title="Apache结构"></a>Apache结构</h3><ul>
 <li><p>/etc/httpd/conf/httpd.conf (主要配置文件)<br>  最主要的配置文件，其实整个 Apache 也不过就是这个配置文件！很多其他的 distribution 都将这个文件拆成数个小文件分别管理不同的参数。 但是主要配置文件还是以这个文件为主的！你只要找到这个档名就知道如何设定啦！</p>
@@ -394,13 +368,13 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
 </li>
 <li><p>/usr/lib/httpd/modules/Apache<br>  支持很多的模块，所有你想要使用的模块默认是放置在这个目录当中的！</p>
 </li>
-<li><p>/var/www/html/<br>  这就是CentOS 预设的『首页』所在目录！当你输入『<a href="http://localhost』时所显示的数据所在。" target="_blank" rel="external">http://localhost』时所显示的数据所在。</a></p>
+<li><p>/var/www/html/<br>  这就是CentOS 预设的『首页』所在目录！当你输入『<a href="http://localhost』时所显示的数据所在。" target="_blank" rel="noopener">http://localhost』时所显示的数据所在。</a></p>
 </li>
 <li><p>/var/www/error/<br>  如果因为主机设定错误，或者是浏览器端要求的数据错误时，在浏览器上出现的错误讯息就以这个目录的默认信息为主！</p>
 </li>
-<li><p>/var/www/icons/<br>  这个目录提供 Apache 默认给予的一些小图示，你可以随意使用啊！当你输入『<a href="http://localhost/icons/』" target="_blank" rel="external">http://localhost/icons/』</a> 时所显示的数据所在。</p>
+<li><p>/var/www/icons/<br>  这个目录提供 Apache 默认给予的一些小图示，你可以随意使用啊！当你输入『<a href="http://localhost/icons/』" target="_blank" rel="noopener">http://localhost/icons/』</a> 时所显示的数据所在。</p>
 </li>
-<li><p>/var/www/cgi-bin/<br>  默认给一些可执行的 CGI (网页程序) 程序放置的目录；当你输入『<a href="http://localhost/cgi-bin/』" target="_blank" rel="external">http://localhost/cgi-bin/』</a> 时所显示的数据所在。</p>
+<li><p>/var/www/cgi-bin/<br>  默认给一些可执行的 CGI (网页程序) 程序放置的目录；当你输入『<a href="http://localhost/cgi-bin/』" target="_blank" rel="noopener">http://localhost/cgi-bin/』</a> 时所显示的数据所在。</p>
 </li>
 <li><p>/var/log/httpd/<br>  预设的 Apache 登录档都放在这里，对于流量比较大的网站来说，这个目录要很小心， 因为以鸟哥网站的流量来说，一个星期的登录文件数据可以大到 500MBytes 至 1GBytes 左右，所以你务必要修改一下你的 logrotate 让登录档被压缩，否则…..</p>
 </li>
@@ -491,25 +465,6 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/06/15/Linux-CentOs-下PHP环境搭载与配置/"
-     data-title="Linux(CentOs)下PHP环境搭载与配置"
-     data-content=""
-     data-url="http://fingerart.me/2015/06/15/Linux-CentOs-下PHP环境搭载与配置/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -520,10 +475,6 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/06/15/Linux-CentOs-下PHP环境搭载与配置/"
-           data-title="Linux(CentOs)下PHP环境搭载与配置" data-url="http://fingerart.me/2015/06/15/Linux-CentOs-下PHP环境搭载与配置/">
-      </div>
     
   </div>
 
@@ -567,7 +518,7 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -584,7 +535,7 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -659,7 +610,7 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -761,30 +712,9 @@ httpd ！请与您的 distribution 比较看看先。至于 CentOS 4.x 则是提
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

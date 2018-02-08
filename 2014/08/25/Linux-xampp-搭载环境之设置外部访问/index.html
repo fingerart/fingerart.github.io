@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="在Linux上 搭载xampp又遇到了一些问题, 有时在网上找的答案并不能解决我的问题. 这里记录一下我的解决方案.
-在此之前我先说一下你会遇到的另外一点问题.">
+<meta name="description" content="在Linux上 搭载xampp又遇到了一些问题, 有时在网上找的答案并不能解决我的问题. 这里记录一下我的解决方案. 在此之前我先说一下你会遇到的另外一点问题.">
+<meta name="keywords" content="Linux,xampp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux xampp 搭载环境之设置外部访问">
 <meta property="og:url" content="http://fingerart.me/2014/08/25/Linux-xampp-搭载环境之设置外部访问/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="在Linux上 搭载xampp又遇到了一些问题, 有时在网上找的答案并不能解决我的问题. 这里记录一下我的解决方案.
-在此之前我先说一下你会遇到的另外一点问题.">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="在Linux上 搭载xampp又遇到了一些问题, 有时在网上找的答案并不能解决我的问题. 这里记录一下我的解决方案. 在此之前我先说一下你会遇到的另外一点问题.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux xampp 搭载环境之设置外部访问">
-<meta name="twitter:description" content="在Linux上 搭载xampp又遇到了一些问题, 有时在网上找的答案并不能解决我的问题. 这里记录一下我的解决方案.
-在此之前我先说一下你会遇到的另外一点问题.">
+<meta name="twitter:description" content="在Linux上 搭载xampp又遇到了一些问题, 有时在网上找的答案并不能解决我的问题. 这里记录一下我的解决方案. 在此之前我先说一下你会遇到的另外一点问题.">
 
 
 
@@ -334,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/25/Linux-xampp-搭载环境之设置外部访问/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/25/Linux-xampp-搭载环境之设置外部访问/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -363,13 +355,13 @@
         <p>在Linux上 搭载xampp又遇到了一些问题, 有时在网上找的答案并不能解决我的问题. 这里记录一下我的解决方案.</p>
 <p>在此之前我先说一下你会遇到的另外一点问题.</p>
 <a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat <span class="_">-a</span> | grep ‘mysql’</div><div class="line">netstat <span class="_">-a</span> | grep ‘http’</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -a | grep ‘mysql’</span><br><span class="line">netstat -a | grep ‘http’</span><br></pre></td></tr></table></figure>
 <p>提示:getnameinfo failed, 说明你没有开启Apache .键入以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//下面以你安装的路径为准</div><div class="line">/opt/lampp/lampp start //开启Apache</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//下面以你安装的路径为准</span><br><span class="line">/opt/lampp/lampp start //开启Apache</span><br></pre></td></tr></table></figure>
 <p>现在我说一下外部访问的问题, 关于这个我认为应该是版本的不同, 而导致具体的配置会有所差别.<br>我安装的是1.8.3版本的.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi /opt/lampp/etc/extra/httpd-xampp.conf</div><div class="line">:<span class="built_in">set</span> nu</div><div class="line">//在配置文件里面用了正则匹配</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/lampp/etc/extra/httpd-xampp.conf</span><br><span class="line">:<span class="built_in">set</span> nu</span><br><span class="line">//在配置文件里面用了正则匹配</span><br></pre></td></tr></table></figure>
 <p>Require local //将光标移动到这里键入”i”,将改行改为: <code>Require all granted</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//完成后,键入</div><div class="line">:wq //保存编辑</div><div class="line"></div><div class="line">/opt/lampp/lampp restart //重启Apache, 搞定.</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//完成后,键入</span><br><span class="line">:wq //保存编辑</span><br><span class="line"></span><br><span class="line">/opt/lampp/lampp restart //重启Apache, 搞定.</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -427,25 +419,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/08/25/Linux-xampp-搭载环境之设置外部访问/"
-     data-title="Linux xampp 搭载环境之设置外部访问"
-     data-content=""
-     data-url="http://fingerart.me/2014/08/25/Linux-xampp-搭载环境之设置外部访问/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -456,10 +429,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2014/08/25/Linux-xampp-搭载环境之设置外部访问/"
-           data-title="Linux xampp 搭载环境之设置外部访问" data-url="http://fingerart.me/2014/08/25/Linux-xampp-搭载环境之设置外部访问/">
-      </div>
     
   </div>
 
@@ -503,7 +472,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -520,7 +489,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -595,7 +564,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -697,30 +666,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

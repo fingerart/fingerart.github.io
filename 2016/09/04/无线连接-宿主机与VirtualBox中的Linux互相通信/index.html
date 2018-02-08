@@ -86,28 +86,21 @@
 
 
 
-<meta name="description" content="有线连接中的配置方式在上篇博文已经讲过了。
-设置连接方式将网卡1设置为桥接网卡方式如图
-网络配置请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO
-1vi /etc/sysconfig/network-scripts/ifcfg-eth0">
+<meta name="description" content="有线连接中的配置方式在上篇博文已经讲过了。 设置连接方式将网卡1设置为桥接网卡方式如图 网络配置请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO 1vi /etc/sysconfig/network-scripts/ifcfg-eth0">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无线连接-宿主机与VirtualBox中的Linux互相通信">
 <meta property="og:url" content="http://fingerart.me/2016/09/04/无线连接-宿主机与VirtualBox中的Linux互相通信/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="有线连接中的配置方式在上篇博文已经讲过了。
-设置连接方式将网卡1设置为桥接网卡方式如图
-网络配置请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO
-1vi /etc/sysconfig/network-scripts/ifcfg-eth0">
+<meta property="og:description" content="有线连接中的配置方式在上篇博文已经讲过了。 设置连接方式将网卡1设置为桥接网卡方式如图 网络配置请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO 1vi /etc/sysconfig/network-scripts/ifcfg-eth0">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/image/BritualBox_Bird.png">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wireless_connection_test.gif">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wireless_connection_linux_test.gif">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无线连接-宿主机与VirtualBox中的Linux互相通信">
-<meta name="twitter:description" content="有线连接中的配置方式在上篇博文已经讲过了。
-设置连接方式将网卡1设置为桥接网卡方式如图
-网络配置请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO
-1vi /etc/sysconfig/network-scripts/ifcfg-eth0">
+<meta name="twitter:description" content="有线连接中的配置方式在上篇博文已经讲过了。 设置连接方式将网卡1设置为桥接网卡方式如图 网络配置请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO 1vi /etc/sysconfig/network-scripts/ifcfg-eth0">
 <meta name="twitter:image" content="http://77fzuw.com1.z0.glb.clouddn.com/image/BritualBox_Bird.png">
 
 
@@ -344,13 +337,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/04/无线连接-宿主机与VirtualBox中的Linux互相通信/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/04/无线连接-宿主机与VirtualBox中的Linux互相通信/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -373,11 +359,11 @@
         <p>有线连接中的配置方式在上篇博文已经讲过了。</p>
 <h4 id="设置连接方式"><a href="#设置连接方式" class="headerlink" title="设置连接方式"></a>设置连接方式</h4><p>将网卡1设置为桥接网卡方式如图<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/image/BritualBox_Bird.png" alt=""></p>
 <h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>请参照你的宿主机设置好网关、掩码、ip地址、BOOTPROTO</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">DEVICE=eth0</div><div class="line">HWADDR=08:00:27:12:41:D3</div><div class="line">NETMASK=255.255.255.0</div><div class="line">IPADDR=192.168.0.99</div><div class="line">GATEWAY=192.168.0.1</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=cd17d691-d2be-54d0-8c7a-c1612cfbf631</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=no</div><div class="line">BOOTPROTO=static</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DEVICE=eth0</span><br><span class="line">HWADDR=08:00:27:12:41:D3</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">IPADDR=192.168.0.99</span><br><span class="line">GATEWAY=192.168.0.1</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">UUID=cd17d691-d2be-54d0-8c7a-c1612cfbf631</span><br><span class="line">ONBOOT=yes</span><br><span class="line">NM_CONTROLLED=no</span><br><span class="line">BOOTPROTO=static</span><br></pre></td></tr></table></figure>
 <p>填写完成后重启网络服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service network restart</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
 <h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>宿主机：<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wireless_connection_test.gif" alt=""></p>
 <p>Linux：<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wireless_connection_linux_test.gif" alt=""></p>
 <blockquote>
@@ -439,25 +425,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/04/无线连接-宿主机与VirtualBox中的Linux互相通信/"
-     data-title="无线连接-宿主机与VirtualBox中的Linux互相通信"
-     data-content=""
-     data-url="http://fingerart.me/2016/09/04/无线连接-宿主机与VirtualBox中的Linux互相通信/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -468,10 +435,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/09/04/无线连接-宿主机与VirtualBox中的Linux互相通信/"
-           data-title="无线连接-宿主机与VirtualBox中的Linux互相通信" data-url="http://fingerart.me/2016/09/04/无线连接-宿主机与VirtualBox中的Linux互相通信/">
-      </div>
     
   </div>
 
@@ -515,7 +478,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -532,7 +495,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -607,7 +570,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -709,30 +672,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

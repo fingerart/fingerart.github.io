@@ -87,12 +87,14 @@
 
 
 <meta name="description" content="1234567891011121314151617/** * MyReader * 	|--MyTextReader * 		|--MyBufferedTextReader * 	|--MyMediaReader * 		|--MyBufferedMediaReader * 	|--MyOtherReader * 		|--MyBufferedOtherReader */class MyBuffe">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="装饰设计模式 与 继承 的区别">
 <meta property="og:url" content="http://fingerart.me/2015/07/02/装饰设计模式-与-继承-的区别/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
 <meta property="og:description" content="1234567891011121314151617/** * MyReader * 	|--MyTextReader * 		|--MyBufferedTextReader * 	|--MyMediaReader * 		|--MyBufferedMediaReader * 	|--MyOtherReader * 		|--MyBufferedOtherReader */class MyBuffe">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="装饰设计模式 与 继承 的区别">
 <meta name="twitter:description" content="1234567891011121314151617/** * MyReader * 	|--MyTextReader * 		|--MyBufferedTextReader * 	|--MyMediaReader * 		|--MyBufferedMediaReader * 	|--MyOtherReader * 		|--MyBufferedOtherReader */class MyBuffe">
@@ -331,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/02/装饰设计模式-与-继承-的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/装饰设计模式-与-继承-的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -357,10 +352,10 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * MyReader</div><div class="line"> * 	|--MyTextReader</div><div class="line"> * 		|--MyBufferedTextReader</div><div class="line"> * 	|--MyMediaReader</div><div class="line"> * 		|--MyBufferedMediaReader</div><div class="line"> * 	|--MyOtherReader</div><div class="line"> * 		|--MyBufferedOtherReader</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyBuffer</span> </span>&#123;</div><div class="line">	MyBuffer(MyTextReader mtr) &#123;</div><div class="line">	&#125;</div><div class="line">	MyBuffer(MyMediaReader mmr) &#123;</div><div class="line">	&#125;</div><div class="line">	MyBuffer(MyOtherReader mor) &#123;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * MyReader</span></span><br><span class="line"><span class="comment"> * 	|--MyTextReader</span></span><br><span class="line"><span class="comment"> * 		|--MyBufferedTextReader</span></span><br><span class="line"><span class="comment"> * 	|--MyMediaReader</span></span><br><span class="line"><span class="comment"> * 		|--MyBufferedMediaReader</span></span><br><span class="line"><span class="comment"> * 	|--MyOtherReader</span></span><br><span class="line"><span class="comment"> * 		|--MyBufferedOtherReader</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyBuffer</span> </span>&#123;</span><br><span class="line">	MyBuffer(MyTextReader mtr) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	MyBuffer(MyMediaReader mmr) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	MyBuffer(MyOtherReader mor) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面类的扩展性很差<br>找到其参数的共同类型。通过多态的形式。可以提高扩展性。</p>
 <a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyBufferReader</span> <span class="keyword">extends</span> <span class="title">MyReader</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">private</span> MyReader r;</div><div class="line">	MyBufferReader(MyReader r) &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyBufferReader</span> <span class="keyword">extends</span> <span class="title">MyReader</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> MyReader r;</span><br><span class="line">	MyBufferReader(MyReader r) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>MyReader</code> 专门用于读取数据的类。<br>|–MyTextReader<br>|–MyMediaReader<br>|–MyDataReader<br>|–MyBufferReader</p>
 <p>以前是通过继承将每一个子类都具备缓冲功能。<br>那么继承体系会复杂，并不利于扩展。</p>
 <p>现在优化思想。单独描述一下缓冲内容。<br>将需要被缓冲的对象。传递进来。也就是，谁需要被缓冲，谁就作为参数传递给缓冲区。<br>这样继承体系就变得很简单。优化了体系结构。</p>
@@ -425,25 +420,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/02/装饰设计模式-与-继承-的区别/"
-     data-title="装饰设计模式 与 继承 的区别"
-     data-content=""
-     data-url="http://fingerart.me/2015/07/02/装饰设计模式-与-继承-的区别/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -454,10 +430,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/07/02/装饰设计模式-与-继承-的区别/"
-           data-title="装饰设计模式 与 继承 的区别" data-url="http://fingerart.me/2015/07/02/装饰设计模式-与-继承-的区别/">
-      </div>
     
   </div>
 
@@ -501,7 +473,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -518,7 +490,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -593,7 +565,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -695,30 +667,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

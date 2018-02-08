@@ -86,26 +86,19 @@
 
 
 
-<meta name="description" content="如果你的 /var/www/html/cgi 目录底下没有任何首页档案 (index.*) 时，那当使用者在网址列输入『 http://your.hostname/cgi 』，请问结果会显示出什么呢？可能有两个：
-
-如果你的 Options 里面有设定 Indexes 的话，那么该目录下的所有档案都会被列出来，提供类似 FTP 的连结页面。
-如果没有指定 Indexes 的话，那么错误讯息通知就会">
+<meta name="description" content="如果你的 /var/www/html/cgi 目录底下没有任何首页档案 (index.*) 时，那当使用者在网址列输入『 http://your.hostname/cgi 』，请问结果会显示出什么呢？可能有两个：  如果你的 Options 里面有设定 Indexes 的话，那么该目录下的所有档案都会被列出来，提供类似 FTP 的连结页面。 如果没有指定 Indexes 的话，那么错误讯息通知就会">
+<meta name="keywords" content="Apache,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache设置找不到网页时的显示信息通知">
 <meta property="og:url" content="http://fingerart.me/2015/06/15/Apache设置找不到网页时的显示信息通知/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="如果你的 /var/www/html/cgi 目录底下没有任何首页档案 (index.*) 时，那当使用者在网址列输入『 http://your.hostname/cgi 』，请问结果会显示出什么呢？可能有两个：
-
-如果你的 Options 里面有设定 Indexes 的话，那么该目录下的所有档案都会被列出来，提供类似 FTP 的连结页面。
-如果没有指定 Indexes 的话，那么错误讯息通知就会">
+<meta property="og:description" content="如果你的 /var/www/html/cgi 目录底下没有任何首页档案 (index.*) 时，那当使用者在网址列输入『 http://your.hostname/cgi 』，请问结果会显示出什么呢？可能有两个：  如果你的 Options 里面有设定 Indexes 的话，那么该目录下的所有档案都会被列出来，提供类似 FTP 的连结页面。 如果没有指定 Indexes 的话，那么错误讯息通知就会">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://cn.linux.vbird.org/linux_server/0360apache/0360apache-centos4.php_files/missing.png">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache设置找不到网页时的显示信息通知">
-<meta name="twitter:description" content="如果你的 /var/www/html/cgi 目录底下没有任何首页档案 (index.*) 时，那当使用者在网址列输入『 http://your.hostname/cgi 』，请问结果会显示出什么呢？可能有两个：
-
-如果你的 Options 里面有设定 Indexes 的话，那么该目录下的所有档案都会被列出来，提供类似 FTP 的连结页面。
-如果没有指定 Indexes 的话，那么错误讯息通知就会">
+<meta name="twitter:description" content="如果你的 /var/www/html/cgi 目录底下没有任何首页档案 (index.*) 时，那当使用者在网址列输入『 http://your.hostname/cgi 』，请问结果会显示出什么呢？可能有两个：  如果你的 Options 里面有设定 Indexes 的话，那么该目录下的所有档案都会被列出来，提供类似 FTP 的连结页面。 如果没有指定 Indexes 的话，那么错误讯息通知就会">
 <meta name="twitter:image" content="http://cn.linux.vbird.org/linux_server/0360apache/0360apache-centos4.php_files/missing.png">
 
 
@@ -342,13 +335,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/06/15/Apache设置找不到网页时的显示信息通知/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/15/Apache设置找不到网页时的显示信息通知/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -368,17 +354,17 @@
       
 
       
-        <p>如果你的 /var/www/html/cgi 目录底下没有任何首页档案 (index.*) 时，那当使用者在网址列输入『 <a href="http://your.hostname/cgi" target="_blank" rel="external">http://your.hostname/cgi</a> 』，请问结果会显示出什么呢？可能有两个：</p>
+        <p>如果你的 /var/www/html/cgi 目录底下没有任何首页档案 (index.*) 时，那当使用者在网址列输入『 <a href="http://your.hostname/cgi" target="_blank" rel="noopener">http://your.hostname/cgi</a> 』，请问结果会显示出什么呢？可能有两个：</p>
 <ul>
 <li>如果你的 Options 里面有设定 Indexes 的话，那么该目录下的所有档案都会被列出来，提供类似 FTP 的连结页面。</li>
 <li>如果没有指定 Indexes 的话，那么错误讯息通知就会被显示出来。<br>事实上 CentOS 所提供的 Apache 已经规范好一些简单的错误资料网页了，你可以到 /var/www/error/ 目录下瞧瞧就晓得。不过该目录下的档案并没有中文讯息，所以…..真要命！至于 Apache 的错误讯息设定在这里：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@linux ~]<span class="comment"># vi /etc/httpd/conf/httpd.conf</span></div><div class="line"><span class="comment"># 大约在 886 行左右，预设就是批注掉的！</span></div><div class="line"><span class="comment">#    ErrorDocument 403 /error/HTTP_FORBIDDEN.html.var</span></div><div class="line"><span class="comment">#    ErrorDocument 404 /error/HTTP_NOT_FOUND.html.var</span></div><div class="line"><span class="comment">#    ErrorDocument 405 /error/HTTP_METHOD_NOT_ALLOWED.html.var</span></div><div class="line"><span class="comment">#    ErrorDocument 408 /error/HTTP_REQUEST_TIME_OUT.html.var</span></div><div class="line">....后面省略....</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@linux ~]<span class="comment"># vi /etc/httpd/conf/httpd.conf</span></span><br><span class="line"><span class="comment"># 大约在 886 行左右，预设就是批注掉的！</span></span><br><span class="line"><span class="comment">#    ErrorDocument 403 /error/HTTP_FORBIDDEN.html.var</span></span><br><span class="line"><span class="comment">#    ErrorDocument 404 /error/HTTP_NOT_FOUND.html.var</span></span><br><span class="line"><span class="comment">#    ErrorDocument 405 /error/HTTP_METHOD_NOT_ALLOWED.html.var</span></span><br><span class="line"><span class="comment">#    ErrorDocument 408 /error/HTTP_REQUEST_TIME_OUT.html.var</span></span><br><span class="line">....后面省略....</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>虽然 Apache 有提供这些数据了，不过 CentOS 默认是将那些资料批注掉的！因为我们使用中文语系， 该数据并没有中文信息，所以批注掉反而对我们的处理有帮助！ 由于你的网站可能会因为一些档名的变更或者是重新编写的原因，因此旧的网页档名就不存在。 但客户端可能保留的还是旧的连结，此时我们就得要很好心的告知使用者该网页找不到的原因才好。 你可以这样做：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@linux ~]<span class="comment"># vi /etc/httpd/conf/httpd.conf</span></div><div class="line"><span class="comment"># 找到底下这一段，看看这些简单的范例先：</span></div><div class="line"><span class="comment">#ErrorDocument 500 "The server made a boo boo."</span></div><div class="line"><span class="comment">#ErrorDocument 404 /missing.html</span></div><div class="line"><span class="comment">#ErrorDocument 404 "/cgi-bin/missing_handler.pl"</span></div><div class="line"><span class="comment">#ErrorDocument 402 http://www.example.com/subscription_info.html</span></div><div class="line"></div><div class="line"><span class="comment"># 假设未来提供用户相关信息的地方为 missing.html 这个档案，所以你应该要：</span></div><div class="line">ErrorDocument 404 /missing.html</div><div class="line"></div><div class="line">[root@linux ~]<span class="comment"># apachectl restart</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@linux ~]<span class="comment"># vi /etc/httpd/conf/httpd.conf</span></span><br><span class="line"><span class="comment"># 找到底下这一段，看看这些简单的范例先：</span></span><br><span class="line"><span class="comment">#ErrorDocument 500 "The server made a boo boo."</span></span><br><span class="line"><span class="comment">#ErrorDocument 404 /missing.html</span></span><br><span class="line"><span class="comment">#ErrorDocument 404 "/cgi-bin/missing_handler.pl"</span></span><br><span class="line"><span class="comment">#ErrorDocument 402 http://www.example.com/subscription_info.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 假设未来提供用户相关信息的地方为 missing.html 这个档案，所以你应该要：</span></span><br><span class="line">ErrorDocument 404 /missing.html</span><br><span class="line"></span><br><span class="line">[root@linux ~]<span class="comment"># apachectl restart</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>您输入的网页找不到！<br>      亲爱的网友，您所输入的网址并不存在我们的服务器当中，<br>    有可能是因为该网页已经被管理原删除，<br>    或者是您输入了错误的网址。请再次查明后在填入网址啰！<br>    感谢您常常来玩！ ^_^<br>    若有任何问题，欢迎联络管理员<a href="mailto:root@localhost" target="_blank" rel="external">root@localhost</a>。</p>
+<p>您输入的网页找不到！<br>      亲爱的网友，您所输入的网址并不存在我们的服务器当中，<br>    有可能是因为该网页已经被管理原删除，<br>    或者是您输入了错误的网址。请再次查明后在填入网址啰！<br>    感谢您常常来玩！ ^_^<br>    若有任何问题，欢迎联络管理员<a href="mailto:root@localhost" target="_blank" rel="noopener">root@localhost</a>。</p>
 </blockquote>
 <p>现在你如果在网址列随便输入一个主机上不存在的网址，就会出现如下的画面：</p>
 <p><img src="http://cn.linux.vbird.org/linux_server/0360apache/0360apache-centos4.php_files/missing.png" alt=""></p>
@@ -443,25 +429,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/06/15/Apache设置找不到网页时的显示信息通知/"
-     data-title="Apache设置找不到网页时的显示信息通知"
-     data-content=""
-     data-url="http://fingerart.me/2015/06/15/Apache设置找不到网页时的显示信息通知/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -472,10 +439,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/06/15/Apache设置找不到网页时的显示信息通知/"
-           data-title="Apache设置找不到网页时的显示信息通知" data-url="http://fingerart.me/2015/06/15/Apache设置找不到网页时的显示信息通知/">
-      </div>
     
   </div>
 
@@ -519,7 +482,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -536,7 +499,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -611,7 +574,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -713,30 +676,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

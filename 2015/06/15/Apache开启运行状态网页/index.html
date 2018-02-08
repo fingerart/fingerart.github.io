@@ -86,23 +86,19 @@
 
 
 
-<meta name="description" content="Apache 提供了特别功能来查询主机目前的状态！那就是 mod_status 这个模块！ 这个模块默认是关闭的，你必须要修改配置文件来启动他才行。
-先确定底下这几个项目真的有存在才行！
-123456LoadModule status_module modules/mod_status.soSetHandler server-statusOrder deny,allowDeny from allA">
+<meta name="description" content="Apache 提供了特别功能来查询主机目前的状态！那就是 mod_status 这个模块！ 这个模块默认是关闭的，你必须要修改配置文件来启动他才行。 先确定底下这几个项目真的有存在才行！ 123456LoadModule status_module modules/mod_status.soSetHandler server-statusOrder deny,allowDeny from allA">
+<meta name="keywords" content="Apache,Linux,PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache开启运行状态网页">
 <meta property="og:url" content="http://fingerart.me/2015/06/15/Apache开启运行状态网页/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="Apache 提供了特别功能来查询主机目前的状态！那就是 mod_status 这个模块！ 这个模块默认是关闭的，你必须要修改配置文件来启动他才行。
-先确定底下这几个项目真的有存在才行！
-123456LoadModule status_module modules/mod_status.soSetHandler server-statusOrder deny,allowDeny from allA">
+<meta property="og:description" content="Apache 提供了特别功能来查询主机目前的状态！那就是 mod_status 这个模块！ 这个模块默认是关闭的，你必须要修改配置文件来启动他才行。 先确定底下这几个项目真的有存在才行！ 123456LoadModule status_module modules/mod_status.soSetHandler server-statusOrder deny,allowDeny from allA">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://cn.linux.vbird.org/linux_server/0360apache/0360apache-centos4.php_files/mod_status.png">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache开启运行状态网页">
-<meta name="twitter:description" content="Apache 提供了特别功能来查询主机目前的状态！那就是 mod_status 这个模块！ 这个模块默认是关闭的，你必须要修改配置文件来启动他才行。
-先确定底下这几个项目真的有存在才行！
-123456LoadModule status_module modules/mod_status.soSetHandler server-statusOrder deny,allowDeny from allA">
+<meta name="twitter:description" content="Apache 提供了特别功能来查询主机目前的状态！那就是 mod_status 这个模块！ 这个模块默认是关闭的，你必须要修改配置文件来启动他才行。 先确定底下这几个项目真的有存在才行！ 123456LoadModule status_module modules/mod_status.soSetHandler server-statusOrder deny,allowDeny from allA">
 <meta name="twitter:image" content="http://cn.linux.vbird.org/linux_server/0360apache/0360apache-centos4.php_files/mod_status.png">
 
 
@@ -339,13 +335,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/06/15/Apache开启运行状态网页/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/15/Apache开启运行状态网页/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -367,10 +356,10 @@
       
         <p>Apache 提供了特别功能来查询主机目前的状态！那就是 mod_status 这个模块！ 这个模块默认是关闭的，你必须要修改配置文件来启动他才行。</p>
 <p>先确定底下这几个项目真的有存在才行！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">LoadModule status_module modules/mod_status.so</div><div class="line">SetHandler server-status</div><div class="line">Order deny,allow</div><div class="line">Deny from all</div><div class="line">Allow from 192.168.1.0/24</div><div class="line">Allow from 127.0.0.1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LoadModule status_module modules/mod_status.so</span><br><span class="line">SetHandler server-status</span><br><span class="line">Order deny,allow</span><br><span class="line">Deny from all</span><br><span class="line">Allow from 192.168.1.0/24</span><br><span class="line">Allow from 127.0.0.1</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@linux ~]# apachectl restart</div></pre></td></tr></table></figure>
-<p>接下来你只要在你的网址列输入主机名后面加上 <a href="http://hostname/server-status" target="_blank" rel="external">http://hostname/server-status</a> 即可发现如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linux ~]# apachectl restart</span><br></pre></td></tr></table></figure>
+<p>接下来你只要在你的网址列输入主机名后面加上 <a href="http://hostname/server-status" target="_blank" rel="noopener">http://hostname/server-status</a> 即可发现如下：</p>
 <p>输出的结果包括目前的时间以及 Apache 重新启动的时间，还有目前已经启动的程序等等， 还有网页最下方会显示每个程序的客户端与服务器端的联机状态。虽然显示的状况挺阳春，不过该有的也都有了， 可以让你约略了解一下主机的状况啰。要注意喔，可查阅者 (allow from 的参数) 还是需要限制的比较严格一点啦！</p>
 <p><img src="http://cn.linux.vbird.org/linux_server/0360apache/0360apache-centos4.php_files/mod_status.png" alt=""></p>
 <blockquote>
@@ -436,25 +425,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/06/15/Apache开启运行状态网页/"
-     data-title="Apache开启运行状态网页"
-     data-content=""
-     data-url="http://fingerart.me/2015/06/15/Apache开启运行状态网页/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -465,10 +435,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/06/15/Apache开启运行状态网页/"
-           data-title="Apache开启运行状态网页" data-url="http://fingerart.me/2015/06/15/Apache开启运行状态网页/">
-      </div>
     
   </div>
 
@@ -512,7 +478,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -529,7 +495,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -604,7 +570,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -706,30 +672,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

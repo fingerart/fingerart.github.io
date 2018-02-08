@@ -87,12 +87,14 @@
 
 
 <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253/* JDK5.0前的枚举 */class Grade &amp;#123;    private Grade() &amp;#123;&amp;#125;;    public static final Grade A = ne">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 枚举">
 <meta property="og:url" content="http://fingerart.me/2014/10/18/Java-枚举/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
 <meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253/* JDK5.0前的枚举 */class Grade &amp;#123;    private Grade() &amp;#123;&amp;#125;;    public static final Grade A = ne">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 枚举">
 <meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253/* JDK5.0前的枚举 */class Grade &amp;#123;    private Grade() &amp;#123;&amp;#125;;    public static final Grade A = ne">
@@ -331,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/10/18/Java-枚举/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/18/Java-枚举/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -357,7 +352,7 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> JDK5.0前的枚举</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Grade</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Grade</span><span class="params">()</span> </span>&#123;&#125;;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Grade A = <span class="keyword">new</span> Grade();</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Grade B = <span class="keyword">new</span> Grade();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//——————————</span></div><div class="line"><span class="keyword">package</span> other;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnumDemo</span> </span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	    System.out.println(Grade.A.getValue());</div><div class="line">	    System.out.println(Grade.B.nameG());</div><div class="line">	    <span class="comment">//将字符串转为枚举型(检测该字符串是否是枚举中的值)</span></div><div class="line">	    <span class="keyword">try</span> &#123;</div><div class="line">	        Grade g = Grade.valueOf(Grade.class , <span class="string">"B"</span>);</div><div class="line">	    &#125;<span class="keyword">catch</span>(IllegalArgumentException e) &#123;</div><div class="line">	        System.out.println(e.getMessage());</div><div class="line">	    &#125;</div><div class="line">	    <span class="comment">//获取所有的枚举常量</span></div><div class="line">	    Grade[] gArr = Grade.values();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"></div><div class="line">带抽象类的枚举</div><div class="line">*/</div><div class="line"><span class="keyword">enum</span> Grade &#123;</div><div class="line">	A(“<span class="number">100</span>-<span class="number">90</span>”) &#123;</div><div class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">nameG</span><span class="params">()</span> </span>&#123;</div><div class="line">		    <span class="keyword">return</span> <span class="string">"优"</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	B(“<span class="number">89</span>-<span class="number">80</span>”) &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">nameG</span><span class="params">()</span> </span>&#123;</div><div class="line">	    <span class="keyword">return</span> <span class="string">"良"</span>;</div><div class="line">	&#125;</div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">private</span> String value;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Grade</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.value = value;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getValue</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.value;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">nameG</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> JDK5.0前的枚举</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Grade</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Grade</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Grade A = <span class="keyword">new</span> Grade();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Grade B = <span class="keyword">new</span> Grade();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//——————————</span></span><br><span class="line"><span class="keyword">package</span> other;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnumDemo</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	    System.out.println(Grade.A.getValue());</span><br><span class="line">	    System.out.println(Grade.B.nameG());</span><br><span class="line">	    <span class="comment">//将字符串转为枚举型(检测该字符串是否是枚举中的值)</span></span><br><span class="line">	    <span class="keyword">try</span> &#123;</span><br><span class="line">	        Grade g = Grade.valueOf(Grade.class , <span class="string">"B"</span>);</span><br><span class="line">	    &#125;<span class="keyword">catch</span>(IllegalArgumentException e) &#123;</span><br><span class="line">	        System.out.println(e.getMessage());</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="comment">//获取所有的枚举常量</span></span><br><span class="line">	    Grade[] gArr = Grade.values();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">带抽象类的枚举</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">enum</span> Grade &#123;</span><br><span class="line">	A(“<span class="number">100</span>-<span class="number">90</span>”) &#123;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">nameG</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		    <span class="keyword">return</span> <span class="string">"优"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	B(“<span class="number">89</span>-<span class="number">80</span>”) &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">nameG</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> <span class="string">"良"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">private</span> String value;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Grade</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value = value;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.value;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">nameG</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
 </blockquote>
@@ -417,25 +412,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/10/18/Java-枚举/"
-     data-title="Java 枚举"
-     data-content=""
-     data-url="http://fingerart.me/2014/10/18/Java-枚举/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -446,10 +422,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2014/10/18/Java-枚举/"
-           data-title="Java 枚举" data-url="http://fingerart.me/2014/10/18/Java-枚举/">
-      </div>
     
   </div>
 
@@ -493,7 +465,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -510,7 +482,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -585,7 +557,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -687,30 +659,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

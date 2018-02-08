@@ -86,31 +86,18 @@
 
 
 
-<meta name="description" content="因项目的需要需要使用对pdf进行签名，但使用ITextPdf进行签名遇到一些错误，官方说的不够明确，在此记录一下，供后面遇到该问题的朋友参考。
-Q1引用的 ITextPdf 下
-
-java.lang.ClassNotFoundException: org.bouncycastle.*
-
-如果你遇到了这个错误你需要添加另外一个用于签名的库：bouncycastle (bcprov-jdk15on-1">
+<meta name="description" content="因项目的需要需要使用对pdf进行签名，但使用ITextPdf进行签名遇到一些错误，官方说的不够明确，在此记录一下，供后面遇到该问题的朋友参考。 Q1引用的 ITextPdf 下  java.lang.ClassNotFoundException: org.bouncycastle.*  如果你遇到了这个错误你需要添加另外一个用于签名的库：bouncycastle (bcprov-jdk15on-1">
+<meta name="keywords" content="IText">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ITextPdf 签名集成问题">
 <meta property="og:url" content="http://fingerart.me/2017/03/17/ITextPdf签名问题/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="因项目的需要需要使用对pdf进行签名，但使用ITextPdf进行签名遇到一些错误，官方说的不够明确，在此记录一下，供后面遇到该问题的朋友参考。
-Q1引用的 ITextPdf 下
-
-java.lang.ClassNotFoundException: org.bouncycastle.*
-
-如果你遇到了这个错误你需要添加另外一个用于签名的库：bouncycastle (bcprov-jdk15on-1">
-<meta property="og:updated_time" content="2017-03-17T14:12:39.000Z">
+<meta property="og:description" content="因项目的需要需要使用对pdf进行签名，但使用ITextPdf进行签名遇到一些错误，官方说的不够明确，在此记录一下，供后面遇到该问题的朋友参考。 Q1引用的 ITextPdf 下  java.lang.ClassNotFoundException: org.bouncycastle.*  如果你遇到了这个错误你需要添加另外一个用于签名的库：bouncycastle (bcprov-jdk15on-1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ITextPdf 签名集成问题">
-<meta name="twitter:description" content="因项目的需要需要使用对pdf进行签名，但使用ITextPdf进行签名遇到一些错误，官方说的不够明确，在此记录一下，供后面遇到该问题的朋友参考。
-Q1引用的 ITextPdf 下
-
-java.lang.ClassNotFoundException: org.bouncycastle.*
-
-如果你遇到了这个错误你需要添加另外一个用于签名的库：bouncycastle (bcprov-jdk15on-1">
+<meta name="twitter:description" content="因项目的需要需要使用对pdf进行签名，但使用ITextPdf进行签名遇到一些错误，官方说的不够明确，在此记录一下，供后面遇到该问题的朋友参考。 Q1引用的 ITextPdf 下  java.lang.ClassNotFoundException: org.bouncycastle.*  如果你遇到了这个错误你需要添加另外一个用于签名的库：bouncycastle (bcprov-jdk15on-1">
 
 
 
@@ -327,13 +314,6 @@ java.lang.ClassNotFoundException: org.bouncycastle.*
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/17/ITextPdf签名问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/ITextPdf签名问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -358,15 +338,15 @@ java.lang.ClassNotFoundException: org.bouncycastle.*
 <blockquote>
 <p>java.lang.ClassNotFoundException: org.bouncycastle.*</p>
 </blockquote>
-<p>如果你遇到了这个错误你需要添加另外一个用于签名的库：<a href="https://www.bouncycastle.org" target="_blank" rel="external">bouncycastle</a> (bcprov-jdk15on-156.jar、bcpkix-jdk15on-156.jar、bcmail-jdk15on-156.jar)</p>
+<p>如果你遇到了这个错误你需要添加另外一个用于签名的库：<a href="https://www.bouncycastle.org" target="_blank" rel="noopener">bouncycastle</a> (bcprov-jdk15on-156.jar、bcpkix-jdk15on-156.jar、bcmail-jdk15on-156.jar)</p>
 <p><strong>这里请不要引用错了ITextG库</strong></p>
 <a id="more"></a>
 <h2 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h2><p>如果你引用了用于Android的ITextG</p>
 <blockquote>
 <p>Could not find class org.spongycastle.*</p>
 </blockquote>
-<p>因为这个库使用了用于Android加密的库 <a href="https://rtyley.github.io/spongycastle" target="_blank" rel="external">spongycastle</a>，而spongycastle是基于bouncycastle的。</p>
-<p>请参考 <a href="http://stackoverflow.com/questions/6898801/how-to-include-the-spongy-castle-jar-in-android" target="_blank" rel="external">http://stackoverflow.com/questions/6898801/how-to-include-the-spongy-castle-jar-in-android</a></p>
+<p>因为这个库使用了用于Android加密的库 <a href="https://rtyley.github.io/spongycastle" target="_blank" rel="noopener">spongycastle</a>，而spongycastle是基于bouncycastle的。</p>
+<p>请参考 <a href="http://stackoverflow.com/questions/6898801/how-to-include-the-spongy-castle-jar-in-android" target="_blank" rel="noopener">http://stackoverflow.com/questions/6898801/how-to-include-the-spongy-castle-jar-in-android</a></p>
 
       
     </div>
@@ -423,25 +403,6 @@ java.lang.ClassNotFoundException: org.bouncycastle.*
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/03/17/ITextPdf签名问题/"
-     data-title="ITextPdf 签名集成问题"
-     data-content=""
-     data-url="http://fingerart.me/2017/03/17/ITextPdf签名问题/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -452,10 +413,6 @@ java.lang.ClassNotFoundException: org.bouncycastle.*
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/03/17/ITextPdf签名问题/"
-           data-title="ITextPdf 签名集成问题" data-url="http://fingerart.me/2017/03/17/ITextPdf签名问题/">
-      </div>
     
   </div>
 
@@ -499,7 +456,7 @@ java.lang.ClassNotFoundException: org.bouncycastle.*
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -516,7 +473,7 @@ java.lang.ClassNotFoundException: org.bouncycastle.*
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -591,7 +548,7 @@ java.lang.ClassNotFoundException: org.bouncycastle.*
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -693,30 +650,9 @@ java.lang.ClassNotFoundException: org.bouncycastle.*
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

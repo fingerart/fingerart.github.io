@@ -86,23 +86,22 @@
 
 
 
-<meta name="description" content="文中介绍了我在有线连接下，使用VirtualBox创建CentOS时遇到Linux访问外网和宿主机访问Linux的问题后的解决办法，文中宿主机是指实体到笔记本或者台式电脑。
-连接方式Virtual中有6种连接方式，分别为：网络地址转换（NAT）、NAT网络、桥接网卡、内部网络、仅主机（Host-Only）网络、通用驱动。这里只讲后面会用到的2种方式的作用。">
+<meta name="description" content="文中介绍了我在有线连接下，使用VirtualBox创建CentOS时遇到Linux访问外网和宿主机访问Linux的问题后的解决办法，文中宿主机是指实体到笔记本或者台式电脑。 连接方式Virtual中有6种连接方式，分别为：网络地址转换（NAT）、NAT网络、桥接网卡、内部网络、仅主机（Host-Only）网络、通用驱动。这里只讲后面会用到的2种方式的作用。">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="有线连接-宿主机跟VirtualBox中的Linux互相通信">
 <meta property="og:url" content="http://fingerart.me/2016/09/04/有线连接-宿主机跟VirtualBox中的Linux互相通信/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="文中介绍了我在有线连接下，使用VirtualBox创建CentOS时遇到Linux访问外网和宿主机访问Linux的问题后的解决办法，文中宿主机是指实体到笔记本或者台式电脑。
-连接方式Virtual中有6种连接方式，分别为：网络地址转换（NAT）、NAT网络、桥接网卡、内部网络、仅主机（Host-Only）网络、通用驱动。这里只讲后面会用到的2种方式的作用。">
+<meta property="og:description" content="文中介绍了我在有线连接下，使用VirtualBox创建CentOS时遇到Linux访问外网和宿主机访问Linux的问题后的解决办法，文中宿主机是指实体到笔记本或者台式电脑。 连接方式Virtual中有6种连接方式，分别为：网络地址转换（NAT）、NAT网络、桥接网卡、内部网络、仅主机（Host-Only）网络、通用驱动。这里只讲后面会用到的2种方式的作用。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/image/virtualbox_wired_connection_net1.png">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/image/virtualbox_wired_connection_net2.png">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wired_connection_test.gif">
 <meta property="og:image" content="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wired_connection_linux_test.gif">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有线连接-宿主机跟VirtualBox中的Linux互相通信">
-<meta name="twitter:description" content="文中介绍了我在有线连接下，使用VirtualBox创建CentOS时遇到Linux访问外网和宿主机访问Linux的问题后的解决办法，文中宿主机是指实体到笔记本或者台式电脑。
-连接方式Virtual中有6种连接方式，分别为：网络地址转换（NAT）、NAT网络、桥接网卡、内部网络、仅主机（Host-Only）网络、通用驱动。这里只讲后面会用到的2种方式的作用。">
+<meta name="twitter:description" content="文中介绍了我在有线连接下，使用VirtualBox创建CentOS时遇到Linux访问外网和宿主机访问Linux的问题后的解决办法，文中宿主机是指实体到笔记本或者台式电脑。 连接方式Virtual中有6种连接方式，分别为：网络地址转换（NAT）、NAT网络、桥接网卡、内部网络、仅主机（Host-Only）网络、通用驱动。这里只讲后面会用到的2种方式的作用。">
 <meta name="twitter:image" content="http://77fzuw.com1.z0.glb.clouddn.com/image/virtualbox_wired_connection_net1.png">
 
 
@@ -339,13 +338,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/04/有线连接-宿主机跟VirtualBox中的Linux互相通信/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/04/有线连接-宿主机跟VirtualBox中的Linux互相通信/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -371,11 +363,11 @@
 <h4 id="网络地址转换（NAT）"><a href="#网络地址转换（NAT）" class="headerlink" title="网络地址转换（NAT）"></a>网络地址转换（NAT）</h4><p><strong>Linux可以访问宿主机</strong>，反向的无法访问。</p>
 <h4 id="桥接网卡"><a href="#桥接网卡" class="headerlink" title="桥接网卡"></a>桥接网卡</h4><p><strong>宿主机可以访问Linux</strong>，反向无法访问。</p>
 <h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><h4 id="配置网卡"><a href="#配置网卡" class="headerlink" title="配置网卡"></a>配置网卡</h4><p>网卡1连接方式设置为<strong>网络地址转换（NAT）</strong><br><img src="http://77fzuw.com1.z0.glb.clouddn.com/image/virtualbox_wired_connection_net1.png" alt=""><br>启用网卡2，连接方式设置为<strong>桥接网卡</strong><br><img src="http://77fzuw.com1.z0.glb.clouddn.com/image/virtualbox_wired_connection_net2.png" alt=""></p>
-<h4 id="Linux配置"><a href="#Linux配置" class="headerlink" title="Linux配置"></a>Linux配置</h4><h4 id="配置eth0"><a href="#配置eth0" class="headerlink" title="配置eth0"></a>配置eth0</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth0</div></pre></td></tr></table></figure>
-<p>配置如下(千万不要配GATEWAY)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HWADDR=08:00:27:12:41:D3</div><div class="line">NETMASK=255.255.255.0</div><div class="line">IPADDR=192.168.0.99</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=cd17d591-d5be-44d0-8c7a-c1682cfbf631</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=no</div><div class="line">BOOTPROTO=dhcp</div></pre></td></tr></table></figure></p>
-<h4 id="配置eth1"><a href="#配置eth1" class="headerlink" title="配置eth1"></a>配置eth1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth1</div></pre></td></tr></table></figure>
-<p>配置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">DEVICE=eth1</div><div class="line">HWADDR=08:00:27:EB:B7:9A</div><div class="line">NETMASK=255.255.255.0</div><div class="line">IPADDR=192.168.0.99</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=cd17d591-d5be-44d0-8c7a-c1682cfbf631</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=no</div><div class="line">BOOTPROTO=static</div></pre></td></tr></table></figure></p>
-<h3 id="重启network"><a href="#重启network" class="headerlink" title="重启network"></a>重启network</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service network restart</div></pre></td></tr></table></figure>
+<h4 id="Linux配置"><a href="#Linux配置" class="headerlink" title="Linux配置"></a>Linux配置</h4><h4 id="配置eth0"><a href="#配置eth0" class="headerlink" title="配置eth0"></a>配置eth0</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure>
+<p>配置如下(千万不要配GATEWAY)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HWADDR=08:00:27:12:41:D3</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">IPADDR=192.168.0.99</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">UUID=cd17d591-d5be-44d0-8c7a-c1682cfbf631</span><br><span class="line">ONBOOT=yes</span><br><span class="line">NM_CONTROLLED=no</span><br><span class="line">BOOTPROTO=dhcp</span><br></pre></td></tr></table></figure></p>
+<h4 id="配置eth1"><a href="#配置eth1" class="headerlink" title="配置eth1"></a>配置eth1</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-eth1</span><br></pre></td></tr></table></figure>
+<p>配置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DEVICE=eth1</span><br><span class="line">HWADDR=08:00:27:EB:B7:9A</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">IPADDR=192.168.0.99</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">UUID=cd17d591-d5be-44d0-8c7a-c1682cfbf631</span><br><span class="line">ONBOOT=yes</span><br><span class="line">NM_CONTROLLED=no</span><br><span class="line">BOOTPROTO=static</span><br></pre></td></tr></table></figure></p>
+<h3 id="重启network"><a href="#重启network" class="headerlink" title="重启network"></a>重启network</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>宿主机：<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wired_connection_test.gif" alt=""></p>
 <p>Linux：<br><img src="http://77fzuw.com1.z0.glb.clouddn.com/gif/virtualbox_wired_connection_linux_test.gif" alt=""></p>
 <blockquote>
@@ -437,25 +429,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/04/有线连接-宿主机跟VirtualBox中的Linux互相通信/"
-     data-title="有线连接-宿主机跟VirtualBox中的Linux互相通信"
-     data-content=""
-     data-url="http://fingerart.me/2016/09/04/有线连接-宿主机跟VirtualBox中的Linux互相通信/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -466,10 +439,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/09/04/有线连接-宿主机跟VirtualBox中的Linux互相通信/"
-           data-title="有线连接-宿主机跟VirtualBox中的Linux互相通信" data-url="http://fingerart.me/2016/09/04/有线连接-宿主机跟VirtualBox中的Linux互相通信/">
-      </div>
     
   </div>
 
@@ -513,7 +482,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -530,7 +499,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -605,7 +574,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -707,30 +676,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

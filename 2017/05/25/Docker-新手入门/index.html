@@ -86,21 +86,20 @@
 
 
 
-<meta name="description" content="该文章以Mac为例。
-安装请至Docker官网下载Mac版：https://www.docker.com/docker-mac">
+<meta name="description" content="该文章以Mac为例。 安装请至Docker官网下载Mac版：https://www.docker.com/docker-mac">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 新手入门">
 <meta property="og:url" content="http://fingerart.me/2017/05/25/Docker-新手入门/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="该文章以Mac为例。
-安装请至Docker官网下载Mac版：https://www.docker.com/docker-mac">
+<meta property="og:description" content="该文章以Mac为例。 安装请至Docker官网下载Mac版：https://www.docker.com/docker-mac">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://fingerart.qiniudn.com/image/docker.png">
 <meta property="og:image" content="http://fingerart.qiniudn.com/image/docker-preview-nginx.png">
-<meta property="og:updated_time" content="2017-06-07T16:52:36.000Z">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 新手入门">
-<meta name="twitter:description" content="该文章以Mac为例。
-安装请至Docker官网下载Mac版：https://www.docker.com/docker-mac">
+<meta name="twitter:description" content="该文章以Mac为例。 安装请至Docker官网下载Mac版：https://www.docker.com/docker-mac">
 <meta name="twitter:image" content="http://fingerart.qiniudn.com/image/docker.png">
 
 
@@ -318,13 +317,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/25/Docker-新手入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/25/Docker-新手入门/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -346,12 +338,12 @@
       
         <p><img src="http://fingerart.qiniudn.com/image/docker.png" alt=""></p>
 <p>该文章以Mac为例。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>请至Docker官网下载Mac版：<a href="https://www.docker.com/docker-mac" target="_blank" rel="external">https://www.docker.com/docker-mac</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>请至Docker官网下载Mac版：<a href="https://www.docker.com/docker-mac" target="_blank" rel="noopener">https://www.docker.com/docker-mac</a></p>
 <a id="more"></a>
-<h2 id="创建Web服务器"><a href="#创建Web服务器" class="headerlink" title="创建Web服务器"></a>创建Web服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Mac:~ fingerart$ docker run <span class="_">-d</span> -p 80:80 --name webserver nginx</div><div class="line"></div><div class="line">Unable to find image <span class="string">'nginx:latest'</span> locally</div><div class="line">latest: Pulling from library/nginx</div><div class="line">ff3d52d8f55f: Pull complete</div><div class="line">b05436c68d6a: Pull complete</div><div class="line">961dd3f5d836: Pull complete</div><div class="line">Digest: sha256:12d30ce421ad530494d588f87b2328ddc3cae666e77ea1ae5ac3a6661e52cde6</div><div class="line">Status: Downloaded newer image <span class="keyword">for</span> nginx:latest</div><div class="line">97503a2fbca4c2796975085c7d6e853243522c974803e23805e6d301787e9133</div></pre></td></tr></table></figure>
+<h2 id="创建Web服务器"><a href="#创建Web服务器" class="headerlink" title="创建Web服务器"></a>创建Web服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Mac:~ fingerart$ docker run -d -p 80:80 --name webserver nginx</span><br><span class="line"></span><br><span class="line">Unable to find image <span class="string">'nginx:latest'</span> locally</span><br><span class="line">latest: Pulling from library/nginx</span><br><span class="line">ff3d52d8f55f: Pull complete</span><br><span class="line">b05436c68d6a: Pull complete</span><br><span class="line">961dd3f5d836: Pull complete</span><br><span class="line">Digest: sha256:12d30ce421ad530494d588f87b2328ddc3cae666e77ea1ae5ac3a6661e52cde6</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> nginx:latest</span><br><span class="line">97503a2fbca4c2796975085c7d6e853243522c974803e23805e6d301787e9133</span><br></pre></td></tr></table></figure>
 <p>因为是第一次使用，Docker会从Docker Hub拉取Nginx，拉取完成后你可以在浏览器访问 <code>http://localhost</code> 即可访问到Nginx的欢迎页。<br>注意，如果你有程序占用了80端口，请先关闭。</p>
 <p>运行 <code>docker ps</code> 你会看到正在运行的Web服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                NAMES</div><div class="line">97503a2fbca4        nginx               <span class="string">"nginx -g 'daemon ..."</span>   About a minute ago   Up About a minute   0.0.0.0:80-&gt;80/tcp   webserver</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                NAMES</span><br><span class="line">97503a2fbca4        nginx               <span class="string">"nginx -g 'daemon ..."</span>   About a minute ago   Up About a minute   0.0.0.0:80-&gt;80/tcp   webserver</span><br></pre></td></tr></table></figure>
 <p><img src="http://fingerart.qiniudn.com/image/docker-preview-nginx.png" alt=""></p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ul>
 <li>开启容器: <code>docker start webserver</code></li>
@@ -361,7 +353,7 @@
 <li>移除镜像(通过IMAGE ID或名称): <code>docker rmi nginx</code></li>
 </ul>
 <blockquote>
-<p>更多信息请查阅官方文档 <a href="https://docs.docker.com/docker-for-mac" target="_blank" rel="external">https://docs.docker.com/docker-for-mac</a></p>
+<p>更多信息请查阅官方文档 <a href="https://docs.docker.com/docker-for-mac" target="_blank" rel="noopener">https://docs.docker.com/docker-for-mac</a></p>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。</p>
 </blockquote>
 
@@ -420,25 +412,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/05/25/Docker-新手入门/"
-     data-title="Docker 新手入门"
-     data-content=""
-     data-url="http://fingerart.me/2017/05/25/Docker-新手入门/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -449,10 +422,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/05/25/Docker-新手入门/"
-           data-title="Docker 新手入门" data-url="http://fingerart.me/2017/05/25/Docker-新手入门/">
-      </div>
     
   </div>
 
@@ -496,7 +465,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -513,7 +482,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -588,7 +557,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -690,30 +659,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

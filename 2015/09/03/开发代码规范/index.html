@@ -87,12 +87,14 @@
 
 
 <meta name="description" content="命名规范(Naming Conventions)命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。">
+<meta name="keywords" content="规范">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开发代码规范">
 <meta property="og:url" content="http://fingerart.me/2015/09/03/开发代码规范/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
 <meta property="og:description" content="命名规范(Naming Conventions)命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发代码规范">
 <meta name="twitter:description" content="命名规范(Naming Conventions)命名规范使程序更易读，从而更易于理解。它们也可以提供一些有关标识符功能的信息，以助于理解代码，例如，不论它是一个常量，包，还是类。">
@@ -331,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/03/开发代码规范/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/03/开发代码规范/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -414,7 +409,7 @@
 </ul>
 <h4 id="开头注释-Beginning-Comments"><a href="#开头注释-Beginning-Comments" class="headerlink" title="开头注释(Beginning Comments)"></a>开头注释(Beginning Comments)</h4><p>所有的源文件都应该在开头有一个注释，其中列出类名、版本信息、日期和版权声明.</p>
 <h4 id="包和引入语句-Package-and-Import-Statements"><a href="#包和引入语句-Package-and-Import-Statements" class="headerlink" title="包和引入语句(Package and Import Statements)"></a>包和引入语句(Package and Import Statements)</h4><p>在多数Java源文件中，第一个非注释行是包语句。在它之后可以跟引入语句。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> java.awt;</div><div class="line"><span class="keyword">import</span> java.awt.peer.CanvasPeer;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.awt;</span><br><span class="line"><span class="keyword">import</span> java.awt.peer.CanvasPeer;</span><br></pre></td></tr></table></figure>
 <h4 id="类和接口声明-Class-and-Interface-Declarations"><a href="#类和接口声明-Class-and-Interface-Declarations" class="headerlink" title="类和接口声明(Class and Interface Declarations)"></a>类和接口声明(Class and Interface Declarations)</h4><p>下表描述了类和接口声明的各个部分以及它们出现的先后次序。参见“Java源文件范例”中一个包含注释的例子。</p>
 <table>
 <thead>
@@ -465,28 +460,28 @@
 <h3 id="编程惯例-Programming-Practices"><a href="#编程惯例-Programming-Practices" class="headerlink" title="编程惯例(Programming Practices)"></a>编程惯例(Programming Practices)</h3><h4 id="提供对实例以及类变量的访问控制-Providing-Access-to-Instance-and-Class-Variables"><a href="#提供对实例以及类变量的访问控制-Providing-Access-to-Instance-and-Class-Variables" class="headerlink" title="提供对实例以及类变量的访问控制(Providing Access to Instance and Class Variables)"></a>提供对实例以及类变量的访问控制(Providing Access to Instance and Class Variables)</h4><p>若没有足够理由，不要把实例或类变量声明为公有。通常，实例变量无需显式的设置(set)和获取(gotten)，通常这作为方法调用的边缘效应 (side effect)而产生。</p>
 <p>一个具有公有实例变量的恰当例子，是类仅作为数据结构，没有行为。亦即，若你要使用一个结构(struct)而非一个类(如果java支持结构的话)，那么把类的实例变量声明为公有是合适的。</p>
 <h4 id="引用类变量和类方法-Referring-to-Class-Variables-and-Methods"><a href="#引用类变量和类方法-Referring-to-Class-Variables-and-Methods" class="headerlink" title="引用类变量和类方法(Referring to Class Variables and Methods)"></a>引用类变量和类方法(Referring to Class Variables and Methods)</h4><p>避免用一个对象访问一个类的静态变量和方法。应该用类名替代。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">classMethod();             <span class="comment">//OK</span></div><div class="line">AClass.classMethod();      <span class="comment">//OK</span></div><div class="line">anObject.classMethod();    <span class="comment">//AVOID!</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">classMethod();             <span class="comment">//OK</span></span><br><span class="line">AClass.classMethod();      <span class="comment">//OK</span></span><br><span class="line">anObject.classMethod();    <span class="comment">//AVOID!</span></span><br></pre></td></tr></table></figure>
 <h4 id="常量-Constants"><a href="#常量-Constants" class="headerlink" title="常量(Constants)"></a>常量(Constants)</h4><p>位于for循环中作为计数器值的数字常量，除了-1,0和1之外，不应被直接写入代码。</p>
-<h4 id="变量赋值-Variable-Assignments"><a href="#变量赋值-Variable-Assignments" class="headerlink" title="变量赋值(Variable Assignments)"></a>变量赋值(Variable Assignments)</h4><p>避免在一个语句中给多个变量赋相同的值。它很难读懂。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fooBar.fChar = barFoo.lchar = &apos;c&apos;; // AVOID!</div></pre></td></tr></table></figure></p>
+<h4 id="变量赋值-Variable-Assignments"><a href="#变量赋值-Variable-Assignments" class="headerlink" title="变量赋值(Variable Assignments)"></a>变量赋值(Variable Assignments)</h4><p>避免在一个语句中给多个变量赋相同的值。它很难读懂。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fooBar.fChar = barFoo.lchar = &apos;c&apos;; // AVOID!</span><br></pre></td></tr></table></figure></p>
 <p>不要将赋值运算符用在容易与相等关系运算符混淆的地方。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (c++ = d++) &#123; <span class="comment">// AVOID! (Java disallows)</span></div><div class="line">    <span class="comment">//some code...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//应该写成</span></div><div class="line"><span class="keyword">if</span> ((c++ = d++) != <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">//some code...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//不要使用内嵌(embedded)赋值运算符试图提高运行时的效率，这是编译器的工作。例如：</span></div><div class="line"></div><div class="line">d = (a = b + c) + r;<span class="comment">// AVOID!</span></div><div class="line"></div><div class="line"><span class="comment">//应该写成</span></div><div class="line">a = b + c;</div><div class="line">d = a + r;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (c++ = d++) &#123; <span class="comment">// AVOID! (Java disallows)</span></span><br><span class="line">    <span class="comment">//some code...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//应该写成</span></span><br><span class="line"><span class="keyword">if</span> ((c++ = d++) != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">//some code...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不要使用内嵌(embedded)赋值运算符试图提高运行时的效率，这是编译器的工作。例如：</span></span><br><span class="line"></span><br><span class="line">d = (a = b + c) + r;<span class="comment">// AVOID!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//应该写成</span></span><br><span class="line">a = b + c;</span><br><span class="line">d = a + r;</span><br></pre></td></tr></table></figure>
 <h4 id="其它惯例-Miscellaneous-Practices"><a href="#其它惯例-Miscellaneous-Practices" class="headerlink" title="其它惯例(Miscellaneous Practices)"></a>其它惯例(Miscellaneous Practices)</h4><ul>
 <li>圆括号(Parentheses)</li>
 </ul>
 <p>一般而言，在含有多种运算符的表达式中使用圆括号来避免运算符优先级问题，是个好方法。即使运算符的优先级对你而言可能很清楚，但对其他人未必如此。你不能假设别的程序员和你一样清楚运算符的优先级。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (a == b &amp;&amp; c == d) // AVOID!</div><div class="line"></div><div class="line">if ((a == b) &amp;&amp; (c == d)) // RIGHT</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (a == b &amp;&amp; c == d) // AVOID!</span><br><span class="line"></span><br><span class="line">if ((a == b) &amp;&amp; (c == d)) // RIGHT</span><br></pre></td></tr></table></figure>
 <ul>
 <li>返回值(Returning Values)</li>
 </ul>
 <p>设法让你的程序结构符合目的。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if (booleanExpression) &#123;</div><div class="line">    return true;</div><div class="line">&#125; else &#123;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//应该代之以如下方法：</div><div class="line">return booleanExpression;</div><div class="line"></div><div class="line">//类似地：</div><div class="line">if (condition) &#123;</div><div class="line">    return x;</div><div class="line">&#125;</div><div class="line">return y;</div><div class="line"></div><div class="line">//应该写做：</div><div class="line">return (condition ? x : y);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">if (booleanExpression) &#123;</span><br><span class="line">    return true;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//应该代之以如下方法：</span><br><span class="line">return booleanExpression;</span><br><span class="line"></span><br><span class="line">//类似地：</span><br><span class="line">if (condition) &#123;</span><br><span class="line">    return x;</span><br><span class="line">&#125;</span><br><span class="line">return y;</span><br><span class="line"></span><br><span class="line">//应该写做：</span><br><span class="line">return (condition ? x : y);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>条件运算符”?”前的表达式(Expressions before ‘?’ in the Conditional Operator)</li>
 </ul>
 <p>如果一个包含二元运算符的表达式出现在三元运算符” ? : “的”?”之前，那么应该给表达式添上一对圆括号。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(x &gt;= 0) ? x : -x;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x &gt;= 0) ? x : -x;</span><br></pre></td></tr></table></figure>
 <h3 id="语句-Statements"><a href="#语句-Statements" class="headerlink" title="语句(Statements)"></a>语句(Statements)</h3><h4 id="简单语句-Simple-Statements"><a href="#简单语句-Simple-Statements" class="headerlink" title="简单语句(Simple Statements)"></a>简单语句(Simple Statements)</h4><p>每行至多包含一条语句，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">argv++; // Correct</div><div class="line"></div><div class="line">argc--; // Correct</div><div class="line"></div><div class="line">argv++; argc--; // AVOID!</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">argv++; // Correct</span><br><span class="line"></span><br><span class="line">argc--; // Correct</span><br><span class="line"></span><br><span class="line">argv++; argc--; // AVOID!</span><br></pre></td></tr></table></figure>
 <h4 id="复合语句-Compound-Statements"><a href="#复合语句-Compound-Statements" class="headerlink" title="复合语句(Compound Statements)"></a>复合语句(Compound Statements)</h4><p>复合语句是包含在大括号中的语句序列，形如”{ 语句 }”。例如下面各段。</p>
 <ul>
 <li>被括其中的语句应该较之复合语句缩进一个层次</li>
@@ -494,25 +489,25 @@
 <li>大括号可以被用于所有语句，包括单个语句，只要这些语句是诸如if-else或for控制结构的一部分。这样便于添加语句而无需担心由于忘了加括号而引入bug。</li>
 </ul>
 <h4 id="返回语句-return-Statements"><a href="#返回语句-return-Statements" class="headerlink" title="返回语句(return Statements)"></a>返回语句(return Statements)</h4><p>一个带返回值的return语句不使用小括号”()”，除非它们以某种方式使返回值更为显见。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">return;</div><div class="line">return myDisk.size();</div><div class="line">return (size ? size : defaultSize);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return;</span><br><span class="line">return myDisk.size();</span><br><span class="line">return (size ? size : defaultSize);</span><br></pre></td></tr></table></figure>
 <h4 id="if，if-else，if-else-if-else语句-if-if-else-if-else-if-else-Statements"><a href="#if，if-else，if-else-if-else语句-if-if-else-if-else-if-else-Statements" class="headerlink" title="if，if-else，if else-if else语句(if, if-else, if else-if else Statements)"></a>if，if-else，if else-if else语句(if, if-else, if else-if else Statements)</h4><p>if-else语句应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else if (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125; else&#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">if (condition) &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (condition) &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (condition) &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125; else if (condition) &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125; else&#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意：if语句总是用”{“和”}”括起来，避免使用如下容易引起错误的格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if (condition) //AVOID! THIS OMITS THE BRACES &#123;&#125;!</div><div class="line">    statement;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (condition) //AVOID! THIS OMITS THE BRACES &#123;&#125;!</span><br><span class="line">    statement;</span><br></pre></td></tr></table></figure>
 <h4 id="for语句-for-Statements"><a href="#for语句-for-Statements" class="headerlink" title="for语句(for Statements)"></a>for语句(for Statements)</h4><p>一个for语句应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (initialization; condition; update) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (initialization; condition; update) &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一个空的for语句(所有工作都在初始化，条件判断，更新子句中完成)应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for (initialization; condition; update);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for (initialization; condition; update);</span><br></pre></td></tr></table></figure>
 <p>当在for语句的初始化或更新子句中使用逗号时，避免因使用三个以上变量，而导致复杂度提高。若需要，可以在for循环之前(为初始化子句)或for循环末尾(为更新子句)使用单独的语句。 ### 6 while语句(while Statements) 一个while语句应该具有如下格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while (condition) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while (condition) &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一个空的while语句应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">while (condition);</div><div class="line">  ### 7 do-while语句(do-while Statements) 一个do-while语句应该具有如下格式：</div><div class="line">do &#123;</div><div class="line">    statements;</div><div class="line">&#125; while (condition);</div><div class="line">  ### 8 switch语句(switch Statements) 一个switch语句应该具有如下格式：</div><div class="line">switch (condition) &#123;</div><div class="line">    case ABC:</div><div class="line">        statements;</div><div class="line">        /* falls through */</div><div class="line">    case DEF:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">    case XYZ:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">    default:</div><div class="line">        statements;</div><div class="line">        break;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">while (condition);</span><br><span class="line">  ### 7 do-while语句(do-while Statements) 一个do-while语句应该具有如下格式：</span><br><span class="line">do &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125; while (condition);</span><br><span class="line">  ### 8 switch语句(switch Statements) 一个switch语句应该具有如下格式：</span><br><span class="line">switch (condition) &#123;</span><br><span class="line">    case ABC:</span><br><span class="line">        statements;</span><br><span class="line">        /* falls through */</span><br><span class="line">    case DEF:</span><br><span class="line">        statements;</span><br><span class="line">        break;</span><br><span class="line">    case XYZ:</span><br><span class="line">        statements;</span><br><span class="line">        break;</span><br><span class="line">    default:</span><br><span class="line">        statements;</span><br><span class="line">        break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>每当一个case顺着往下执行时(因为没有break语句)，通常应在break语句的位置添加注释。上面的示例代码中就包含注释/<em> falls through </em>/。   ### 9 try-catch语句(try-catch Statements) 一个try-catch语句应该具有如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">    statements;</div><div class="line">&#125; catch (ExceptionClass e) &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125; catch (ExceptionClass e) &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一个try-catch语句后面也可能跟着一个finally语句，不论try代码块是否顺利执行完，它都会被执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">statements;</div><div class="line">&#125; catch (ExceptionClass e) &#123;</div><div class="line">    statements;</div><div class="line">&#125; finally &#123;</div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">statements;</span><br><span class="line">&#125; catch (ExceptionClass e) &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="代码范例-Code-Examples"><a href="#代码范例-Code-Examples" class="headerlink" title="代码范例(Code Examples)"></a>代码范例(Code Examples)</h3><h4 id="Java源文件范例-Java-Source-File-Example"><a href="#Java源文件范例-Java-Source-File-Example" class="headerlink" title="Java源文件范例(Java Source File Example)"></a>Java源文件范例(Java Source File Example)</h4><p>下面的例子，展示了如何合理布局一个包含单一公共类的Java源程序。接口的布局与其相似。更多信息参见”类和接口声明”以及”文挡注释”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">package java.blah;</div><div class="line">import java.blah.blahdy.BlahBlah;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Class description goes here.</div><div class="line"> *</div><div class="line"> * @version 1.82 18 Mar 1999</div><div class="line"> * @author Firstname Lastname</div><div class="line"> */</div><div class="line">public class Blah extends SomeClass &#123;</div><div class="line">	/* A class implementation comment can go here. */</div><div class="line"></div><div class="line">	/* classVar1 documentation comment */</div><div class="line">	public static int classVar1;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * classVar2 documentation comment that happens to be more than one line long</div><div class="line">	 */</div><div class="line">	private static Object classVar2;</div><div class="line">	</div><div class="line">	/* instanceVar1 documentation comment */</div><div class="line">	public Object instanceVar1;</div><div class="line">	</div><div class="line">	/* instanceVar2 documentation comment */</div><div class="line">	protected int instanceVar2;</div><div class="line">	</div><div class="line">	/* instanceVar3 documentation comment */</div><div class="line">	private Object[] instanceVar3;</div><div class="line">	</div><div class="line">	/**</div><div class="line">	 * …constructor Blah documentation comment…</div><div class="line">	 */</div><div class="line">	public Blah() &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * …method doSomething documentation comment…</div><div class="line">	 */</div><div class="line">	public void doSomething() &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * …method doSomethingElse documentation comment…</div><div class="line">	 * @param someParam description</div><div class="line">	 */</div><div class="line">	public void doSomethingElse(Object someParam) &#123;</div><div class="line">		// …implementation goes here…</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">package java.blah;</span><br><span class="line">import java.blah.blahdy.BlahBlah;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Class description goes here.</span><br><span class="line"> *</span><br><span class="line"> * @version 1.82 18 Mar 1999</span><br><span class="line"> * @author Firstname Lastname</span><br><span class="line"> */</span><br><span class="line">public class Blah extends SomeClass &#123;</span><br><span class="line">	/* A class implementation comment can go here. */</span><br><span class="line"></span><br><span class="line">	/* classVar1 documentation comment */</span><br><span class="line">	public static int classVar1;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * classVar2 documentation comment that happens to be more than one line long</span><br><span class="line">	 */</span><br><span class="line">	private static Object classVar2;</span><br><span class="line">	</span><br><span class="line">	/* instanceVar1 documentation comment */</span><br><span class="line">	public Object instanceVar1;</span><br><span class="line">	</span><br><span class="line">	/* instanceVar2 documentation comment */</span><br><span class="line">	protected int instanceVar2;</span><br><span class="line">	</span><br><span class="line">	/* instanceVar3 documentation comment */</span><br><span class="line">	private Object[] instanceVar3;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * …constructor Blah documentation comment…</span><br><span class="line">	 */</span><br><span class="line">	public Blah() &#123;</span><br><span class="line">		// …implementation goes here…</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * …method doSomething documentation comment…</span><br><span class="line">	 */</span><br><span class="line">	public void doSomething() &#123;</span><br><span class="line">		// …implementation goes here…</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * …method doSomethingElse documentation comment…</span><br><span class="line">	 * @param someParam description</span><br><span class="line">	 */</span><br><span class="line">	public void doSomethingElse(Object someParam) &#123;</span><br><span class="line">		// …implementation goes here…</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -543,16 +538,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/03/Android文件命名规范/" rel="next" title="Android文件命名规范">
-                <i class="fa fa-chevron-left"></i> Android文件命名规范
+              <a href="/2015/08/12/Android-任务栈/" rel="next" title="Android-任务栈">
+                <i class="fa fa-chevron-left"></i> Android-任务栈
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/19/AsyncTask原理/" rel="prev" title="AsyncTask原理">
-                AsyncTask原理 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/09/03/Android文件命名规范/" rel="prev" title="Android文件命名规范">
+                Android文件命名规范 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -568,25 +563,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/09/03/开发代码规范/"
-     data-title="开发代码规范"
-     data-content=""
-     data-url="http://fingerart.me/2015/09/03/开发代码规范/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -597,10 +573,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/09/03/开发代码规范/"
-           data-title="开发代码规范" data-url="http://fingerart.me/2015/09/03/开发代码规范/">
-      </div>
     
   </div>
 
@@ -644,7 +616,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -661,7 +633,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -736,7 +708,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -838,30 +810,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

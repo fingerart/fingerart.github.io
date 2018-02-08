@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="数据库的连接与关闭123456//连接数据库mysql -h 服务器主机地址 -u 用户名 -pEnter password:密码//关闭连接, 两者其一exit;quit;
-创建用户并授权12345GRANT 权限 ON 数据库.数据表 TO 用户名@登陆主机 IDENTIFIED BY &quot;密码&quot;//例如GRANT SELECT,INSERT,UPDATE,DELETE ON *.* TO fi">
+<meta name="description" content="数据库的连接与关闭123456//连接数据库mysql -h 服务器主机地址 -u 用户名 -pEnter password:密码//关闭连接, 两者其一exit;quit; 创建用户并授权12345GRANT 权限 ON 数据库.数据表 TO 用户名@登陆主机 IDENTIFIED BY &quot;密码&quot;//例如GRANT SELECT,INSERT,UPDATE,DELETE ON *.* TO fi">
+<meta name="keywords" content="MySql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySql学习笔记">
 <meta property="og:url" content="http://fingerart.me/2014/08/25/MySql学习笔记/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="数据库的连接与关闭123456//连接数据库mysql -h 服务器主机地址 -u 用户名 -pEnter password:密码//关闭连接, 两者其一exit;quit;
-创建用户并授权12345GRANT 权限 ON 数据库.数据表 TO 用户名@登陆主机 IDENTIFIED BY &quot;密码&quot;//例如GRANT SELECT,INSERT,UPDATE,DELETE ON *.* TO fi">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="数据库的连接与关闭123456//连接数据库mysql -h 服务器主机地址 -u 用户名 -pEnter password:密码//关闭连接, 两者其一exit;quit; 创建用户并授权12345GRANT 权限 ON 数据库.数据表 TO 用户名@登陆主机 IDENTIFIED BY &quot;密码&quot;//例如GRANT SELECT,INSERT,UPDATE,DELETE ON *.* TO fi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySql学习笔记">
-<meta name="twitter:description" content="数据库的连接与关闭123456//连接数据库mysql -h 服务器主机地址 -u 用户名 -pEnter password:密码//关闭连接, 两者其一exit;quit;
-创建用户并授权12345GRANT 权限 ON 数据库.数据表 TO 用户名@登陆主机 IDENTIFIED BY &quot;密码&quot;//例如GRANT SELECT,INSERT,UPDATE,DELETE ON *.* TO fi">
+<meta name="twitter:description" content="数据库的连接与关闭123456//连接数据库mysql -h 服务器主机地址 -u 用户名 -pEnter password:密码//关闭连接, 两者其一exit;quit; 创建用户并授权12345GRANT 权限 ON 数据库.数据表 TO 用户名@登陆主机 IDENTIFIED BY &quot;密码&quot;//例如GRANT SELECT,INSERT,UPDATE,DELETE ON *.* TO fi">
 
 
 
@@ -334,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/25/MySql学习笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/25/MySql学习笔记/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -360,17 +352,17 @@
       
 
       
-        <h3 id="数据库的连接与关闭"><a href="#数据库的连接与关闭" class="headerlink" title="数据库的连接与关闭"></a>数据库的连接与关闭</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//连接数据库</div><div class="line">mysql -h 服务器主机地址 -u 用户名 -p</div><div class="line">Enter password:密码</div><div class="line">//关闭连接, 两者其一</div><div class="line">exit;</div><div class="line">quit;</div></pre></td></tr></table></figure>
-<h3 id="创建用户并授权"><a href="#创建用户并授权" class="headerlink" title="创建用户并授权"></a>创建用户并授权</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GRANT</span> 权限 <span class="keyword">ON</span> 数据库.数据表 <span class="keyword">TO</span> 用户名@登陆主机 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">"密码"</span></div><div class="line">//例如</div><div class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">INSERT</span>,<span class="keyword">UPDATE</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> fingerart@<span class="string">"%"</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">"password"</span>;//将所有数据库及其下面表的增删改查权限给了fingerart用户,可在任何主机下登陆</div><div class="line">//权限还可以使用 ALL</div><div class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;//刷新系统权限表。</div></pre></td></tr></table></figure>
+        <h3 id="数据库的连接与关闭"><a href="#数据库的连接与关闭" class="headerlink" title="数据库的连接与关闭"></a>数据库的连接与关闭</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//连接数据库</span><br><span class="line">mysql -h 服务器主机地址 -u 用户名 -p</span><br><span class="line">Enter password:密码</span><br><span class="line">//关闭连接, 两者其一</span><br><span class="line">exit;</span><br><span class="line">quit;</span><br></pre></td></tr></table></figure>
+<h3 id="创建用户并授权"><a href="#创建用户并授权" class="headerlink" title="创建用户并授权"></a>创建用户并授权</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> 权限 <span class="keyword">ON</span> 数据库.数据表 <span class="keyword">TO</span> 用户名@登陆主机 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">"密码"</span></span><br><span class="line">//例如</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">INSERT</span>,<span class="keyword">UPDATE</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> fingerart@<span class="string">"%"</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">"password"</span>;//将所有数据库及其下面表的增删改查权限给了fingerart用户,可在任何主机下登陆</span><br><span class="line">//权限还可以使用 ALL</span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">privileges</span>;//刷新系统权限表。</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="修改用户密码"><a href="#修改用户密码" class="headerlink" title="修改用户密码"></a>修改用户密码</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//第一次设置root密码可以使用以下命令：</div><div class="line">mysqladmin -h localhost -u root password NEWPASSWORD</div><div class="line"></div><div class="line">//如果你已经设置过密码了，需要要以下命令：</div><div class="line">mysqladmin -h localhost -u root -p'oldpassword' password newpass</div></pre></td></tr></table></figure>
-<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//创建数据库</div><div class="line">mysql-&gt; CREATE DATABASE IF NOT EXISTS demodatabase;//如果demodatabase数据库不存在的话就创建</div><div class="line">//删除数据库</div><div class="line">mysql-&gt; DROP DATABASE IF EXISTS demodatabase;//如果demodatabase数据库存在的话就删除</div><div class="line">//显示已建立的所有数据库</div><div class="line">mysql-&gt; SHOW DATABASES;</div><div class="line">//打开某数据库为当前数据库使用</div><div class="line">mysql-&gt; USE demodatabase;</div></pre></td></tr></table></figure>
-<h3 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE [IF NOT EXISTS] user(</div><div class="line"> 字段名1 列类型 [属性] [索引],</div><div class="line"> 字段名2 列类型 [属性] [索引],</div><div class="line"> 字段名3 列类型 [属性] [索引],</div><div class="line"> 字段名n 列类型 [属性] [索引],</div><div class="line">)[表类型] [表字符集];</div><div class="line">//例如</div><div class="line">mysql-&gt; CREATE TABLE IF NOT EXISTS user(</div><div class="line">     -&gt; id INT NOT NULL AUTO_INCREMENT,</div><div class="line">     -&gt; name VARCHAR(10) NOT NULL,</div><div class="line">     -&gt; sex ENUM('男','女') NOT NULL DEFAULT '男',</div><div class="line">     -&gt; age TINYINT DEFAULT 0,</div><div class="line">     -&gt; PRIMARY KEY(id)</div><div class="line">     -&gt; );</div><div class="line">//显示表的详细属性</div><div class="line">mysql-&gt; DESC user;//前提是已经选择了某个数据库</div><div class="line">//删除表</div><div class="line">mysql-&gt; DROP TABLE IF EXISTS user;</div></pre></td></tr></table></figure>
-<h3 id="增-删-改-查"><a href="#增-删-改-查" class="headerlink" title="增 删 改 查"></a>增 删 改 查</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//按字段插入</div><div class="line">mysql-&gt; INSERT INTO user('name','sex') VALUES('localhost/fingerart','男');//优点:可自由选择字段</div><div class="line">//非按字段插入</div><div class="line">mysql-&gt; INSERT INTO user VALUES(NULL,'localhost/fingerart','男','21');//每个字段都需要给值</div><div class="line">//查询</div><div class="line">mysql-&gt; SELECT id,name,sex FROM user;//查询该表的所有记录,显示id,name,sex字段;全部字段可由 * 代替</div><div class="line">mysql-&gt; SELECT * FROM user WHERE id='1';//查询id为1的记录,显示所有字段</div><div class="line">//更改</div><div class="line">mysql-&gt; UPDATE user SET name='FingerArt' WHERE id='1';//将user表中id为1的记录的name改为FingerArt</div><div class="line">mysql-&gt; UPDATE user SET age='0' WHERE id&gt;'1' &amp;&amp; id DELETE ROME user WHERE id='1';//删除user表中id=1的记录</div></pre></td></tr></table></figure>
-<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ACTION</span></div><div class="line">//增加字段</div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> 字段  [<span class="keyword">FIRST</span>|<span class="keyword">AFTER</span> 字段]</div><div class="line">//例如</div><div class="line">mysql-&gt; <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">user</span> <span class="keyword">ADD</span> <span class="keyword">class</span> TINYINT <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'1'</span>;//默认添加在最后</div><div class="line">//修改字段</div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">CHANGE</span>(<span class="keyword">MODIFY</span>)</div><div class="line">//例如</div><div class="line">mysql-&gt; <span class="keyword">ALTER</span> <span class="keyword">user</span> <span class="keyword">CHANGE</span> <span class="keyword">class</span> classnum TINYINT <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span>;//<span class="keyword">CHANGE</span>可以修改字段名</div><div class="line">mysql-&gt; <span class="keyword">ALTER</span> <span class="keyword">user</span> <span class="keyword">MODIFY</span> <span class="keyword">class</span> TINYINT <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span>;//MODIFY不可以修改字段名</div><div class="line">//修改表名</div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">RENAME</span> <span class="keyword">AS</span> 新的表名</div></pre></td></tr></table></figure>
-<h3 id="导出数据库"><a href="#导出数据库" class="headerlink" title="导出数据库"></a>导出数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 默认导出建表+数据插入语句</div><div class="line">mysqldump -u 用户名 -p 密码 database &gt; name.sql</div><div class="line"></div><div class="line">// 只导出建表语句</div><div class="line">mysqldump -u 用户名 -p 密码 <span class="_">-d</span> database &gt; name.sql</div><div class="line"></div><div class="line">// 只导出数据插入语句</div><div class="line">mysqldump -u 用户名 -p 密码 -t database &gt; name.sql</div></pre></td></tr></table></figure>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//NULL</div><div class="line">NULL意味着 没有值/未知值,可以将NULL插入到表中,并检索,但不能对其进行算术运算,结果还是NULL;0/NULL意味着假,其它值意味着真.</div><div class="line">//类型转换</div><div class="line">1+'2' //会转换成1+2=3</div><div class="line">1+'a' //会被转成1+0=1</div><div class="line">//时间存储</div><div class="line">虽然MySql有日期时间类型,但是为了方便后面对时间进行计算等操作,最好将其存储为UNIX时间戳,这是基于PHP的Web项目中的常见方式.</div><div class="line">//字段属性</div><div class="line">UNSIGNED //只能设置数值类型</div><div class="line">ZEROFILL //只能设置数值类型,数值前面自动用0补齐不足的位数.</div><div class="line">AUTO_INCREMENT //自动增量属性</div></pre></td></tr></table></figure>
-<h3 id="数据表的类型"><a href="#数据表的类型" class="headerlink" title="数据表的类型"></a>数据表的类型</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">user</span>(i <span class="built_in">int</span>) YPTE(<span class="keyword">ENGINE</span>)=MYISAM(<span class="keyword">INNODB</span>);//新建表时为表添加表类型</div></pre></td></tr></table></figure>
+<h3 id="修改用户密码"><a href="#修改用户密码" class="headerlink" title="修改用户密码"></a>修改用户密码</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//第一次设置root密码可以使用以下命令：</span><br><span class="line">mysqladmin -h localhost -u root password NEWPASSWORD</span><br><span class="line"></span><br><span class="line">//如果你已经设置过密码了，需要要以下命令：</span><br><span class="line">mysqladmin -h localhost -u root -p'oldpassword' password newpass</span><br></pre></td></tr></table></figure>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//创建数据库</span><br><span class="line">mysql-&gt; CREATE DATABASE IF NOT EXISTS demodatabase;//如果demodatabase数据库不存在的话就创建</span><br><span class="line">//删除数据库</span><br><span class="line">mysql-&gt; DROP DATABASE IF EXISTS demodatabase;//如果demodatabase数据库存在的话就删除</span><br><span class="line">//显示已建立的所有数据库</span><br><span class="line">mysql-&gt; SHOW DATABASES;</span><br><span class="line">//打开某数据库为当前数据库使用</span><br><span class="line">mysql-&gt; USE demodatabase;</span><br></pre></td></tr></table></figure>
+<h3 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> [<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] <span class="keyword">user</span>(</span><br><span class="line"> 字段名<span class="number">1</span> 列类型 [属性] [索引],</span><br><span class="line"> 字段名<span class="number">2</span> 列类型 [属性] [索引],</span><br><span class="line"> 字段名<span class="number">3</span> 列类型 [属性] [索引],</span><br><span class="line"> 字段名n 列类型 [属性] [索引],</span><br><span class="line">)[表类型] [表字符集];</span><br><span class="line">//例如</span><br><span class="line">mysql-&gt; CREATE TABLE IF NOT EXISTS user(</span><br><span class="line">     -&gt; id INT NOT NULL AUTO_INCREMENT,</span><br><span class="line">     -&gt; name VARCHAR(10) NOT NULL,</span><br><span class="line">     -&gt; sex ENUM('男','女') NOT NULL DEFAULT '男',</span><br><span class="line">     -&gt; age TINYINT DEFAULT 0,</span><br><span class="line">     -&gt; PRIMARY KEY(id)</span><br><span class="line">     -&gt; );</span><br><span class="line">//显示表的详细属性</span><br><span class="line">mysql-&gt; DESC user;//前提是已经选择了某个数据库</span><br><span class="line">//删除表</span><br><span class="line">mysql-&gt; DROP TABLE IF EXISTS user;</span><br></pre></td></tr></table></figure>
+<h3 id="增-删-改-查"><a href="#增-删-改-查" class="headerlink" title="增 删 改 查"></a>增 删 改 查</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//按字段插入</span><br><span class="line">mysql-&gt; INSERT INTO user('name','sex') VALUES('localhost/fingerart','男');//优点:可自由选择字段</span><br><span class="line">//非按字段插入</span><br><span class="line">mysql-&gt; INSERT INTO user VALUES(NULL,'localhost/fingerart','男','21');//每个字段都需要给值</span><br><span class="line">//查询</span><br><span class="line">mysql-&gt; SELECT id,name,sex FROM user;//查询该表的所有记录,显示id,name,sex字段;全部字段可由 * 代替</span><br><span class="line">mysql-&gt; SELECT * FROM user WHERE id='1';//查询id为1的记录,显示所有字段</span><br><span class="line">//更改</span><br><span class="line">mysql-&gt; UPDATE user SET name='FingerArt' WHERE id='1';//将user表中id为1的记录的name改为FingerArt</span><br><span class="line">mysql-&gt; UPDATE user SET age='0' WHERE id&gt;'1' &amp;&amp; id DELETE ROME user WHERE id='1';//删除user表中id=1的记录</span><br></pre></td></tr></table></figure>
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ACTION</span></span><br><span class="line">//增加字段</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> 字段  [<span class="keyword">FIRST</span>|<span class="keyword">AFTER</span> 字段]</span><br><span class="line">//例如</span><br><span class="line">mysql-&gt; <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">user</span> <span class="keyword">ADD</span> <span class="keyword">class</span> TINYINT <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'1'</span>;//默认添加在最后</span><br><span class="line">//修改字段</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">CHANGE</span>(<span class="keyword">MODIFY</span>)</span><br><span class="line">//例如</span><br><span class="line">mysql-&gt; <span class="keyword">ALTER</span> <span class="keyword">user</span> <span class="keyword">CHANGE</span> <span class="keyword">class</span> classnum TINYINT <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span>;//<span class="keyword">CHANGE</span>可以修改字段名</span><br><span class="line">mysql-&gt; <span class="keyword">ALTER</span> <span class="keyword">user</span> <span class="keyword">MODIFY</span> <span class="keyword">class</span> TINYINT <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span>;//MODIFY不可以修改字段名</span><br><span class="line">//修改表名</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">RENAME</span> <span class="keyword">AS</span> 新的表名</span><br></pre></td></tr></table></figure>
+<h3 id="导出数据库"><a href="#导出数据库" class="headerlink" title="导出数据库"></a>导出数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 默认导出建表+数据插入语句</span><br><span class="line">mysqldump -u 用户名 -p 密码 database &gt; name.sql</span><br><span class="line"></span><br><span class="line">// 只导出建表语句</span><br><span class="line">mysqldump -u 用户名 -p 密码 -d database &gt; name.sql</span><br><span class="line"></span><br><span class="line">// 只导出数据插入语句</span><br><span class="line">mysqldump -u 用户名 -p 密码 -t database &gt; name.sql</span><br></pre></td></tr></table></figure>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//NULL</span><br><span class="line">NULL意味着 没有值/未知值,可以将NULL插入到表中,并检索,但不能对其进行算术运算,结果还是NULL;0/NULL意味着假,其它值意味着真.</span><br><span class="line">//类型转换</span><br><span class="line">1+'2' //会转换成1+2=3</span><br><span class="line">1+'a' //会被转成1+0=1</span><br><span class="line">//时间存储</span><br><span class="line">虽然MySql有日期时间类型,但是为了方便后面对时间进行计算等操作,最好将其存储为UNIX时间戳,这是基于PHP的Web项目中的常见方式.</span><br><span class="line">//字段属性</span><br><span class="line">UNSIGNED //只能设置数值类型</span><br><span class="line">ZEROFILL //只能设置数值类型,数值前面自动用0补齐不足的位数.</span><br><span class="line">AUTO_INCREMENT //自动增量属性</span><br></pre></td></tr></table></figure>
+<h3 id="数据表的类型"><a href="#数据表的类型" class="headerlink" title="数据表的类型"></a>数据表的类型</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">user</span>(i <span class="built_in">int</span>) YPTE(<span class="keyword">ENGINE</span>)=MYISAM(<span class="keyword">INNODB</span>);//新建表时为表添加表类型</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来按照该博文的内容进行直接使用。谢谢~~</p>
 </blockquote>
@@ -430,25 +422,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/08/25/MySql学习笔记/"
-     data-title="MySql学习笔记"
-     data-content=""
-     data-url="http://fingerart.me/2014/08/25/MySql学习笔记/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -459,10 +432,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2014/08/25/MySql学习笔记/"
-           data-title="MySql学习笔记" data-url="http://fingerart.me/2014/08/25/MySql学习笔记/">
-      </div>
     
   </div>
 
@@ -506,7 +475,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -523,7 +492,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -598,7 +567,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -700,30 +669,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 

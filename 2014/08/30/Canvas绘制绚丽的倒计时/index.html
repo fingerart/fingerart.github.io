@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="最近想把一直没好好研究的HTML5和CSS3给搞定了，前天才去图书馆借了有关的书籍。这个效果是跟着网上的一个教程制作的，还没来得及加入自己的想法，原教程上面本是一个显示倒计时的，为了省事而跳过了。在里面学到了一个对js数组处理地方法
-12345678910//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。var newL = 0;for (var i = 0; i &amp;lt; b">
+<meta name="description" content="最近想把一直没好好研究的HTML5和CSS3给搞定了，前天才去图书馆借了有关的书籍。这个效果是跟着网上的一个教程制作的，还没来得及加入自己的想法，原教程上面本是一个显示倒计时的，为了省事而跳过了。在里面学到了一个对js数组处理地方法 12345678910//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。var newL = 0;for (var i = 0; i &amp;lt; b">
+<meta name="keywords" content="Javascript,Canvas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Canvas绘制绚丽的倒计时">
 <meta property="og:url" content="http://fingerart.me/2014/08/30/Canvas绘制绚丽的倒计时/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="最近想把一直没好好研究的HTML5和CSS3给搞定了，前天才去图书馆借了有关的书籍。这个效果是跟着网上的一个教程制作的，还没来得及加入自己的想法，原教程上面本是一个显示倒计时的，为了省事而跳过了。在里面学到了一个对js数组处理地方法
-12345678910//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。var newL = 0;for (var i = 0; i &amp;lt; b">
-<meta property="og:updated_time" content="2017-02-16T03:43:31.000Z">
+<meta property="og:description" content="最近想把一直没好好研究的HTML5和CSS3给搞定了，前天才去图书馆借了有关的书籍。这个效果是跟着网上的一个教程制作的，还没来得及加入自己的想法，原教程上面本是一个显示倒计时的，为了省事而跳过了。在里面学到了一个对js数组处理地方法 12345678910//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。var newL = 0;for (var i = 0; i &amp;lt; b">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-08T07:40:14.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Canvas绘制绚丽的倒计时">
-<meta name="twitter:description" content="最近想把一直没好好研究的HTML5和CSS3给搞定了，前天才去图书馆借了有关的书籍。这个效果是跟着网上的一个教程制作的，还没来得及加入自己的想法，原教程上面本是一个显示倒计时的，为了省事而跳过了。在里面学到了一个对js数组处理地方法
-12345678910//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。var newL = 0;for (var i = 0; i &amp;lt; b">
+<meta name="twitter:description" content="最近想把一直没好好研究的HTML5和CSS3给搞定了，前天才去图书馆借了有关的书籍。这个效果是跟着网上的一个教程制作的，还没来得及加入自己的想法，原教程上面本是一个显示倒计时的，为了省事而跳过了。在里面学到了一个对js数组处理地方法 12345678910//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。var newL = 0;for (var i = 0; i &amp;lt; b">
 
 
 
@@ -334,13 +333,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/30/Canvas绘制绚丽的倒计时/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/30/Canvas绘制绚丽的倒计时/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -361,7 +353,7 @@
 
       
         <p>最近想把一直没好好研究的HTML5和CSS3给搞定了，前天才去图书馆借了有关的书籍。<br>这个效果是跟着网上的一个教程制作的，还没来得及加入自己的想法，原教程上面本是一个显示倒计时的，为了省事而跳过了。<br>在里面学到了一个对js数组处理地方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> newL = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; balls.length; i++) &#123;</div><div class="line">	<span class="keyword">if</span> (条件成立)</div><div class="line">		balls[newL++] = balls[i];</div><div class="line">&#125;</div><div class="line"><span class="keyword">while</span>(balls.length &gt; newL) &#123;</div><div class="line">	balls.pop();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js中没有删除某个角标元素后，后面的元素不能向前移动，可这样处理。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newL = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; balls.length; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (条件成立)</span><br><span class="line">		balls[newL++] = balls[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(balls.length &gt; newL) &#123;</span><br><span class="line">	balls.pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <iframe width="900" height="400" src="/uploads/web/canvas-beautiful-countdown/index.html"></iframe>
 
@@ -424,25 +416,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/08/30/Canvas绘制绚丽的倒计时/"
-     data-title="Canvas绘制绚丽的倒计时"
-     data-content=""
-     data-url="http://fingerart.me/2014/08/30/Canvas绘制绚丽的倒计时/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -453,10 +426,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2014/08/30/Canvas绘制绚丽的倒计时/"
-           data-title="Canvas绘制绚丽的倒计时" data-url="http://fingerart.me/2014/08/30/Canvas绘制绚丽的倒计时/">
-      </div>
     
   </div>
 
@@ -500,7 +469,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -517,7 +486,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -592,7 +561,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -694,30 +663,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"fingerart"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
 
 
 
