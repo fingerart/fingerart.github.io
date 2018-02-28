@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ThinkPHP," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。 因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果： 定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在  再三">
-<meta name="keywords" content="ThinkPHP">
+<meta name="description" content="一直想写一篇关于事件传递的分析博文，因工作的原因，现在才有时间。 当前博文的源码分析是参考SDK19，示例代码是精简过的伪代码，具体以源码为准。 事件的开始用户触摸手机屏幕时，系统会将事件传递给当前 Activity，在 dispatchTouchEvent 中调用当前 Window(PhoneWindow).superDispatchTouchEvent 方法将事件继续往下传递。 1234567">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于ThinkPHP5 子域名路由问题">
-<meta property="og:url" content="http://fingerart.me/2016/12/01/关于ThinkPHP5-子域名路由问题/index.html">
+<meta property="og:title" content="Android事件传递机制分析">
+<meta property="og:url" content="http://fingerart.me/2016/03/02/Android事件传递机制分析/index.html">
 <meta property="og:site_name" content="指尖上的艺术">
-<meta property="og:description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。 因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果： 定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在  再三">
+<meta property="og:description" content="一直想写一篇关于事件传递的分析博文，因工作的原因，现在才有时间。 当前博文的源码分析是参考SDK19，示例代码是精简过的伪代码，具体以源码为准。 事件的开始用户触摸手机屏幕时，系统会将事件传递给当前 Activity，在 dispatchTouchEvent 中调用当前 Window(PhoneWindow).superDispatchTouchEvent 方法将事件继续往下传递。 1234567">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-08T07:40:14.824Z">
+<meta property="og:updated_time" content="2018-02-28T09:38:22.490Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于ThinkPHP5 子域名路由问题">
-<meta name="twitter:description" content="准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。 因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果： 定义某个api路由规则时，可以根据 api.domain.com 子域名来检测；非 api.domain.com 子域名访问其他模块。但是根据文档配置后却会报 模块不存在  再三">
+<meta name="twitter:title" content="Android事件传递机制分析">
+<meta name="twitter:description" content="一直想写一篇关于事件传递的分析博文，因工作的原因，现在才有时间。 当前博文的源码分析是参考SDK19，示例代码是精简过的伪代码，具体以源码为准。 事件的开始用户触摸手机屏幕时，系统会将事件传递给当前 Activity，在 dispatchTouchEvent 中调用当前 Window(PhoneWindow).superDispatchTouchEvent 方法将事件继续往下传递。 1234567">
 
 
 
@@ -118,10 +118,10 @@
 
 
 
-  <link rel="canonical" href="http://fingerart.me/2016/12/01/关于ThinkPHP5-子域名路由问题/"/>
+  <link rel="canonical" href="http://fingerart.me/2016/03/02/Android事件传递机制分析/"/>
 
 
-  <title> 关于ThinkPHP5 子域名路由问题 | 指尖上的艺术 </title>
+  <title> Android事件传递机制分析 | 指尖上的艺术 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -293,7 +293,7 @@
             
             
               
-                关于ThinkPHP5 子域名路由问题
+                Android事件传递机制分析
               
             
           </h1>
@@ -305,8 +305,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-01T02:18:43+08:00" content="2016-12-01">
-              2016-12-01
+            <time itemprop="dateCreated" datetime="2016-03-02T15:17:54+08:00" content="2016-03-02">
+              2016-03-02
             </time>
           </span>
 
@@ -333,13 +333,23 @@
       
 
       
-        <p>准备在一个CRM的项目，本想使用Laravel框架的，但是并不怎么熟练，加上时间紧迫，最后决定使用ThinkPHP。</p>
-<p>因为TP5是新出的一个版本，改动有些大，在看完文档中的路由（域名检测）部分后，就希望能做到这样的效果：</p>
-<p>定义某个api路由规则时，可以根据 <code>api.domain.com</code> 子域名来检测；非 <code>api.domain.com</code> 子域名访问其他模块。但是根据文档配置后却会报 <strong>模块不存在</strong> </p>
-<p>再三查看文档后决定没错，后来跟进源码查看关键位置</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//thinkphp/library/think/Route.php</span></span><br><span class="line"></span><br><span class="line"><span class="number">182</span> <span class="keyword">if</span> (<span class="keyword">isset</span>($rule[<span class="string">'__domain__'</span>])) &#123;</span><br><span class="line"><span class="number">183</span>     <span class="keyword">self</span>::domain($rule[<span class="string">'__domain__'</span>]);</span><br><span class="line"><span class="number">184</span>     <span class="keyword">unset</span>($rule[<span class="string">'__domain__'</span>]);</span><br><span class="line"><span class="number">185</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="number">119</span> <span class="keyword">self</span>::$rules[<span class="string">'domain'</span>][$domain][<span class="string">'[bind]'</span>] = [$rule, $option, $pattern];</span><br><span class="line"></span><br><span class="line"><span class="number">1132</span> <span class="keyword">if</span>(<span class="keyword">isset</span>($option[<span class="string">'domain'</span>]) &amp;&amp; !in_array($option[<span class="string">'domain'</span>], [$_SERVER[<span class="string">'HTTP_HOST'</span>], <span class="keyword">self</span>::$subDomain])) <span class="comment">// 域名检测</span></span><br></pre></td></tr></table></figure>
-<p>会发现通过如下设置即可完成：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//route.php</span></span><br><span class="line"></span><br><span class="line"><span class="string">'__domain__'</span>=&gt;[</span><br><span class="line">   <span class="string">'api'</span> =&gt; <span class="string">'api/User/index'</span>,</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line"><span class="string">'user'</span> =&gt; [<span class="string">'api/User/create'</span>, [<span class="string">'method'</span> =&gt; <span class="string">'get'</span>, <span class="string">'domain'</span>=&gt;<span class="string">'api'</span>]],</span><br></pre></td></tr></table></figure>
+        <p>一直想写一篇关于事件传递的分析博文，因工作的原因，现在才有时间。</p>
+<p>当前博文的源码分析是参考SDK19，示例代码是精简过的伪代码，具体以源码为准。</p>
+<h2 id="事件的开始"><a href="#事件的开始" class="headerlink" title="事件的开始"></a>事件的开始</h2><p>用户触摸手机屏幕时，系统会将事件传递给当前 <code>Activity</code>，在 <code>dispatchTouchEvent</code> 中调用当前 <code>Window(PhoneWindow).superDispatchTouchEvent</code> 方法将事件继续往下传递。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (getWindow().superDispatchTouchEvent(ev)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> onTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在 <code>PhoneWindow</code> 中，将事件向下传递给了 <code>DecorView.superDispatchTouchEvent</code>；DecorView实质上是一个ViewGroup，所以将其事件通过 <code>dispatchTouchEvent</code> 进行了继续传递。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DecorView</span> <span class="keyword">extends</span> <span class="title">FrameLayout</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">superDispatchTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.dispatchTouchEvent(event);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="View与ViewGroup对事件的处理"><a href="#View与ViewGroup对事件的处理" class="headerlink" title="View与ViewGroup对事件的处理"></a>View与ViewGroup对事件的处理</h2><p>Android视图主要分为 <code>View</code> 与 <code>ViewGroup</code>，当DecorView <code>DecorView.superDispatchTouchEvent</code> 接收到事件后，询问 <code>onInterceptTouchEvent</code> 是否拦截该事件；</p>
+<ol>
+<li>拦截<br> 当事件被拦截后，会调用 <code>dispatchTransformedTouchEvent(ev, canceled, null,TouchTarget.ALL_POINTER_IDS)</code> 传入的子view为 <code>null</code>，该方法的内部会调父类 <code>View#dispatchTouchEvent</code>，以此结束本次事件的传递。</li>
+<li>未拦截<br> 遍历所有的子view，此时子view可能是 <code>View</code> 或 <code>ViewGroup</code>，调用子view的 <code>dispatchTouchEvent</code> 方法，如果某个子view返回了 <code>true</code>，会调用 <code>addTouchTarget</code> 记录下那个子view以便后续的触摸事件直接传递给该子view。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewGroup</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分发事件</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> action = ev.getAction();</span><br><span class="line">        <span class="keyword">int</span> actionMasked = action &amp; MotionEvent.ACTION_MASK;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> intercepted, handled;</span><br><span class="line">        <span class="keyword">if</span> (actionMasked == MotionEvent.ACTION_DOWN || mFirstTouchTarget != <span class="keyword">null</span>) &#123;</span><br><span class="line">            intercepted = onInterceptTouchEvent(ev);<span class="comment">//是否拦截这个事件</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            intercepted = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//遍历子view并传递事件</span></span><br><span class="line">        <span class="keyword">if</span> (!intercepted) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childrenCount; i++) &#123;</span><br><span class="line">                View child = children[i];</span><br><span class="line">                <span class="keyword">if</span> (dispatchTransformedTouchEvent(ev, <span class="keyword">false</span>, child, idBitsToAssign)) &#123;<span class="comment">//某个子view返回true则停止遍历</span></span><br><span class="line">                    handled = <span class="keyword">true</span>;</span><br><span class="line">                    newTouchTarget = addTouchTarget(child, idBitsToAssign);<span class="comment">//记录该子view</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mFirstTouchTarget == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//如果事件被拦截或者没有子view要处理该事件，分发事件，但子view为null，会调用父类 View#dispatchTouchEvent</span></span><br><span class="line">            handled = dispatchTransformedTouchEvent(ev, canceled, <span class="keyword">null</span>,TouchTarget.ALL_POINTER_IDS);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//如果有子view需要处理的，直接向该子view传递事件</span></span><br><span class="line">            TouchTarget target = mFirstTouchTarget;</span><br><span class="line">            <span class="keyword">while</span> (target != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!handled)  &#123;</span><br><span class="line">                    <span class="keyword">if</span> (dispatchTransformedTouchEvent(ev, cancelChild,</span><br><span class="line">                            target.child, target.pointerIdBits)) &#123;</span><br><span class="line">                        handled = <span class="keyword">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                target = target.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> handled;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//是否拦截事件</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//向子view传递事件</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTransformedTouchEvent</span><span class="params">(MotionEvent event, <span class="keyword">boolean</span> cancel,</span></span></span><br><span class="line"><span class="function"><span class="params">                View child, <span class="keyword">int</span> desiredPointerIdBits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (child == <span class="keyword">null</span>) &#123;</span><br><span class="line">            handled = <span class="keyword">super</span>.dispatchTouchEvent(event);<span class="comment">//View#dispatchTouchEvent</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            handled = child.dispatchTouchEvent(event);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> handled;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//记录需要处理的子view</span></span><br><span class="line">    <span class="function">TouchTarget <span class="title">addTouchTarget</span><span class="params">(View child, <span class="keyword">int</span> pointerIdBits)</span> </span>&#123;</span><br><span class="line">        TouchTarget target = TouchTarget.obtain(child, pointerIdBits);</span><br><span class="line">        mFirstTouchTarget = target;</span><br><span class="line">        <span class="keyword">return</span> target;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (onTouchEvent(event)) &#123;</span><br><span class="line">            result = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注:文章中可能有很多错误，也有可能出现无法使用的情况，因为此技术博文是我的学习笔记，我只是记载一些看到或者想到东西，所以我不推荐你来直接按照该博文的内容进行直接使用，谢谢~~</p>
+</blockquote>
 
       
     </div>
@@ -362,7 +372,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ThinkPHP/" rel="tag">#ThinkPHP</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
       
@@ -371,16 +381,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/24/IntelliJ-IDEA-插件ApiDebugger-v1-0-0/" rel="next" title="IntelliJ IDEA 插件ApiDebugger v1.0.0">
-                <i class="fa fa-chevron-left"></i> IntelliJ IDEA 插件ApiDebugger v1.0.0
+              <a href="/2016/02/29/Android-Studio-实用插件集/" rel="next" title="Android Studio 实用插件集">
+                <i class="fa fa-chevron-left"></i> Android Studio 实用插件集
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/16/IntelliJ-插件开发指南/" rel="prev" title="IntelliJ-插件开发指南">
-                IntelliJ-插件开发指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/18/博客迁移/" rel="prev" title="博客迁移">
+                博客迁移 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -522,7 +532,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件的开始"><span class="nav-number">1.</span> <span class="nav-text">事件的开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View与ViewGroup对事件的处理"><span class="nav-number">2.</span> <span class="nav-text">View与ViewGroup对事件的处理</span></a></li></ol></div>
             
           </div>
         </section>

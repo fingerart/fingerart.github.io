@@ -1,4 +1,4 @@
-﻿var canvas_width = 0;
+var canvas_width = 0;
 var canvas_height = 0;
 var CANVAS_TOP = 10;
 var CANVAS_LEFT = 10;
@@ -100,10 +100,7 @@ function moveBall(context) {
 	};
 	var newL = 0;
 	for (var i = 0; i < balls.length; i++) {
-		if (balls[i].x+RADIUS >0 && balls[i].x-RADIUS <= canvas_width)
-			balls[newL++] = balls[i];
-	};
-	while(balls.length > newL)
+		if (balls[i].x+RADIUS >0 && balls[i].x-RADIUS <= canvas_width)="" balls[newl++]="balls[i];" };="" while(balls.length=""> newL)
 		balls.pop();
 }
 function update (context) {
@@ -132,4 +129,4 @@ function update (context) {
 	moveBall(context);
 	//更新当前时间
 	date = nextD;
-}
+}</=>
