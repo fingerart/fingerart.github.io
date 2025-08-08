@@ -1,1 +1,1 @@
-# FingerArt.github.io
+# fingerart.github.io
